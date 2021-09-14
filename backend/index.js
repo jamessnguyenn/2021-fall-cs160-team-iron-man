@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
+/** */
 mongoose.connect(database.MONGO_URI);
 mongoose.connection.on('connected', () => {
   console.log("Successfully connected to MongoDB EzApply Cluster");

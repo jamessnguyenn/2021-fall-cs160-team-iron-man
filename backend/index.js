@@ -1,4 +1,5 @@
 const express = require('express');
+const database = require('../database/database')
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
@@ -6,11 +7,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-/***mongoose.connect(/**process.env.MONGO_URIMONGOOSE_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+
+mongoose.connect(database.MONGO_URI);
 mongoose.connection.on('connected', () => {
-  console.log("Successfully connected to MongoDB");
+  console.log("Successfully connected to MongoDB EzApply Cluster");
 });
-mongoose.connection.on('error', console.error.bind(console, 'Connection error: ')); ***/
+mongoose.connection.on('error', console.error.bind(console, 'Connection error: '));
 
 app.get('/', (req, res)=>{
     res.send('Welcome to the EZ Apply API');

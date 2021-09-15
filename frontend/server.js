@@ -14,6 +14,7 @@ app.use(connectLivereload());
 app.get('/', (req, res) => {
     res.sendFile('./html/home.html', { root: __dirname });
 });
+//Set the localhost:3000/job-seeker-login page to load job-seeker-login.html
 app.get('/job-seeker-login', (req, res) => {
     res.sendFile('./html/job-seeker-login.html', { root: __dirname });
 });

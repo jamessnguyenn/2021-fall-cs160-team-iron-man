@@ -1,6 +1,25 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const experienceSchema = new mongoose.Schema({
+    company:{
+        type: String,
+        required: true
+    },
+    position: {
+        type: String,
+        required: true
+    },
+    startDate: {
+        type: String,
+        required: true
+    },
+    endDate: {
+        type: String,
+        required: true
+    },
+})
+
+const jobSeekerSchema = new mongoose.Schema({
     firstName:{
         type: String,
         required: true
@@ -41,20 +60,35 @@ const userSchema = new mongoose.Schema({
         },
 
     },
-    experiences:{
-        type: Array,
-        required: true
-    },
+    experiences:[experienceSchema],
     websites:{
         type: Array,
         required: true
     },
     education:{
-        type: Array,
-        required: true
+        school:{
+            type: String, 
+            required: true
+        },
+        startDate:{
+            type:String,
+            required: true
+        },
+        endDate:{
+            type:String,
+            required:true
+        },
+        degree:{
+            type:String,
+            required:true
+        },
+        fieldOfStudy:{
+            type: String,
+            required:true
+        }
     }
 
 
 })
 
-module.exports = mongoose.model('jobSeeker', userSchema);
+module.exports = mongoose.model('jobSeeker', jobSeekerSchema);

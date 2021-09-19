@@ -1,5 +1,7 @@
+body{
+  background-color: #c8c8c8 !important;
+}
 .signUpBG {
-  background-color: #c8c8c8;
   height: 100vh;
 }
 
@@ -20,7 +22,13 @@
   border-radius: 5px;
   width: 40%;
   height: 50%;
-  
+  overflow-y: scroll;
 }
+
+.input-form{
+  position: absolute;
+  top: 4em;
+}
+
 
 

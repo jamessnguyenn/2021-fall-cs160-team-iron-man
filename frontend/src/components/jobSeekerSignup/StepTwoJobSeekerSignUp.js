@@ -12,6 +12,9 @@ function StepTwoJobSeekerSignUp() {
     const [state, SetState] = useState('');
     const [zip, SetZip] = useState('');
     const [position, SetPosition] = useState('');
+    const [position2, SetPosition2] = useState('');
+    const [company, SetCompany] = useState('')
+    const [company2, SetCompany2] = useState('');
     const [web1, SetWeb1] = useState('');
     const [web2, SetWeb2] = useState('');
     const [web3, SetWeb3] = useState('');
@@ -19,13 +22,40 @@ function StepTwoJobSeekerSignUp() {
     const [degree, SetDegree] = useState('');
     const [field, SetField] = useState('');
     const [currentWork, SetCurrentWork] = useState(false);
+    const [currentWork2, SetCurrentWork2] = useState(false);
     const [currentSchool, SetCurrentSchool] = useState(false);
-    const [addWork, SetAddWork] = useState(false);
-    const [addEducation, SetAddEducation] = useState(false);
+    const [addWork1, SetAddWork1] = useState(false);
+    const [addWork2, SetAddWork2] = useState(false);
+    const [cancelWork, SetCancelWork] = useState(true);
+    const [cancelWork2, SetCancelWork2] = useState(true);
     const [validated, setValidated] = useState(false);
 
-    const handleAddWork = () => {
-        SetAddWork(true);
+    const handleAddWork1 = () => {
+        if(addWork1 === false && cancelWork === true){
+            SetAddWork1(true);
+            SetCancelWork(false);
+        }
+        else{
+            SetAddWork1(false);
+            SetCancelWork(true);
+            SetPosition('');
+            SetCompany('');
+            SetCurrentWork(false);
+        }
+    }
+
+    const handleAddWork2 = () => {
+        if(addWork2 === false && cancelWork2 === true){
+            SetAddWork2(true);
+            SetCancelWork2(false);
+        }
+        else{
+            SetAddWork2(false);
+            SetCancelWork2(true);
+            SetPosition2('');
+            SetCompany2('');
+            SetCurrentWork2(false);
+        }
     }
 
     const handleCurrentWork = () => {
@@ -38,8 +68,14 @@ function StepTwoJobSeekerSignUp() {
         }
     }
 
-    const handleAddEducation = () => {
-        SetAddEducation(true);
+    const handleCurrentWork2 = () => {
+        const checkBox = document.getElementById("checkWork2");
+        if(checkBox.checked === true){
+            SetCurrentWork2(true);
+        }
+        else{
+            SetCurrentWork2(false);
+        }
     }
 
     const handleCurrentSchool = () => {
@@ -118,23 +154,25 @@ function StepTwoJobSeekerSignUp() {
                                 <Form.Label>Country</Form.Label>
                                 <Form.Control type="text" value="United States of America" readOnly />
                             </Form.Group>
-                        
-                            <Row className="mb-0">
-                                <Col>
-                                    <Form.Label>Work Experience</Form.Label>
-                                </Col>
 
-                                <Col xs="auto">
-                                    <div id="addWork" className="btn btn-dark btn-block btn-sm mb-2" value={addWork} onClick={handleAddWork}>
-                                        <AddIcon /> Add
+                            <Form.Group className="mb-0" controlId="formGridWork">
+                                <Form.Label>Work Experience</Form.Label>
+                            </Form.Group>
+
+                            <Form.Group className="mb-0" controlId="formGridWork">
+                                    <div id="addWork1" className="btn btn-dark btn-block btn-sm mb-2" value={addWork1} onClick={handleAddWork1}>
+                                        <AddIcon /> Add Work 1
                                     </div>
-                                </Col>
-                            </Row>
+                            </Form.Group>
                             
-                            {addWork && 
-                                <div className="AddWorkExperience">
-                                <Form.Group className="mb-3" controlId="formGridWorkExperience">
+                            {addWork1 && !cancelWork &&
+                                <div className="AddWorkExperience mb-3">
+                                <Form.Group className="mt-3 mb-3" controlId="formGridWorkExperience">
                                     <Form.Control placeholder="Position" value={position} onChange={e => SetPosition(e.target.value)} />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formGridWorkExperience">
+                                    <Form.Control placeholder="Company" value={company} onChange={e => SetCompany(e.target.value)} />
                                 </Form.Group>
 
                                 <Form.Group controlId="formGridDateRange">
@@ -187,39 +225,40 @@ function StepTwoJobSeekerSignUp() {
                                             </div>}
                                     </Col>
                                 </Row>
+
+                                <Row className="mb-0">
+
+                                    <Col xs="auto">
+                                        <div id="" className="btn btn-danger btn-block btn-sm mb-2" value={cancelWork} onClick={handleAddWork1} >
+                                            Cancel
+                                        </div>
+                                    </Col>
+                                </Row>
                             </div>
                             }
-                            
-                            <Form.Group className="mb-4" controlId="formGridWebsites">
-                                <Form.Label>Websites <span style={{fontSize: '12px'}}><em>(eg. LinkedIn, Facebook, Personal Website)</em></span></Form.Label>
-                                <Form.Control className="mb-2" placeholder="Website 1" value={web1} onChange={e => SetWeb1(e.target.value)} />
-                                <Form.Control className="mb-2" placeholder="Website 2" value={web2} onChange={e => SetWeb2(e.target.value)} />
-                                <Form.Control placeholder="Website 3" value={web3} onChange={e => SetWeb3(e.target.value)} />
-                            </Form.Group>
-                            
-                            <Row className="mb-0">
-                                <Col>
-                                    <Form.Label>Education</Form.Label>
-                                </Col>
 
-                                <Col xs="auto">
-                                    <div className="btn btn-dark btn-block btn-sm mb-2" value={addEducation} onClick={handleAddEducation}>
-                                        <AddIcon /> Add
+                            <Form.Group className="mb-0" controlId="formGridWork">
+                                    <div id="addWork1" className="btn btn-dark btn-block btn-sm mb-2" value={addWork2} onClick={handleAddWork2}>
+                                        <AddIcon /> Add Work 2
                                     </div>
-                                </Col>
-                            </Row>
-                            
-                            {addEducation && 
-                                <div className="AddSchool">
-                                <Form.Group className="mb-3" controlId="formGridSchool">
-                                    <Form.Control placeholder="School" value={school} onChange={e => SetSchool(e.target.value)} />
+                            </Form.Group>
+
+                            {addWork2 && !cancelWork2 &&
+                                <div className="AddWorkExperience mb-3">
+                                <Form.Group className="mt-3 mb-3" controlId="formGridWorkExperience">
+                                    <Form.Control placeholder="Position" value={position2} onChange={e => SetPosition2(e.target.value)} />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formGridWorkExperience">
+                                    <Form.Control placeholder="Company" value={company2} onChange={e => SetCompany2(e.target.value)} />
                                 </Form.Group>
 
                                 <Form.Group controlId="formGridDateRange">
                                     <Form.Label>Date range</Form.Label>
                                 </Form.Group>
-                                    <Form.Group className="mb-3" id="formGridCheckbox">
-                                    <Form.Check id="checkSchool" type="checkbox" label="I currently study here" value={currentSchool} onChange={handleCurrentSchool}/>
+
+                                <Form.Group className="mb-3" id="formGridCheckbox">
+                                    <Form.Check id="checkWork2" type="checkbox" label="I currently work here" value={currentWork2} onChange={handleCurrentWork2}/>
                                 </Form.Group>
 
                                 <Row className="mb-3">
@@ -242,7 +281,84 @@ function StepTwoJobSeekerSignUp() {
                                     </Col>
 
                                     <Col>
-                                        {!currentSchool ?
+                                        {!currentWork2 ? 
+                                        <div><Form.Group controlId="formGridDate">
+                                                <Form.Select>
+                                                    <option>Month</option>
+                                                    <option>...</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        </div> :
+                                        <div>
+                                            <Form.Control type="text" placeholder="Present" readOnly />  
+                                        </div>}
+                                    </Col>
+                                    <Col>
+                                        {!currentWork2 &&
+                                            <div><Form.Group controlId="formGridDate">
+                                                    <Form.Select>
+                                                        <option>Year</option>
+                                                        <option>...</option>
+                                                    </Form.Select>
+                                                </Form.Group>
+                                            </div>}
+                                    </Col>
+                                </Row>
+
+                                <Row className="mb-0">
+                                    <Col xs="auto">
+                                        <div id="" className="btn btn-danger btn-block btn-sm mb-2" value={cancelWork2} onClick={handleAddWork2} >
+                                            Cancel
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </div>
+                            }
+                            
+                            <Form.Group className="mb-4 mt-4" controlId="formGridWebsites">
+                                <Form.Label>Websites <span style={{fontSize: '12px'}}><em>(eg. LinkedIn, Facebook, Personal Website)</em></span></Form.Label>
+                                <Form.Control className="mb-2" placeholder="Website 1" value={web1} onChange={e => SetWeb1(e.target.value)} />
+                                <Form.Control className="mb-2" placeholder="Website 2" value={web2} onChange={e => SetWeb2(e.target.value)} />
+                                <Form.Control placeholder="Website 3" value={web3} onChange={e => SetWeb3(e.target.value)} />
+                            </Form.Group>
+
+                            <Form.Group className="mb-0">
+                                    <Form.Label>Education</Form.Label>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formGridSchool">
+                                <Form.Control placeholder="School" value={school} onChange={e => SetSchool(e.target.value)} />
+                            </Form.Group>
+
+                            <Form.Group controlId="formGridDateRange">
+                                <Form.Label>Date range</Form.Label>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" id="formGridCheckbox">
+                                    <Form.Check id="checkSchool" type="checkbox" label="I currently study here" value={currentSchool} onChange={handleCurrentSchool}/>
+                            </Form.Group>
+
+                            <Row className="mb-3">
+                                <Form.Group as={Col} controlId="formGridDate">
+                                    <Form.Select>
+                                        <option>Month</option>
+                                        <option>...</option>
+                                    </Form.Select>
+                                </Form.Group>
+
+                                <Form.Group as={Col} controlId="formGridDate">
+                                    <Form.Select>
+                                        <option>Year</option>
+                                        <option>...</option>
+                                    </Form.Select>
+                                </Form.Group>
+
+                                <Col xs="auto">
+                                    <Form.Label>to</Form.Label>
+                                </Col>
+
+                                <Col>
+                                    {!currentSchool ?
                                         <div><Form.Group controlId="formGridDate">
                                                 <Form.Select>
                                                     <option>Month</option>
@@ -253,7 +369,7 @@ function StepTwoJobSeekerSignUp() {
                                         <div>
                                             <Form.Control type="text" placeholder="Present" readOnly />
                                         </div>}
-                                    </Col>
+                                </Col>
                                     <Col>
                                         {!currentSchool &&
                                             <div><Form.Group controlId="formGridDate">
@@ -266,31 +382,27 @@ function StepTwoJobSeekerSignUp() {
                                     </Col>
                                 </Row>
 
-                                {/* <Form.Label className="d-flex justify-content-end" style={{width: '35px'}}>Present</Form.Label> */}
-
-                                {currentSchool && 
-                                    <div>
-                                        <Form.Group className="mb-3" as={Col} controlId="formGridGraduation">
-                                            <Form.Label>Expected Graduation</Form.Label>
-                                            <Row>
-                                                <Col>
-                                                    <Form.Select>
-                                                        <option>Month</option>
-                                                        <option>...</option>
-                                                    </Form.Select>
-                                                </Col>
-                                                <Col>
-                                                    <Form.Select>
-                                                        <option>Year</option>
-                                                        <option>...</option>
-                                                    </Form.Select>
-                                                </Col>
-                                            </Row>
-                                            
-                                        </Form.Group>
-                                    </div>
-                                }
-
+                                
+                                <div>
+                                    <Form.Group className="mb-3" as={Col} controlId="formGridGraduation">
+                                        <Form.Label>Expected Graduation</Form.Label>
+                                        <Row>
+                                            <Col>
+                                                <Form.Select>
+                                                    <option>Month</option>
+                                                    <option>...</option>
+                                                </Form.Select>
+                                            </Col>
+                                            <Col>
+                                                <Form.Select>
+                                                    <option>Year</option>
+                                                    <option>...</option>
+                                                </Form.Select>
+                                            </Col>
+                                        </Row>
+                                    </Form.Group>
+                                </div>
+           
                                 <Form.Group className="mb-3" controlId="formGridDegree">
                                     <Form.Select value={degree} onChange={e => SetDegree(e.target.value)}>
                                         <option>Degree</option>
@@ -302,9 +414,6 @@ function StepTwoJobSeekerSignUp() {
                                     <Form.Label>Field of Study</Form.Label>
                                     <Form.Control placeholder="eg. Computer Science" value={field} onChange={e => SetField(e.target.value)} />
                                 </Form.Group>
-                                
-                            </div>
-                            }
                             
                             <div className="agreement mb-4 mt-3" style={{fontSize: '12px', color: '#777'}}>
                                 By clicking Sign Up, you are agreeing to our Terms, Data Policy and Cookies Policy.

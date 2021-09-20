@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName, lastName, email, password, confirmPassword, passwordError}) {
+export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName, lastName, email, password, confirmPassword}) {
 
     const [validated, setValidated] = useState(false);
+    const [passwordError, SetPasswordError] = useState(false);
 
+    useEffect(()=>{
+        if(document.getElementById("confirmPassword") != null){
+            if (password !== confirmPassword) {
+                SetPasswordError(true);
+                document.getElementById("confirmPassword").style.borderColor = "#dc3545";
+                document.getElementById("confirmPassword").style.backgroundImage = "none";
+            }
+            else {
+                SetPasswordError(false);
+                if(confirmPassword !== ""){
+                    document.getElementById("confirmPassword").style.borderColor = "#198754";
+                }else{
+                    document.getElementById("confirmPassword").style.borderColor = "#ced4da";
+                }
+    
+                
+            }
+        }
+       
+    }, [password, confirmPassword])
     // for form validation on Submit
     const handleSubmit = (e) => {
         const form = e.currentTarget;
@@ -22,7 +43,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
             e.preventDefault();
         }
     };
-
+    
     // checks if password and confirmPassword match, and make necessary changes to the style of the border
    
     return (

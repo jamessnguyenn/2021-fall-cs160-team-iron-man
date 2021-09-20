@@ -38,7 +38,7 @@ function JobSeekerSignUp(){
     const [schoolEndDateYear, setSchoolEndDateYear] = useState('');
     const [degree, setDegree] = useState('');
     const [field, setField] = useState('');
-    const [passwordError, SetPasswordError] = useState(false);
+
 
 
     const signUp = ()=>{
@@ -211,27 +211,6 @@ function JobSeekerSignUp(){
         }
        
     }
-    useEffect(()=>{
-        if(document.getElementById("confirmPassword") != null){
-            if (password !== confirmPassword) {
-                SetPasswordError(true);
-                document.getElementById("confirmPassword").style.borderColor = "#dc3545";
-                document.getElementById("confirmPassword").style.backgroundImage = "none";
-            }
-            else {
-                SetPasswordError(false);
-                if(confirmPassword !== ""){
-                    document.getElementById("confirmPassword").style.borderColor = "#198754";
-                }else{
-                    document.getElementById("confirmPassword").style.borderColor = "#ced4da";
-                }
-    
-                
-            }
-        }
-       
-    }, [password, confirmPassword])
- 
 
     // proceed to the second step
     const secondStep = () => {
@@ -239,7 +218,7 @@ function JobSeekerSignUp(){
     }
          return (
             firstStep? <StepOneJobSeekerSignUp secondStep={secondStep} 
-                setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword} passwordError={passwordError}/>:
+                setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword}/>:
                  <StepTwoJobSeekerSignUp setValue={setValue} address={address} apt={apt} city={city} state={state}
                  zip={zip} positon={position} position2={position2} company={company} company2={company2} web1={web1}
                  web2={web2} web3={web3} school={school} degree={degree} field={field} startDateMonth={startDateMonth} startDateYear={startDateYear}

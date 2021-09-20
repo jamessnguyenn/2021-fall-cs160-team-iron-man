@@ -66,22 +66,26 @@ const jobSeekerSchema = new mongoose.Schema({
         required: true
     },
     education:{
-        school:{
-            type: String, 
-            required: true
+        type:{ 
+            school:{
+                type: String, 
+                required: true
+            },
+            endDate:{
+                type:String,
+                required:true
+            },
+            degree:{
+                type:String,
+                required:true
+            },
+            fieldOfStudy:{
+                type: String,
+                required:true
+            }
         },
-        endDate:{
-            type:String,
-            required:true
-        },
-        degree:{
-            type:String,
-            required:true
-        },
-        fieldOfStudy:{
-            type: String,
-            required:true
-        }
+        required: false,
+        default: null
     }
 
 

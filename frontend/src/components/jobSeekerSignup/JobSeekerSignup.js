@@ -96,7 +96,9 @@ function JobSeekerSignUp(){
             },
             experiences:experiences,
             websites: websites,
-            education:{
+        }
+        if(school !== "" && schoolEndDateMonth !== "" && schoolEndDateYear !=="" && degree !=="" && field !== ""){
+            jobSeeker.education = {
                 school: school,
                 endDate: schoolEndDateMonth+ " " + schoolEndDateYear,
                 degree: degree,

@@ -3,6 +3,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LandingPage from './components/landing/landing'
 import JobSeekerCreateAccountPage from './components/jobSeekerSignup/JobSeekerSignup'
+import SuccessPage from './components/Test/success'
 
 function App () {
   return (
@@ -11,9 +12,16 @@ function App () {
         <Route exact path='/'>
           <LandingPage />
         </Route>
-        <Router exact path='/jobSeekerCreateAccount'>
+        <Route exact path='/jobSeekerCreateAccount'>
           <JobSeekerCreateAccountPage/>
-        </Router>
+        </Route>
+        <Route exact path='/jobSeekerCreateAccount'>
+          <JobSeekerCreateAccountPage/>
+        </Route>
+        {/**TO BE DELETED FOR DEMONSTRATION PURPOSES**/}
+        <Route exact path='/success'>  
+          <SuccessPage/>
+        </Route>
       </Switch>
     </Router>
   )

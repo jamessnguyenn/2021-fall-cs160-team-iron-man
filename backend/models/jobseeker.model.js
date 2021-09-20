@@ -55,7 +55,7 @@ const jobSeekerSchema = new mongoose.Schema({
             required: true
         },
         zipcode:{
-            type: Number,
+            type: String,
             required: true
         },
 
@@ -68,10 +68,6 @@ const jobSeekerSchema = new mongoose.Schema({
     education:{
         school:{
             type: String, 
-            required: true
-        },
-        startDate:{
-            type:String,
             required: true
         },
         endDate:{

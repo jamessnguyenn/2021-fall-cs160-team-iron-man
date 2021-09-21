@@ -18,6 +18,9 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
     const [cancelWork2, SetCancelWork2] = useState(true);
     const [validated, setValidated] = useState(false);
 
+    // list all the states
+    const usaStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+
     const handleAddWork1 = () => {
         if(addWork1 === false && cancelWork === true){
             SetAddWork1(true);
@@ -129,7 +132,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                     <Form.Label>State</Form.Label>
                                     <Form.Select required value={state} id="state" onChange={e => setValue(e)} >
                                         <option value="">Select State</option>
-                                        <option>...</option>
+                                        {usaStates.map((s, key) => {
+                                            return (
+                                                <option key={key}>{s}</option>
+                                            );
+                                        })}
+                                        
                                     </Form.Select>
                                     <Form.Control.Feedback type="invalid">
                                         Please select your State.
@@ -354,8 +362,17 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
            
                                 <Form.Group className="mb-3" controlId="formGridDegree">
                                     <Form.Select value={degree} id="degree" onChange={e => setValue(e)}>
-                                        <option>Degree</option>
+                                        <option>Choose Degree</option>
+                                        <option>Less than High School</option>
+                                        <option>High School or Equivalent</option>
+                                        <option>Technical or Occupational Certificate</option>
+                                        <option>Associate Degree</option>
+                                        <option>Some college coursework completed</option>
                                         <option>Bachelor's Degree</option>
+                                        <option>Master's Degree</option>
+                                        <option>Doctorate (PhD)</option>
+                                        <option>Professional</option>
+                                        <option>Other</option>
                                     </Form.Select>
                                 </Form.Group>
 

@@ -110,7 +110,7 @@ function JobSeekerSignUp(){
             console.log(res.data.user_id)
             history.push('/success')
         })
-        .catch(err=>console.log(err.response.data))
+        .catch(err=>console.log(err))
     }
     const setValue = (e)=>{
         switch(e.target.id){

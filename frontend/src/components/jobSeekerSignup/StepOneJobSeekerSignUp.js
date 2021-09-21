@@ -20,11 +20,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
                 SetPasswordError(false);
                 if(confirmPassword !== ""){
                     document.getElementById("confirmPassword").style.borderColor = "#198754";
-                }else{
-                    document.getElementById("confirmPassword").style.borderColor = "#ced4da";
                 }
-    
-                
             }
         }
        
@@ -99,15 +95,13 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
                                     Please re-enter your password.
                                 </Form.Control.Feedback>
                                 {passwordError && <div style={{ color: "#dc3545", fontSize: "0.875em", marginTop: ".25rem", width: "100%" }}>Passwords don't match.</div>}
-
                             </Form.Group>
 
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center mb-4">
                                 <Button variant="success" type="submit">
                                     Continue
                                 </Button>
                             </div>
-
                         </Form>
                     </div>
                 </div>

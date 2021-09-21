@@ -20,11 +20,17 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
                 SetPasswordError(false);
                 if(confirmPassword !== ""){
                     document.getElementById("confirmPassword").style.borderColor = "#198754";
+                }else{
+                    if(!validated){
+                        document.getElementById("confirmPassword").style.borderColor = "#ced4da";
+                    }else{
+                        document.getElementById("confirmPassword").style.borderColor = "#dc3545";
+                    }
                 }
             }
         }
        
-    }, [password, confirmPassword])
+    }, [password, confirmPassword, validated])
     // for form validation on Submit
     const handleSubmit = (e) => {
         const form = e.currentTarget;
@@ -46,7 +52,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
         <>
             <div className="signUpBG">
                 <h1 className='text-center'>
-                    EZ Apply
+                    Sign Up
                 </h1>
                 <div className='whiteBG mx-auto mt-4'>
                     <div className="input-form">

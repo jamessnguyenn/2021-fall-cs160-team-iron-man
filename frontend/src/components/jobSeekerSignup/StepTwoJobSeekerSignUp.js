@@ -22,6 +22,11 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
     // list all the states
     const usaStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
+    const years =[]
+    for(var i=1900; i<2100; i++){
+        years.push(i)
+    }
+
     const handleAddWork1 = () => {
         if(addWork1 === false && cancelWork === true){
             SetAddWork1(true);
@@ -196,8 +201,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
 
                                     <Form.Group as={Col} controlId="formGridDate">
                                         <Form.Select required={addWork1} value={startDateYear} id="startDateYear" onChange={e=> setValue(e)}>
-                                            <option>Year</option>
-                                            <option>...</option>
+                                        <option value="">Year</option>
+                                            {years.map((s, key) => {
+                                            return (
+                                                <option key={key}>{s}</option>
+                                            );
+                                        })}
                                         </Form.Select>
                                     </Form.Group>
 
@@ -222,8 +231,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                         {!currentWork &&
                                             <div><Form.Group controlId="formGridDate">
                                                      <Form.Select required={!currentWork} value={endDateYear} id="endDateYear" onChange={e=> setValue(e)}>
-                                                        <option>Year</option>
-                                                        <option>...</option>
+                                                        <option value="">Year</option>
+                                                        {years.map((s, key) => {
+                                            return (
+                                                <option key={key}>{s}</option>
+                                            );
+                                        })}
                                                     </Form.Select>
                                                 </Form.Group>
                                             </div>}
@@ -275,8 +288,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
 
                                     <Form.Group as={Col} controlId="formGridDate">
                                         <Form.Select  required={addWork2} value={startDateYear2} id="startDateYear2" onChange={e=> setValue(e)}>
-                                            <option>Year</option>
-                                            <option>...</option>
+                                            <option value="">Year</option>
+                                            {years.map((s, key) => {
+                                            return (
+                                                <option key={key}>{s}</option>
+                                            );
+                                        })}
                                         </Form.Select>
                                     </Form.Group>
 
@@ -301,8 +318,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                         {!currentWork2 &&
                                             <div><Form.Group controlId="formGridDate">
                                                      <Form.Select required={!currentWork2} value={endDateYear2} id="endDateYear2" onChange={e=> setValue(e)}>
-                                                        <option>Year</option>
-                                                        <option>...</option>
+                                                     <option value="">Year</option>
+                                                        {years.map((s, key) => {
+                                            return (
+                                                <option key={key}>{s}</option>
+                                            );
+                                        })}
                                                     </Form.Select>
                                                 </Form.Group>
                                             </div>}
@@ -352,7 +373,11 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                             <div><Form.Group controlId="formGridDate">
                                                     <Form.Select value={schoolEndDateYear} id="schoolEndDateYear" onChange={e=> setValue(e)}>
                                                         <option>Year</option>
-                                                        <option>...</option>
+                                                        {years.map((s, key) => {
+                                            return (
+                                                <option key={key}>{s}</option>
+                                            );
+                                        })}
                                                     </Form.Select>
                                                 </Form.Group>
                                             </div>

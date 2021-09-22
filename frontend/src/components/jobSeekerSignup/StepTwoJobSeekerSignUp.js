@@ -99,12 +99,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
 
     return ( 
         <>
-            <div className="signUpBG" >
+            <div className="signUpBG" style={{paddingBottom: "2em"}} >
                 <h1 className='text-center'>
                     Almost There!
                 </h1>
             
-                <div className='whiteBG mx-auto mt-4' style={{width: '53%', height: '130%'}}>
+                <div className='whiteBG mx-auto mt-4' style={{width: '60vw', height: '130%'}}>
                     <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                             <Form.Group className="mb-3" controlId="formGridAddress1">
@@ -395,6 +395,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                     </div>
                 </div>
             </div>
+            
         </>
             
     )

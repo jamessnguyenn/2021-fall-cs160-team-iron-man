@@ -141,7 +141,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                     One More Step..
                 </h1>
             
-                <div className='whiteBG mx-auto mt-4' style={{width: '60vw', height: '130%'}}>
+                <div className='whiteBG mx-auto mt-4' style={{width: '800px', height: '1250px'}}>
                     <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                             <Form.Group className="mb-3" controlId="formGridAddress1">

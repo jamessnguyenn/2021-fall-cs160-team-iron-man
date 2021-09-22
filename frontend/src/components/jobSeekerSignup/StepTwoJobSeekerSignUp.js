@@ -26,7 +26,30 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
     for(var i=1900; i<2100; i++){
         years.push(i)
     }
+    const degrees = ["Less than High School",
+        "High School or Equivalent",
+        "Technical or Occupational Certificate",
+        "Associate Degree",
+        "Some college coursework completed",
+        "Bachelor's Degree",
+        "Master's Degree",
+        "Doctorate (PhD)",
+        "Professional",
+        "Other"]
+    
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+    const HandleSelectOptions = ({arr}) => {
+        return(
+            arr.map((item, key) => {
+                return(
+                    <option key={key}>{item}</option>       
+                )   
+            })
+        )
+        
+    }
+    
     const handleAddWork1 = () => {
         if(addWork1 === false && cancelWork === true){
             SetAddWork1(true);
@@ -138,11 +161,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                     <Form.Label>State</Form.Label>
                                     <Form.Select required value={state} id="state" onChange={e => setValue(e)} >
                                         <option value="">Select State</option>
-                                        {usaStates.map((s, key) => {
-                                            return (
-                                                <option key={key}>{s}</option>
-                                            );
-                                        })}
+                                        <HandleSelectOptions arr={usaStates} />
                                         
                                     </Form.Select>
                                     <Form.Control.Feedback type="invalid">
@@ -194,8 +213,8 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                 <Row className="mb-3">
                                     <Form.Group as={Col} controlId="formGridDate">
                                         <Form.Select required={addWork1} value={startDateMonth} id="startDateMonth" onChange={e=> setValue(e)}>
-                                            <option>Month</option>
-                                            <option>...</option>
+                                        <option value="">Month</option>
+                                            <HandleSelectOptions arr={months} />
                                         </Form.Select>
                                     </Form.Group>
 
@@ -218,8 +237,8 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                         {!currentWork ? 
                                         <div><Form.Group controlId="formGridDate">
                                                 <Form.Select required={!currentWork} value={endDateMonth} id="endDateMonth" onChange={e=> setValue(e)}>
-                                                    <option>Month</option>
-                                                    <option>...</option>
+                                                <option value="">Month</option>
+                                                    <HandleSelectOptions arr={months} />
                                                 </Form.Select>
                                             </Form.Group>
                                         </div> :
@@ -281,8 +300,8 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                 <Row className="mb-3">
                                     <Form.Group as={Col} controlId="formGridDate">
                                         <Form.Select required={addWork2} value={startDateMonth2} id="startDateMonth2" onChange={e=> setValue(e)}>
-                                            <option>Month</option>
-                                            <option>...</option>
+                                        <option value="">Month</option>
+                                            <HandleSelectOptions arr={months} />
                                         </Form.Select>
                                     </Form.Group>
 
@@ -305,8 +324,8 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                         {!currentWork2 ? 
                                         <div><Form.Group controlId="formGridDate">
                                                 <Form.Select required={!currentWork2} value={endDateMonth2} id="endDateMonth2" onChange={e=> setValue(e)}>
-                                                    <option>Month</option>
-                                                    <option>...</option>
+                                                <option value="">Month</option>
+                                                    <HandleSelectOptions arr={months} />
                                                 </Form.Select>
                                             </Form.Group>
                                         </div> :
@@ -364,7 +383,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                         <div><Form.Group controlId="formGridDate">
                                             <Form.Select value={schoolEndDateMonth} id="schoolEndDateMonth" onChange={e=> setValue(e)}>
                                                     <option>Month</option>
-                                                    <option>...</option>
+                                                    <HandleSelectOptions arr={months} />
                                                 </Form.Select>
                                             </Form.Group>
                                         </div> 
@@ -384,21 +403,10 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                     </Col>
                                 </Row>
 
-
-           
                                 <Form.Group className="mb-3" controlId="formGridDegree">
                                     <Form.Select value={degree} id="degree" onChange={e => setValue(e)}>
                                         <option>Choose Degree</option>
-                                        <option>Less than High School</option>
-                                        <option>High School or Equivalent</option>
-                                        <option>Technical or Occupational Certificate</option>
-                                        <option>Associate Degree</option>
-                                        <option>Some college coursework completed</option>
-                                        <option>Bachelor's Degree</option>
-                                        <option>Master's Degree</option>
-                                        <option>Doctorate (PhD)</option>
-                                        <option>Professional</option>
-                                        <option>Other</option>
+                                        <HandleSelectOptions arr={degrees} />
                                     </Form.Select>
                                 </Form.Group>
 

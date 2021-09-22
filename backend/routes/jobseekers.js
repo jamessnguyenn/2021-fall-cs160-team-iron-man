@@ -11,7 +11,7 @@ router.route('/').post((req, res)=>{
     .then(user=>{
         console.log("Sucessfully added the user: " + user._id)
         res.status(200).json({user_id: user._id})})
-    .catch(err=>res.status(400).json('Error: ' + err))
+    .catch(err=>res.status(400).json({error: err}))
 })
 
 module.exports = router;

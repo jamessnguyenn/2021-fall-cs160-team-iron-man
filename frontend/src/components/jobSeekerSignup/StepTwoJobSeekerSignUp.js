@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
@@ -18,10 +18,11 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
     const [cancelWork, SetCancelWork] = useState(true);
     const [cancelWork2, SetCancelWork2] = useState(true);
     const [validated, setValidated] = useState(false);
+    const [schoolRequired, setSchoolRequired] = useState(false);
 
     // list all the states
     const usaStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-
+    
     const years =[]
     for(var i=1900; i<2100; i++){
         years.push(i)
@@ -125,11 +126,19 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
         }
     };
 
+    useEffect(()=>{
+        if(school.length >0 || schoolEndDateMonth.length>0 || schoolEndDateYear.length>0 || degree.length>0 || field.length>0){
+            setSchoolRequired(true)
+        }else{
+            setSchoolRequired(false)
+        }
+
+    },[school, schoolEndDateMonth, schoolEndDateYear, degree, field])
     return ( 
         <>
             <div className="signUpBG" style={{paddingBottom: "2em"}} >
                 <h1 className='text-center'>
-                    Almost There!
+                    One More Step..
                 </h1>
             
                 <div className='whiteBG mx-auto mt-4' style={{width: '60vw', height: '130%'}}>
@@ -170,10 +179,10 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                 </Form.Group>
 
                                 <Form.Group as={Col} controlId="formGridZip">
-                                    <Form.Label>Zip code</Form.Label>
-                                    <Form.Control required placeholder="eg. 12345" value={zip} id="zip" onChange={e => setValue(e)} />
+                                    <Form.Label>Zip Code</Form.Label>
+                                    <Form.Control required placeholder="eg. 12345" type="text" pattern="\d*" minLength="5" maxLength="5" value={zip} id="zip" onChange={e => setValue(e)} />
                                     <Form.Control.Feedback type="invalid">
-                                        Please enter your zip code.
+                                        Please enter a valid zipcode.
                                     </Form.Control.Feedback>
                                 </Form.Group>
                             </Row>
@@ -361,17 +370,17 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                             
                             <Form.Group className="mb-4 mt-4" controlId="formGridWebsites">
                                 <Form.Label>Websites <span style={{fontSize: '12px'}}><em>(eg. LinkedIn, Facebook, Personal Website)</em></span></Form.Label>
-                                <Form.Control className="mb-2" placeholder="Website 1" id="web1" value={web1} onChange={e => setValue(e)} />
-                                <Form.Control className="mb-2" placeholder="Website 2" id="web2" value={web2} onChange={e => setValue(e)} />
-                                <Form.Control placeholder="Website 3" id="web3" value={web3} onChange={e => setValue(e)} />
+                                <Form.Control className="mb-2" type="url" placeholder="Website 1" id="web1" value={web1} onChange={e => setValue(e)} />
+                                <Form.Control className="mb-2" type="url" placeholder="Website 2" id="web2" value={web2} onChange={e => setValue(e)} />
+                                <Form.Control placeholder="Website 3" type="url" id="web3" value={web3} onChange={e => setValue(e)} />
                             </Form.Group>
 
                             <Form.Group className="mb-0">
-                                    <Form.Label>Education</Form.Label>
+                                    <Form.Label>Most Recent Education (Optional)</Form.Label>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formGridSchool">
-                                <Form.Control placeholder="School" value={school}  id="school" onChange={e => setValue(e)} />
+                                <Form.Control placeholder="School" required={schoolRequired}  value={school}  id="school" onChange={e => setValue(e)} />
                             </Form.Group>
 
                             <Form.Group controlId="formGridDateRange">
@@ -381,8 +390,8 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                             <Row className="mb-3">
                                 <Col>
                                         <div><Form.Group controlId="formGridDate">
-                                            <Form.Select value={schoolEndDateMonth} id="schoolEndDateMonth" onChange={e=> setValue(e)}>
-                                                    <option>Month</option>
+                                            <Form.Select required={schoolRequired}  value={schoolEndDateMonth} id="schoolEndDateMonth" onChange={e=> setValue(e)}>
+                                                    <option value="">Month</option>
                                                     <HandleSelectOptions arr={months} />
                                                 </Form.Select>
                                             </Form.Group>
@@ -390,8 +399,8 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                 </Col>
                                     <Col>
                                             <div><Form.Group controlId="formGridDate">
-                                                    <Form.Select value={schoolEndDateYear} id="schoolEndDateYear" onChange={e=> setValue(e)}>
-                                                        <option>Year</option>
+                                                    <Form.Select required={schoolRequired}  value={schoolEndDateYear} id="schoolEndDateYear" onChange={e=> setValue(e)}>
+                                                        <option value="">Year</option>
                                                         {years.map((s, key) => {
                                             return (
                                                 <option key={key}>{s}</option>
@@ -404,23 +413,23 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                 </Row>
 
                                 <Form.Group className="mb-3" controlId="formGridDegree">
-                                    <Form.Select value={degree} id="degree" onChange={e => setValue(e)}>
-                                        <option>Choose Degree</option>
+                                    <Form.Select required={schoolRequired} value={degree} id="degree" onChange={e => setValue(e)}>
+                                        <option value="">Choose Degree</option>
                                         <HandleSelectOptions arr={degrees} />
                                     </Form.Select>
                                 </Form.Group>
 
                                 <Form.Group className="mb-5" controlId="formGridStudyField">
                                     <Form.Label>Field of Study</Form.Label>
-                                    <Form.Control placeholder="eg. Computer Science" value={field} id="field" onChange={e => setValue(e)} />
+                                    <Form.Control required={schoolRequired} placeholder="eg. Computer Science" value={field} id="field" onChange={e => setValue(e)} />
                                 </Form.Group>
                             
                             <div className="agreement mb-4 mt-3" style={{fontSize: '12px', color: '#777'}}>
                                 By clicking Sign Up, you are agreeing to our Terms, Data Policy and Cookies Policy.
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <Button className="mb-5" variant="success" type="submit" size="lg" style={{width: '200px', fontWeight: 'bold'}}>
-                                    Sign Up
+                            <div class="d-flex justify-content-center mb-5">
+                                <Button className="signup-button" variant="success" type="submit" size="lg">
+                                    Join Now
                                 </Button>
                             </div>
                             

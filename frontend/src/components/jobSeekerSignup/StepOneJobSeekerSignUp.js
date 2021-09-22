@@ -74,9 +74,9 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
                             </Row>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control required type="email" placeholder="Enter email" size="sm" id="email" value={email} onChange={e => setValue(e)} />
+                                <Form.Control required type="test" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Enter email" size="sm" id="email" value={email} onChange={e => setValue(e)} />
                                 <Form.Control.Feedback type="invalid">
-                                    Please enter your email.
+                                    Please enter a valid email.
                                 </Form.Control.Feedback>
                             </Form.Group>
 
@@ -104,7 +104,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
                             </Form.Group>
 
                             <div class="d-flex justify-content-center mb-4">
-                                <Button variant="success" type="submit">
+                                <Button variant="success" class="signup-button" type="submit">
                                     Continue
                                 </Button>
                             </div>

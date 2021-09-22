@@ -1,6 +1,6 @@
 .signUpBG {
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-image: url(https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80);
   background-size: 100%;
   background-repeat: no-repeat;
@@ -8,11 +8,10 @@
   }
   
   .signUpBG > h1 {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', 'sans-serif';
     color: white;
+    font-size:3.25em;
     padding-top: 100px;
-    font-weight: bold;
-    text-shadow: 2px 2px 8px #2e2c2c;
   }
   
   .whiteBG {
@@ -20,25 +19,53 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    border-radius: 5px;
-    width: 40%;
-    height: 50%;
+    background: rgba(194, 202, 209, 0.926);;
+    border-radius: 25px;
+    width: 500px;
+    height: 350px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
+  }
+  .whiteBG::-webkit-scrollbar {
+    width: 10px;
+  }
+  .whiteBG::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
   
+  .whiteBG::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  .whiteBG::-webkit-scrollbar-thumb:hover {
+    background: rgb(129, 141, 150);
+  }
   .input-form{
     position: absolute;
     top: 4em;
   }
   
   .AddWorkExperience{
-    border: 1px solid lightblue;
+    border: 1px solid rgb(255, 255, 255);
     padding-top: 5px;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 3px;
   }
   
+  .signup-button{
+    padding: 10px;
+    padding-left: 60px;
+    padding-right:60px;
+    background: linear-gradient(180deg, #3A8DBB 0%, #42B096 100%);
+    border-radius: 20px;
+    border-color: transparent;
+  }
+  .signup-button:focus, .signup-button:hover{
+    border-color: transparent;
+  }
   

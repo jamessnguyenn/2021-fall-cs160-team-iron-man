@@ -1,4 +1,11 @@
 const mongoose = require('mongoose');
+const dateRegex = /^((January|February|March|April|May|June|July|August|September|October|November|December) (19[0-9][0-9]|20[0-9][0-9])|Present)$/;
+const zipcodeRegex = /^[0-9][0-9][0-9][0-9][0-9]$/;
+const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const websiteLimit = (val) => {
+    return val.length <= 3;
+}
+
 
 const experienceSchema = new mongoose.Schema({
     company:{
@@ -11,11 +18,13 @@ const experienceSchema = new mongoose.Schema({
     },
     startDate: {
         type: String,
-        required: true
+        required: true,
+        validate: dateRegex
     },
     endDate: {
         type: String,
-        required: true
+        required: true,
+        validate: dateRegex
     },
 })
 
@@ -31,6 +40,7 @@ const jobSeekerSchema = new mongoose.Schema({
     email:{
         type:String,
         required: true,
+        validate:emailRegex,
         unique: true
     },
     hashedPassword:{
@@ -44,7 +54,6 @@ const jobSeekerSchema = new mongoose.Schema({
         },
         apt:{
             type: String,
-            default: ""
         },
         city:{
             type: String,
@@ -56,14 +65,15 @@ const jobSeekerSchema = new mongoose.Schema({
         },
         zipcode:{
             type: String,
-            required: true
+            required: true,
+            validate: zipcodeRegex
         },
 
     },
     experiences:[experienceSchema],
     websites:{
         type: Array,
-        required: true
+        validate: [websiteLimit, "3 Websites can be stored at max"]
     },
     education:{
         type:{ 
@@ -72,8 +82,9 @@ const jobSeekerSchema = new mongoose.Schema({
                 required: true
             },
             endDate:{
-                type:String,
-                required:true
+                type: String,
+                required: true,
+                validate: dateRegex
             },
             degree:{
                 type:String,
@@ -84,8 +95,7 @@ const jobSeekerSchema = new mongoose.Schema({
                 required:true
             }
         },
-        required: false,
-        default: null
+        required: false
     }
 
 

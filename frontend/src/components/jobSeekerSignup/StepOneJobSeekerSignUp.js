@@ -52,7 +52,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
         <>
             <div className="signUpBG">
                 <h1 className='text-center'>
-                    Sign Up
+                    Find Your Dream Job Now
                 </h1>
                 <div className='whiteBG mx-auto mt-4'>
                     <div className="input-form">

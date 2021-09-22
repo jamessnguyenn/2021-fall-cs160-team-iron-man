@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import AddIcon from '@material-ui/icons/Add';
 
+
 function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, position, position2, company, company2, web1, web2, web3, school, degree, field, setPosition,
      setCompany, setPosition2, setCompany2, startDateMonth, startDateYear, endDateMonth, endDateYear, schoolEndDateMonth, schoolEndDateYear, startDateMonth2, startDateYear2,
     endDateMonth2, endDateYear2, signUp, setStartDateMonth, setEndDateMonth, setStartDateMonth2, setEndDateMonth2,
@@ -100,10 +101,10 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
         <>
             <div className="signUpBG" >
                 <h1 className='text-center'>
-                    EZ Apply
+                    Almost There!
                 </h1>
             
-                <div className='whiteBG mx-auto mt-4' style={{width: '53%', height: '110%'}}>
+                <div className='whiteBG mx-auto mt-4' style={{width: '53%', height: '130%'}}>
                     <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                             <Form.Group className="mb-3" controlId="formGridAddress1">
@@ -171,11 +172,11 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                             {addWork1 && !cancelWork &&
                                 <div className="AddWorkExperience mb-3">
                                 <Form.Group className="mt-3 mb-3" controlId="formGridWorkExperience">
-                                    <Form.Control placeholder="Position" value={position} id="position" onChange={e => setValue(e)} />
+                                    <Form.Control required={addWork1} placeholder="Position" value={position} id="position" onChange={e => setValue(e)} />
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formGridWorkExperience">
-                                    <Form.Control placeholder="Company" value={company} id="company" onChange={e => setValue(e)} />
+                                    <Form.Control required={addWork1} placeholder="Company" value={company} id="company" onChange={e => setValue(e)} />
                                 </Form.Group>
 
                                 <Form.Group controlId="formGridDateRange">
@@ -187,14 +188,14 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
 
                                 <Row className="mb-3">
                                     <Form.Group as={Col} controlId="formGridDate">
-                                        <Form.Select value={startDateMonth} id="startDateMonth" onChange={e=> setValue(e)}>
+                                        <Form.Select required={addWork1} value={startDateMonth} id="startDateMonth" onChange={e=> setValue(e)}>
                                             <option>Month</option>
                                             <option>...</option>
                                         </Form.Select>
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="formGridDate">
-                                        <Form.Select value={startDateYear} id="startDateYear" onChange={e=> setValue(e)}>
+                                        <Form.Select required={addWork1} value={startDateYear} id="startDateYear" onChange={e=> setValue(e)}>
                                             <option>Year</option>
                                             <option>...</option>
                                         </Form.Select>
@@ -207,7 +208,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                     <Col>
                                         {!currentWork ? 
                                         <div><Form.Group controlId="formGridDate">
-                                                <Form.Select value={endDateMonth} id="endDateMonth" onChange={e=> setValue(e)}>
+                                                <Form.Select required={!currentWork} value={endDateMonth} id="endDateMonth" onChange={e=> setValue(e)}>
                                                     <option>Month</option>
                                                     <option>...</option>
                                                 </Form.Select>
@@ -220,7 +221,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                     <Col>
                                         {!currentWork &&
                                             <div><Form.Group controlId="formGridDate">
-                                                     <Form.Select value={endDateYear} id="endDateYear" onChange={e=> setValue(e)}>
+                                                     <Form.Select required={!currentWork} value={endDateYear} id="endDateYear" onChange={e=> setValue(e)}>
                                                         <option>Year</option>
                                                         <option>...</option>
                                                     </Form.Select>
@@ -249,11 +250,11 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                             {addWork2 && !cancelWork2 &&
                                 <div className="AddWorkExperience mb-3">
                                 <Form.Group className="mt-3 mb-3" controlId="formGridWorkExperience">
-                                    <Form.Control placeholder="Position" value={position2} id="position2" onChange={e => setValue(e)} />
+                                    <Form.Control required={addWork2} placeholder="Position" value={position2} id="position2" onChange={e => setValue(e)} />
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formGridWorkExperience">
-                                    <Form.Control placeholder="Company" value={company2} id="company2" onChange={e => setValue(e)} />
+                                    <Form.Control required={addWork2} placeholder="Company" value={company2} id="company2" onChange={e => setValue(e)} />
                                 </Form.Group>
 
                                 <Form.Group controlId="formGridDateRange">
@@ -266,14 +267,14 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
 
                                 <Row className="mb-3">
                                     <Form.Group as={Col} controlId="formGridDate">
-                                        <Form.Select value={startDateMonth2} id="startDateMonth2" onChange={e=> setValue(e)}>
+                                        <Form.Select required={addWork2} value={startDateMonth2} id="startDateMonth2" onChange={e=> setValue(e)}>
                                             <option>Month</option>
                                             <option>...</option>
                                         </Form.Select>
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="formGridDate">
-                                        <Form.Select value={startDateYear2} id="startDateYear2" onChange={e=> setValue(e)}>
+                                        <Form.Select  required={addWork2} value={startDateYear2} id="startDateYear2" onChange={e=> setValue(e)}>
                                             <option>Year</option>
                                             <option>...</option>
                                         </Form.Select>
@@ -286,7 +287,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                     <Col>
                                         {!currentWork2 ? 
                                         <div><Form.Group controlId="formGridDate">
-                                                <Form.Select value={endDateMonth2} id="endDateMonth2" onChange={e=> setValue(e)}>
+                                                <Form.Select required={!currentWork2} value={endDateMonth2} id="endDateMonth2" onChange={e=> setValue(e)}>
                                                     <option>Month</option>
                                                     <option>...</option>
                                                 </Form.Select>
@@ -299,7 +300,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                                     <Col>
                                         {!currentWork2 &&
                                             <div><Form.Group controlId="formGridDate">
-                                                     <Form.Select value={endDateYear2} id="endDateYear2" onChange={e=> setValue(e)}>
+                                                     <Form.Select required={!currentWork2} value={endDateYear2} id="endDateYear2" onChange={e=> setValue(e)}>
                                                         <option>Year</option>
                                                         <option>...</option>
                                                     </Form.Select>
@@ -394,7 +395,6 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                     </div>
                 </div>
             </div>
-            <div style={{paddingBottom: '20em'}} />
         </>
             
     )

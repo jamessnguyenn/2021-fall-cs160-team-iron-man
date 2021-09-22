@@ -1,42 +1,9 @@
 body{
   background-color: #c8c8c8 !important;
 }
-.signUpBG {
-  height: 100vh;
-}
 
-.signUpBG > h1 {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  padding-top: 100px;
-  font-weight: bold;
-  text-shadow: 2px 2px 8px #2e2c2c;
-}
 
-.whiteBG {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px;
-  width: 40%;
-  height: 50%;
-  overflow-y: scroll;
-}
 
-.input-form{
-  position: absolute;
-  top: 4em;
-}
-
-.AddWorkExperience{
-  border: 1px solid lightblue;
-  padding-top: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 3px;
-}
 
 
 

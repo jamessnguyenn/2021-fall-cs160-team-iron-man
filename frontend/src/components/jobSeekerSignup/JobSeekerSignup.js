@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom"
 import StepOneJobSeekerSignUp from "./StepOneJobSeekerSignUp";
 import StepTwoJobSeekerSignUp from "./StepTwoJobSeekerSignUp";
 import axios from "axios";
+import './JobSeekerSignup.css'
 
 function JobSeekerSignUp(){
     

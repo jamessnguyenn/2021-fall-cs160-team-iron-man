@@ -104,7 +104,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
                             </Form.Group>
 
                             <div class="d-flex justify-content-center mb-4">
-                                <Button variant="success" class="signup-button" type="submit">
+                                <Button variant="success" className="signup-button" type="submit">
                                     Continue
                                 </Button>
                             </div>

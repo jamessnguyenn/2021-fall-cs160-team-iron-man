@@ -106,6 +106,34 @@ function JobSeekerSignUp(){
                 fieldOfStudy: field
             }
         }
+
+        /*-------------------------------------
+             For testing recruiter creation
+        --------------------------------------*/
+        const tempRecruiter = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            companyName: "Google",
+            logoLink: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+            companyDescription: "Google LLC is an American multinational technology company that specializes in " +
+                                "Internet-related services and products, which include online advertising technologies, " + 
+                                "a search engine, cloud computing, software, and hardware. It is considered one of the " +
+                                "Big Five companies in the American information technology industry, along with Amazon, " + 
+                                "Facebook, Apple, and Microsoft.",
+            companyWebsite: "https://www.google.com/"
+        }
+        axios.post("http://localhost:5000/recruiter", tempRecruiter)
+        .then(res=>{
+            console.log(res.data.user_id)
+        })
+        .catch(err=>console.log(err))
+
+        /*--------------------------------------
+                    End of test
+        ---------------------------------------*/
+
         axios.post("http://localhost:5000/jobSeeker", jobSeeker)
         .then(res=>{
             console.log(res.data.user_id)

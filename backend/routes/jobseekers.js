@@ -17,7 +17,7 @@ router.route('/').post((req, res)=>{
         process.env.JWT_SECRET,
         (err, token) =>{
             if(err){ 
-                res.status(410).json({error: "Account is created. But you are not signed in. Please Try again."});
+                res.status(408).json({error: "Account is created. But you are not signed in. Please Try again."});
             }else{
                 res.json({token, user_id: user._id});
             }

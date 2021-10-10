@@ -1,0 +1,26 @@
+.bg {
+    height: 420px;
+}
+
+.login-button {
+    padding: 10px;
+    padding-left: 60px;
+    padding-right:60px;
+    background: linear-gradient(180deg, #3A8DBB 0%, #42B096 100%);
+    border-radius: 20px;
+    border-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: #055C9D;
+}
+
+.forgotPw {
+    font-size: 15px;
+}
+
+.jobSeeker-loginPic {
+    padding-top: 5em;
+    padding-left: 2em;
+}

@@ -31,8 +31,8 @@ export default function JobSeekerLogin () {
         </div>
         <div className='bg mt-5 pt-2'>
           <div className='login-input-form' style={{marginLeft: '0em'}}>
-            <Form className='form' noValidate validated={validated}>
-              <Form.Group className='mb-3' controlId='formBasicEmail' onSubmit={handleSubmit}>
+            <Form className='form' noValidate validated={validated} onSubmit={handleSubmit}>
+              <Form.Group className='mb-3' controlId='formBasicEmail' >
                 <Form.Label>
                   Email
                 </Form.Label>

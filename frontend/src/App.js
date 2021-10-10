@@ -6,6 +6,8 @@ import JobSeekerCreateAccountPage from './components/jobSeekerSignup/JobSeekerSi
 import SuccessPage from './components/Test/success'
 import Navbar from './components/NavBar'
 import JobSeekerLoginPage from './components/jobSeekerLogin/JobSeekerLogin'
+import AboutPage from './components/About'
+import ContactPage from './components/Contact'
 
 function App () {
   return (
@@ -20,6 +22,12 @@ function App () {
         </Route>
         <Route exact path='/jobSeekerLogin'>
           <JobSeekerLoginPage />
+        </Route>
+        <Route exact path='/about'>
+          <AboutPage />
+        </Route>
+        <Route exact path='/contact'>
+          <ContactPage />
         </Route>
         {/**TO BE DELETED FOR DEMONSTRATION PURPOSES**/}
         <Route exact path='/success'>

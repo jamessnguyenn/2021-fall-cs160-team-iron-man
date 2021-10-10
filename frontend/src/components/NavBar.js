@@ -12,7 +12,7 @@ export default function NavBar () {
       variant='dark'
       expand='lg'>
       <Container>
-        <NavLink exact to='/' className='navbar-brand'>
+        <NavLink exact to='/' className='navbar-brand' activeClassName='activeNav'>
           <WorkIcon /> EZ Apply
         </NavLink>
         <Navbar.Toggle aria-controls='navLinks' />
@@ -22,21 +22,24 @@ export default function NavBar () {
               exact
               to='/'
               className='nav-link'
-              activeClassName='activeNav'>
+              activeClassName='activeNav'
+              activeStyle={{color: 'white'}}>
               Home
             </NavLink>
             <NavLink
               exact
               to='/about'
               className='nav-link'
-              activeClassName='activeNav'>
+              activeClassName='activeNav'
+              activeStyle={{color: 'white'}}>
               About
             </NavLink>
             <NavLink
               exact
               to='/contact'
               className='nav-link'
-              activeClassName='activeNav'>
+              activeClassName='activeNav'
+              activeStyle={{color: 'white'}}>
               Contact Us
             </NavLink>
           </Nav>

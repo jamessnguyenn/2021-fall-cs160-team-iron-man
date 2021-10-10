@@ -80,7 +80,7 @@ export default function JobSeekerLogin () {
               </Form.Group>
               <div className='noAccount d-flex justify-content-center mb-4 mt-3' style={{ fontSize: '12px', color: '#777' }}>
                 Don't have an account?
-                <a href=''>Join for free today</a>
+                <a href='/jobSeekerCreateAccount'>Join for free today</a>
               </div>
             </Form>
           </div>

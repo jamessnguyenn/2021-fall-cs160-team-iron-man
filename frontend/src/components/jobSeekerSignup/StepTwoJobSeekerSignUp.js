@@ -136,7 +136,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
     },[school, schoolEndDateMonth, schoolEndDateYear, degree, field])
     return ( 
         <>
-            <div className="signUpBG" style={{paddingBottom: "2em"}} >
+            <div className="signUpBG" style={{height: "1500px"}} >
                 <h1 className='text-center'>
                     One More Step..
                 </h1>

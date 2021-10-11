@@ -4,6 +4,7 @@ import StepOneJobSeekerSignUp from "./StepOneJobSeekerSignUp";
 import StepTwoJobSeekerSignUp from "./StepTwoJobSeekerSignUp";
 import axios from "axios";
 import './JobSeekerSignup.css'
+import NavBar from '../loggedOutNavBar/NavBar'
 
 function JobSeekerSignUp(){
     
@@ -246,7 +247,9 @@ function JobSeekerSignUp(){
         setFirstStep(false)
     }
          return (
-            firstStep? <StepOneJobSeekerSignUp secondStep={secondStep} 
+             <>
+             <NavBar/>
+            {firstStep? <StepOneJobSeekerSignUp secondStep={secondStep} 
                 setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword}/>:
                  <StepTwoJobSeekerSignUp setValue={setValue} address={address} apt={apt} city={city} state={state}
                  zip={zip} positon={position} position2={position2} company={company} company2={company2} web1={web1}
@@ -255,7 +258,8 @@ function JobSeekerSignUp(){
                  endDateMonth2={endDateMonth2} endDateYear2={endDateYear2} schoolEndDateMonth={schoolEndDateMonth} schoolEndDateYear={schoolEndDateYear}
                  setCompany={setCompany} setCompany2={setCompany2} setPosition={setPosition} setPosition2={setPosition2} signUp={signUp}
                  setStartDateMonth={setStartDateMonth} setEndDateMonth={setEndDateMonth} setStartDateMonth2={setStartDateMonth2} setEndDateMonth2={setEndDateMonth2}
-                 setStartDateYear={setStartDateYear} setEndDateYear={setEndDateYear} setStartDateYear2={setStartDateYear2} setEndDateYear2={setEndDateYear2} />
+                 setStartDateYear={setStartDateYear} setEndDateYear={setEndDateYear} setStartDateYear2={setStartDateYear2} setEndDateYear2={setEndDateYear2} />}
+                 </>
          )
 }
 

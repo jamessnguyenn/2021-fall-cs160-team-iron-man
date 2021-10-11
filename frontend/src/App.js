@@ -3,24 +3,22 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LandingPage from './components/landing/landing'
 import JobSeekerCreateAccountPage from './components/jobSeekerSignup/JobSeekerSignup'
-import SuccessPage from './components/Test/success'
-import Navbar from './components/NavBar'
 import JobSeekerLoginPage from './components/jobSeekerLogin/JobSeekerLogin'
-import AboutPage from './components/About'
-import ContactPage from './components/Contact'
+import AboutPage from './components/about/About'
+import ContactPage from './components/contact/Contact'
+import JobSeekerHomePage from './components/jobSeekerHome/jobSeekerHome'
 
 function App () {
   return (
     <Router>
-      <Navbar />
       <Switch>
         <Route exact path='/'>
           <LandingPage />
         </Route>
-        <Route exact path='/jobSeekerCreateAccount'>
+        <Route exact path='/jobSeeker/createAccount'>
           <JobSeekerCreateAccountPage/>
         </Route>
-        <Route exact path='/jobSeekerLogin'>
+        <Route exact path='/jobSeeker/login'>
           <JobSeekerLoginPage />
         </Route>
         <Route exact path='/about'>
@@ -29,9 +27,8 @@ function App () {
         <Route exact path='/contact'>
           <ContactPage />
         </Route>
-        {/**TO BE DELETED FOR DEMONSTRATION PURPOSES**/}
-        <Route exact path='/success'>
-          <SuccessPage/>
+        <Route exact path='/jobSeeker/home'>
+          <JobSeekerHomePage />
         </Route>
       </Switch>
     </Router>

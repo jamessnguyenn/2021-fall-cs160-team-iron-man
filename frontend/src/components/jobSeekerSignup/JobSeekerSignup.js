@@ -137,8 +137,9 @@ function JobSeekerSignUp(){
 
         axios.post("http://localhost:5000/jobSeeker", jobSeeker)
         .then(res=>{
-            console.log(res.data.user_id)
-            history.push('/success')
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user_id', res.data.user_id)
+            history.push('/jobseeker/home')
         })
         .catch(err=>console.log(err))
     }

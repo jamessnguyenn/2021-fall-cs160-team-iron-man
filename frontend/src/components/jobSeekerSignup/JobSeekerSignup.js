@@ -125,7 +125,7 @@ function JobSeekerSignUp(){
                                 "Facebook, Apple, and Microsoft.",
             companyWebsite: "https://www.google.com/"
         }
-        axios.post("http://localhost:5000/recruiter", tempRecruiter)
+        axios.post("http://localhost:5000/recruiters", tempRecruiter)
         .then(res=>{
             console.log(res.data.user_id)
         })
@@ -135,7 +135,7 @@ function JobSeekerSignUp(){
                     End of test
         ---------------------------------------*/
 
-        axios.post("http://localhost:5000/jobSeeker", jobSeeker)
+        axios.post("http://localhost:5000/jobSeekers", jobSeeker)
         .then(res=>{
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user_id', res.data.user_id)

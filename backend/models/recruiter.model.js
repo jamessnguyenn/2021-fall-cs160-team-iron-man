@@ -40,4 +40,4 @@ const recruiterSchema = new mongoose.Schema ({
     }
 })
 
-module.exports = mongoose.model('recruiter', recruiterSchema);
+module.exports = mongoose.model('recruiters', recruiterSchema);

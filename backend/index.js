@@ -16,10 +16,10 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', console.error.bind(console, 'Connection error: '));
 
 const jobseekerRouter = require('./routes/jobseekers')
-app.use('/jobseeker', jobseekerRouter)
+app.use('/jobseekers', jobseekerRouter)
 
-const recruiterRouter = require('./routes/recruiter')
-app.use('/recruiter', recruiterRouter)
+const recruiterRouter = require('./routes/recruiters')
+app.use('/recruiters', recruiterRouter)
 
 app.get('/', (req, res)=>{
     res.send('Welcome to the EZ Apply API');

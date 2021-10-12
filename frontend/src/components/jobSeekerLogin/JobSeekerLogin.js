@@ -26,14 +26,14 @@ export default function JobSeekerLogin () {
         email: email,
         password: password
       }
-      axios.post("http://localhost:5000/jobSeeker/auth/", jobSeeker)
+      axios.post("http://localhost:5000/jobSeekers/auth/", jobSeeker)
       .then(res=>{
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('user_id', res.data.user_id)
         history.push('/jobseeker/home')
       })
       .catch(err=>{
-        if(err.response && err.response.status === 402){
+        if(err.response && err.response.status === 419){
           setInvalidEmail(true)
           setInvalidPassword(true)
           setValidated(true)

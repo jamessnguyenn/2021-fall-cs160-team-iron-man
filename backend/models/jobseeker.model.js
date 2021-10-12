@@ -101,4 +101,4 @@ const jobSeekerSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('jobSeeker', jobSeekerSchema);
+module.exports = mongoose.model('jobSeekers', jobSeekerSchema);

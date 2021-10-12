@@ -18,7 +18,7 @@ router.route('/').post((req, res)=>{
         process.env.JWT_SECRET,
         (err, token) =>{
             if(err){ 
-                res.status(419).json({error: "Account is created. But you are not signed in. Please Try again."});
+                res.status(419).json({error: "Error Creating Token"});
             }else{
                 res.json({token, user_id: user._id});
             }
@@ -26,7 +26,7 @@ router.route('/').post((req, res)=>{
     })
     .catch(err=>{
         if(err.code === 11000){
-            res.status(412).json({msg: "Email already exists"})
+            res.status(420).json({msg: "Email already exists"})
         }else{
             res.status(400).json(err)
         }
@@ -36,14 +36,14 @@ router.route('/').post((req, res)=>{
 router.route('/auth').post((req, res)=>{
     const{ email, password} = req.body;
     if(!email || !password){
-        return res.status(412).json({msg: 'Missing Required Fields'});
+        return res.status(400).json({msg: 'Missing Required Fields'});
     }
     JobSeeker.findOne({email})
         .then(user =>{
-            if(!user) return res.status(419).json({msg: 'Invalid email or password'});
+            if(!user) return res.status(401).json({msg: 'Invalid email or password'});
             bcrypt.compare(password, user.hashedPassword)
                 .then(matches =>{
-                    if(!matches) return res.status(419).json({msg: 'Invalid email or password'});
+                    if(!matches) return res.status(401).json({msg: 'Invalid email or password'});
                     jwt.sign({
                         user_id: user._id,
                         role: "jobseeker"
@@ -51,7 +51,7 @@ router.route('/auth').post((req, res)=>{
                     process.env.JWT_SECRET,
                     (err, token) =>{
                         if(err){ 
-                            res.status(420).json({error: "Unable to generate token"});
+                            res.status(419).json({error: "Error Generating Token"});
                         }else{
                             res.json({token, user_id: user._id});
                         }

@@ -33,7 +33,7 @@ export default function JobSeekerLogin () {
         history.push('/jobseeker/home')
       })
       .catch(err=>{
-        if(err.response && err.response.status === 419){
+        if(err.response && err.response.status === 401){
           setInvalidEmail(true)
           setInvalidPassword(true)
           setValidated(true)

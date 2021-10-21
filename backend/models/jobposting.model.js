@@ -61,7 +61,7 @@ const jobpostingSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'recruiters'}]
+    applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'jobseekers'}]
 
 })
 

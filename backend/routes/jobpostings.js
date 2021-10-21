@@ -1,4 +1,4 @@
-const JobPosting = null; // will be added later
+const JobPosting = require('../models/jobposting.model')
 const router = require('express').Router()
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -10,7 +10,8 @@ router.route('/').post(authenticateToken, (req, res)=>{
     if(req.user.role !== "recruiter"){
         return res.status(403).json({error: "Unauthorized to create a jobPosting"})
     }
-    const newPosting = new JobPosting({position, type, location, description, requirements, benefits, businessEmail, salary});
+    let postedBy = req.user.user_id;
+    const newPosting = new JobPosting({position, type, location, description, requirements, benefits, businessEmail, salary, postedBy});
     newPosting.save()
     .then(jobpost=>{
         return res.status(200).json({message: "Succesfully added your job posting"})
@@ -22,8 +23,8 @@ router.route('/').post(authenticateToken, (req, res)=>{
 
 })
 
-router.route('/').get( (req, res)=>{
-  const{city, state, type, position, postedBy, applicant, random, populate} = req.query;
+router.route('/').get(authenticateToken, (req, res)=>{
+  const{city, state, type, position, postedBy, applicant, random, populate, applied} = req.query;
   
   let query = {}
   if(city){
@@ -47,7 +48,12 @@ router.route('/').get( (req, res)=>{
     query.postedBy = {postedBy}
   }
   if(applicant){
-    query.type = {$elemMatch: {applicant}}
+    if(applied === "true"){
+        query.type = {$elemMatch: {applicant}};
+    }else{
+        query.type = {$ne: {applicant}};
+    }
+    
   }
   JobPosting.find(query)
     .then((result)=>{
@@ -55,7 +61,7 @@ router.route('/').get( (req, res)=>{
             if(req.user.role == recruiter){
                 return res.status(403).json({error: "Unathorized to perform this type of query"});
             }
-        result.populate('applicants').populate(postedBy);
+        result.populate('applicants', '-hashedPassword').populate('postedBy', "-hashedPassword");
         }
         if(random !== undefined){
             result.sort((a, b) => 0.5 - Math.random())
@@ -80,11 +86,50 @@ router.route('/:id/applicants').post(authenticateToken, (req, res)=>{
 })
 
 router.route('/:id').delete(authenticateToken, (req, res)=>{
-    //todo
+   JobPosting.findById(req.params.id)
+   .then(doc=>{
+       if(doc){
+        return res.status(400).json({error: "Document not found"});
+       }
+       if(doc.postedBy !== req.user.user_id){
+        return res.status(403).json({error: "Unauthorized to delete this posting"})
+       }
+       JobPosting.deleteOne({id: req.params.id})
+       .then(res=>{
+           res.status(200).json({"message": "Succesfully deleted"})
+       })
+       .catch(err=> res.status(400).json(err))
+   })
+   .catch(err=> res.status(400).json(err))
 })
 
 router.route('/:id').put(authenticateToken, (req, res)=>{
-    //todo
+    const{position, type, location, description, requirements, benefits, businessEmail, open, salary} = req.body;
+    JobPosting.findById(req.params.id)
+   .then(doc=>{
+       if(doc){
+           return res.status(400).json({error: "Document not found"});
+       }
+       if(doc.postedBy !== req.user.user_id){
+        return res.status(403).json({error: "Unauthorized to update this posting"});
+       }
+       doc.position = position;
+       doc.type = type;
+       doc.location = location;
+       doc.description = description;
+       doc.requirements = requirements;
+       doc.benefits = benefits;
+       doc.businessEmail= businessEmail;
+       doc.open = open;
+       doc.salary = salary;
+       doc.save()
+       .then( res=>{
+        res.status(200).json({"message": "Succesfully updated"})
+       }
+       )
+       .catch(err=> res.status(400).json(err))
+   })
+   .catch(err=> res.status(400).json(err))
 })
 
 module.exports = router;

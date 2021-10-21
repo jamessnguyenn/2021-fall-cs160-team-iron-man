@@ -49,7 +49,7 @@ router.route('/').get(authenticateToken, (req, res)=>{
     if(applied === "true"){
         query.applicants = applicant;
     }else{
-        query.applicants = {$ne: {applicant}};
+        query.applicants = {$ne: applicant};
     }
     
   }
@@ -80,6 +80,9 @@ router.route('/:id/applicants').post(authenticateToken, (req, res)=>{
     JobPosting.findOneAndUpdate({_id: req.params.id},
         {$addToSet: {applicants: req.body.user_id}})
         .then(result=>{
+            if(!result){
+                return res.status(400).json({error: "Document not found"})
+            }
             return res.status(200).json({"message": "Succesfully applied"})
         })
         .catch(err=>{

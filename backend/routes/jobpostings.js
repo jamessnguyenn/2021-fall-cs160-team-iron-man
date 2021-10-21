@@ -99,7 +99,7 @@ router.route('/:id').delete(authenticateToken, (req, res)=>{
        if(doc.postedBy.toString() !== req.user.user_id){
         return res.status(403).json({error: "Unauthorized to delete this posting"})
        }
-       JobPosting.deleteOne({id: req.params.id})
+       JobPosting.deleteOne({_id: req.params.id})
        .then(result=>{
            res.status(200).json({"message": "Succesfully deleted"})
        })

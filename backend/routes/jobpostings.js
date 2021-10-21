@@ -47,9 +47,9 @@ router.route('/').get(authenticateToken, (req, res)=>{
   }
   if(applicant){
     if(applied === "true"){
-        query.type = {$elemMatch: {applicant}};
+        query.applicants = applicant;
     }else{
-        query.type = {$ne: {applicant}};
+        query.applicants = {$ne: {applicant}};
     }
     
   }

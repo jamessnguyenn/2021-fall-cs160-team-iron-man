@@ -51,6 +51,7 @@ const jobpostingSchema = new mongoose.Schema({
     },
     open: {
         type: Boolean,
+        required:true,
         default: true
     },
     postedBy: {
@@ -59,10 +60,11 @@ const jobpostingSchema = new mongoose.Schema({
     },
     postDate: {
         type: Date,
+        required: true,
         default: Date.now
     },
-    applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'jobseekers'}]
+    applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'jobSeekers'}]
 
 })
 
-module.exports = mongoose.model('jobposting', jobpostingSchema);
+module.exports = mongoose.model('jobpostings', jobpostingSchema);

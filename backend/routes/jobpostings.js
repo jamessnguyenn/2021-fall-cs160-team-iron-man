@@ -8,7 +8,7 @@ const authenticateToken = require('./authenticateToken');
 router.route('/').post(authenticateToken, (req, res)=>{
     const{position, type, location, description, requirements, benefits, businessEmail, salary} = req.body;
     if(req.user.role !== "recruiter"){
-        return res.status(403).json({error: "Unauthorized to create a jobPosting"})
+        return res.status(403).json({error: "Unauthorized to create a job posting"})
     }
     let postedBy = req.user.user_id;
     const newPosting = new JobPosting({position, type, location, description, requirements, benefits, businessEmail, salary, postedBy});
@@ -25,18 +25,16 @@ router.route('/').post(authenticateToken, (req, res)=>{
 
 router.route('/').get(authenticateToken, (req, res)=>{
   const{city, state, type, position, postedBy, applicant, random, populate, applied} = req.query;
-  
   let query = {}
   if(city){
-    query.location = {
-        city: {$regex: city}
-    }
+    query['location.city'] = {$regex: city}
   }
   if(state){
-      query.location.state = {$regex: state}
+    query['location.state'] = {$regex: state}
+      
   }
   if(type){
-      query.type = {$elemMatch: {type}}
+      query.type = type;
   }
   if(position){
       query.position = {$regex: position}
@@ -45,7 +43,7 @@ router.route('/').get(authenticateToken, (req, res)=>{
     if(postedBy !== req.user.user_id || req.user.role !== "recruiter"){
         return res.status(403).json({error: "Unathorized to perform this type of query"});
     }
-    query.postedBy = {postedBy}
+    query.postedBy = postedBy;
   }
   if(applicant){
     if(applied === "true"){
@@ -55,47 +53,51 @@ router.route('/').get(authenticateToken, (req, res)=>{
     }
     
   }
-  JobPosting.find(query)
-    .then((result)=>{
-        if(populate !== undefined){
-            if(req.user.role == recruiter){
-                return res.status(403).json({error: "Unathorized to perform this type of query"});
-            }
-        result.populate('applicants', '-hashedPassword').populate('postedBy', "-hashedPassword");
-        }
+  let findResult = JobPosting.find(query);
+  if(populate !== undefined){
+    if(req.user.role !== "recruiter"){
+        return res.status(403).json({error: "Unathorized to perform this type of query"});
+    }
+    findResult = findResult.populate('applicants', '-hashedPassword').populate('postedBy', "-hashedPassword");
+    }
+
+    findResult.then(result=>{
         if(random !== undefined){
             result.sort((a, b) => 0.5 - Math.random())
         }
         return res.status(200).json(result)
     })
-    .catch((err)=>{
-        res.status(400).json(err);
+    .catch(err=>{
+        return res.status(400).json(err)
     })
+   
   })
 
 router.route('/:id/applicants').post(authenticateToken, (req, res)=>{
-    if(req.body.user_id !== req.user.user_id){
-        return res.status(403).json({error: "Unathorized to apply this position"});
+    if(req.body.user_id !== req.user.user_id || req.user.role !== "jobseeker"){
+        return res.status(403).json({error: "Unathorized to apply to this position"});
     }
     JobPosting.findOneAndUpdate({_id: req.params.id},
-        {$addToSet: {applicants: req.body.user_id}}, 
-        (err, updated)=>{
-            if(err) return res.status(400).json(err);
-            return res.status(200).json({"message": "Succesfully updated"})
+        {$addToSet: {applicants: req.body.user_id}})
+        .then(result=>{
+            return res.status(200).json({"message": "Succesfully applied"})
+        })
+        .catch(err=>{
+            return res.status(400).json(err);
         })
 })
 
 router.route('/:id').delete(authenticateToken, (req, res)=>{
    JobPosting.findById(req.params.id)
    .then(doc=>{
-       if(doc){
+       if(!doc){
         return res.status(400).json({error: "Document not found"});
        }
-       if(doc.postedBy !== req.user.user_id){
+       if(doc.postedBy.toString() !== req.user.user_id){
         return res.status(403).json({error: "Unauthorized to delete this posting"})
        }
        JobPosting.deleteOne({id: req.params.id})
-       .then(res=>{
+       .then(result=>{
            res.status(200).json({"message": "Succesfully deleted"})
        })
        .catch(err=> res.status(400).json(err))
@@ -107,10 +109,10 @@ router.route('/:id').put(authenticateToken, (req, res)=>{
     const{position, type, location, description, requirements, benefits, businessEmail, open, salary} = req.body;
     JobPosting.findById(req.params.id)
    .then(doc=>{
-       if(doc){
+       if(!doc){
            return res.status(400).json({error: "Document not found"});
        }
-       if(doc.postedBy !== req.user.user_id){
+       if(doc.postedBy.toString() !== req.user.user_id){
         return res.status(403).json({error: "Unauthorized to update this posting"});
        }
        doc.position = position;
@@ -123,7 +125,7 @@ router.route('/:id').put(authenticateToken, (req, res)=>{
        doc.open = open;
        doc.salary = salary;
        doc.save()
-       .then( res=>{
+       .then( result=>{
         res.status(200).json({"message": "Succesfully updated"})
        }
        )

@@ -142,4 +142,34 @@ router.route('/:id').delete(authenticateToken, (req, res) => {
     })
 })
 
+router.route('/auth').post((req, res)=>{
+    const{ email, password} = req.body;
+    if(!email || !password){
+        return res.status(400).json({msg: 'Missing Required Fields'});
+    }
+    User.findOne({email})
+        .then(user =>{
+            if(!user) return res.status(401).json({msg: 'Invalid email or password'});
+            bcrypt.compare(password, user.hashedPassword)
+                .then(matches =>{
+                    if(!matches) return res.status(401).json({msg: 'Invalid email or password'});
+                    jwt.sign({
+                        user_id: user._id,
+                        role: "recruiter"
+                    },
+                    process.env.JWT_SECRET,
+                    (err, token) =>{
+                        if(err){ 
+                            res.status(419).json({error: "Error Generating Token"});
+                        }else{
+                            res.json({token, user_id: user._id});
+                        }
+                    })
+                })
+        })
+        .catch(err=>{
+            res.status(400).json(err)
+        })
+})
+
 module.exports = router;

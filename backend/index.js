@@ -21,9 +21,6 @@ app.use('/jobseekers', jobseekerRouter)
 const recruiterRouter = require('./routes/recruiters')
 app.use('/recruiters', recruiterRouter)
 
-const jobpostingRouter = require('./routes/jobpostings')
-app.use('/jobpostings', jobpostingRouter)
-
 app.get('/', (req, res)=>{
     res.send('Welcome to the EZ Apply API');
 });

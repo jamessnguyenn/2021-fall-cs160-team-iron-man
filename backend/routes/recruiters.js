@@ -3,6 +3,8 @@ const router = require('express').Router()
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authenticateToken = require('./authenticateToken');
+const { query } = require('express');
+const { off } = require('../models/recruiter.model');
 
 //Create a new recruiter
 router.route('/').post((req, res) => {
@@ -30,7 +32,7 @@ router.route('/').post((req, res) => {
         if(err.code === 11000) {
             res.status(420).json({msg: "Email already exists"})
         }else{
-            res.status(400).json({error: err})
+            res.status(400).json({error: "Bad request"})
         }
     })
 })
@@ -76,18 +78,31 @@ router.route('/:id').put(authenticateToken, (req, res) => {
         if(req.user.user_id !== req.params.id) {
             return res.status(401).json({error: "Unauthorized"});
         }
+        
+        //Checking if they are updating a password also, since we don't want to encrypt a empty password
+        if(req.body.password) {
+            const BCRYPT_SALT_ROUNDS = 12;
+            const hashedPassword = bcrypt.hashSync(req.body.password, BCRYPT_SALT_ROUNDS);
+            const filter = {_id: req.params.id};
+            const update = {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, hashedPassword: hashedPassword,
+                companyName: req.body.companyName, logoLink: req.body.logoLink, companyDescription: req.body.companyDescription, companyWebsite: req.body.companyWebsite};
+                User.findOneAndUpdate(filter, update)
+                .then(() => res.status(200).json('Recruiter id: ' + req.params.id + ', updated')) //Testing
+                //.then(() => res.status(200).json('OK'))
+                .catch(err => res.status(400).json({error: "Bad request"}))
+        }else{
         const filter = {_id: req.params.id};
-        const update = {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, companyName: req.body.companyName, 
-                    logoLink: req.body.logoLink, companyDescription: req.body.companyDescription, companyWebsite: req.body.companyWebsite};
-    //console.log(update);
-    User.findOneAndUpdate(filter, update)
-    .then(() => res.status(200).json('Recruiter id: ' + req.params.id + ', updated')) //Testing
-    //.then(() => res.status(200).json('OK'))
-    .catch(err => res.status(400).json({error: err}))
+        const update = {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, hashedPassword: hashedPassword,
+            companyName: req.body.companyName, logoLink: req.body.logoLink, companyDescription: req.body.companyDescription, companyWebsite: req.body.companyWebsite};
+            User.findOneAndUpdate(filter, update)
+            .then(() => res.status(200).json('Recruiter id: ' + req.params.id + ', updated')) //Testing
+            //.then(() => res.status(200).json('OK'))
+            .catch(err => res.status(400).json({error: "Bad request"}))
+        }
     })
 })
 
-//Getting all recruiters
+//Getting all recruiters, for testing purposes
 router.route('/').get((req, res) => {
     User.find()
     .then(users => res.status(200).json(users))
@@ -95,10 +110,18 @@ router.route('/').get((req, res) => {
 })
 
 //Getting recruiters by object id
-router.route('/:id').get((req, res) => {
-    User.findById(req.params.id)
-    .then(user => res.status(200).json(user))
-    .catch(err => res.status(400).json({error: err}))
+router.route('/:id').get(authenticateToken, (req, res) => {
+    User.findById(req.params.id, '-hashedPassword')
+    .then(user => {
+        if(!user) {
+            return res.status(400).json({error: "Bad Request"});
+        }
+        if(req.user.user_id !== req.params.id) {
+            return res.status(401).json({error: "Unauthorized"});
+        }
+        res.status(200).json(user)
+    })
+    .catch(err => res.status(400).json({error: "Bad request"}))
 })
 
 //Deleting a recruiter
@@ -115,7 +138,7 @@ router.route('/:id').delete(authenticateToken, (req, res) => {
         .then(result=>{
             res.status(200).json({"message": "Recruiter deleted"})
         })
-        .catch(err=> res.status(400).json(err))
+        .catch(err=> res.status(400).json({error: "Bad request"}))
     })
 })
 

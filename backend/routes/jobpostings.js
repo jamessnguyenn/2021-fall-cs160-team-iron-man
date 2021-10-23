@@ -41,7 +41,7 @@ router.route('/').get(authenticateToken, (req, res)=>{
   }
   if(postedBy){
     if(postedBy !== req.user.user_id || req.user.role !== "recruiter"){
-        return res.status(403).json({error: "Unathorized to perform this type of query"});
+        return res.status(403).json({error: "Unauthorized to perform this type of query"});
     }
     query.postedBy = postedBy;
   }
@@ -56,7 +56,7 @@ router.route('/').get(authenticateToken, (req, res)=>{
   let findResult = JobPosting.find(query);
   if(populate !== undefined){
     if(req.user.role !== "recruiter"){
-        return res.status(403).json({error: "Unathorized to perform this type of query"});
+        return res.status(403).json({error: "Unauthorized to perform this type of query"});
     }
     findResult = findResult.populate('applicants', '-hashedPassword').populate('postedBy', "-hashedPassword");
     }
@@ -75,7 +75,7 @@ router.route('/').get(authenticateToken, (req, res)=>{
 
 router.route('/:id/applicants').post(authenticateToken, (req, res)=>{
     if(req.body.user_id !== req.user.user_id || req.user.role !== "jobseeker"){
-        return res.status(403).json({error: "Unathorized to apply to this position"});
+        return res.status(403).json({error: "Unauthorized to apply to this position"});
     }
     JobPosting.findOneAndUpdate({_id: req.params.id},
         {$addToSet: {applicants: req.body.user_id}})

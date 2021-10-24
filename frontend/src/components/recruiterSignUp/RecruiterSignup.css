@@ -1,0 +1,75 @@
+.signUpBG {
+    height: 100vh;
+    background-size:100%;
+    background-position: center;
+    background-image: url("../../images/jobSeekerSignUp.svg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
+    
+    .signUpBG > h1 {
+      font-family: 'Roboto', 'sans-serif';
+      color: black;
+      font-weight: bold;
+      font-size: 30px;
+      padding-top: 65px;
+    }
+    
+    .whiteBG {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e6e6e6fa;
+      border-radius: 25px;
+      width: 650px;
+      height: 375px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .whiteBG::-webkit-scrollbar {
+      width: 10px;
+    }
+    .whiteBG::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+    
+    .whiteBG::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+    
+    .whiteBG::-webkit-scrollbar-thumb:hover {
+      background: rgb(129, 141, 150);
+    }
+    .input-form{
+      position: absolute;
+      top: 30px;
+    }
+    
+    .company{
+      border: 2px solid rgb(255, 255, 255);
+      padding-top: 5px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 15px;
+    }
+    
+    .signup-button{
+      height: 57px;
+      width: 224px;
+      left: 469px;
+      top: 484px;
+      border-radius: 9px;
+      background: #4682B4;
+      border-color: transparent;
+    }
+    .signup-button:focus, .signup-button:hover{
+      border-color: transparent;
+      background: #4682B4;
+  
+    }
+    

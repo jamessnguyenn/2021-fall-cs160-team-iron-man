@@ -45,10 +45,13 @@ router.route('/:id').put(authenticateToken, (req, res) => {
         if(req.user.user_id !== req.params.id) {
             return res.status(403).json({error: "Forbidden"});
         }
-        const filter = {_id: req.params.id};
-        const update = {firstName: req.body.firstName, lastName: req.body.lastName, companyName: req.body.companyName, 
-                        logoLink: req.body.logoLink, companyDescription: req.body.companyDescription, companyWebsite: req.body.companyWebsite};
-            Recruiter.findOneAndUpdate(filter, update)
+            recruiter.firstName = req.body.firstName;
+            recruiter.lastName = req.body.lastName;
+            recruiter.companyName = req.body.companyName;
+            recruiter.logoLink = req.body.logoLink;
+            recruiter.companyDescription = req.body.companyDescription;
+            recruiter.companyWebsite = req.body.companyWebsite;
+            recruiter.save()
             .then(() => res.status(200).json('OK'))
             .catch(err => res.status(400).json({error: "Bad request"}))
     })
@@ -93,6 +96,7 @@ router.route('/:id').delete(authenticateToken, (req, res) => {
         })
         .catch(err=> res.status(400).json({error: "Bad request"}))
     })
+    .catch(err => res.status(400).json({error: "Bad request"}))
 })
 
 router.route('/auth').post((req, res)=>{

@@ -46,7 +46,7 @@ router.route('/:id').put(authenticateToken, (req, res) => {
             return res.status(403).json({error: "Forbidden"});
         }
         const filter = {_id: req.params.id};
-        const update = {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, companyName: req.body.companyName, 
+        const update = {firstName: req.body.firstName, lastName: req.body.lastName, companyName: req.body.companyName, 
                         logoLink: req.body.logoLink, companyDescription: req.body.companyDescription, companyWebsite: req.body.companyWebsite};
             Recruiter.findOneAndUpdate(filter, update)
             .then(() => res.status(200).json('OK'))

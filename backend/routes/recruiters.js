@@ -22,8 +22,7 @@ router.route('/').post((req, res) => {
             if(err){
                 res.status(419).json({error: "Error generating token"});
             }else{
-                //res.status(200).json({token, user_id: recruiter._id});            //Use this line to get token printout
-                res.status(200).json('OK')
+                res.status(200).json({token, user_id: recruiter._id});
             }
         })
     })

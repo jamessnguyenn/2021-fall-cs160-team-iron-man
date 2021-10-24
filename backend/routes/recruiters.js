@@ -51,7 +51,8 @@ router.route('/:id').put(authenticateToken, (req, res) => {
             Recruiter.findOneAndUpdate(filter, update)
             .then(() => res.status(200).json('OK'))
             .catch(err => res.status(400).json({error: "Bad request"}))
-    }).catch(err => res.status(400).json({error: "Bad request"}))
+    })
+    .catch(err => res.status(400).json({error: "Bad request"}))
 })
 
 //Getting all recruiters, for testing purposes

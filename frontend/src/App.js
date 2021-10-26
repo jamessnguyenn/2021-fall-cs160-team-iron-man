@@ -8,6 +8,7 @@ import AboutPage from './components/about/About'
 import ContactPage from './components/contact/Contact'
 import JobSeekerHomePage from './components/jobSeekerHome/jobSeekerHome'
 import RecruiterLoginPage from './components/recruiterLogin/RecruiterLogin'
+import RecruiterDashboardPage from './components/recruiterDashboard/RecruiterDashboard'
 
 function App () {
   return (
@@ -33,6 +34,9 @@ function App () {
         </Route>
         <Route exact path='/recruiter/login'>
           <RecruiterLoginPage />
+        </Route>
+        <Route exact path='/recruiter/dashboard'>
+          <RecruiterDashboardPage />
         </Route>
       </Switch>
     </Router>

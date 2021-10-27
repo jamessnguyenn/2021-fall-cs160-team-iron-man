@@ -36,13 +36,11 @@ function App () {
         <Route exact path='/jobSeeker/home'>
           <JobSeekerHomePage />
         </Route>
-
         <Route exact path='/recruiter/createAccount'>
           <RecruiterSignUpPage />
-
+        </Route>
         <Route exact path='/recruiter/login'>
           <RecruiterLoginPage />
-
         </Route>
         <Route exact path='/recruiter/dashboard'>
           <RecruiterDashboardPage />

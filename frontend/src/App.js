@@ -7,8 +7,12 @@ import JobSeekerLoginPage from './components/jobSeekerLogin/JobSeekerLogin'
 import AboutPage from './components/about/About'
 import ContactPage from './components/contact/Contact'
 import JobSeekerHomePage from './components/jobSeekerHome/jobSeekerHome'
+
+import RecruiterSignUpPage from './components/recruiterSignUp/RecruiterSignUp'
+
 import RecruiterLoginPage from './components/recruiterLogin/RecruiterLogin'
 import RecruiterDashboardPage from './components/recruiterDashboard/RecruiterDashboard'
+
 
 function App () {
   return (
@@ -32,8 +36,13 @@ function App () {
         <Route exact path='/jobSeeker/home'>
           <JobSeekerHomePage />
         </Route>
+
+        <Route exact path='/recruiter/createAccount'>
+          <RecruiterSignUpPage />
+
         <Route exact path='/recruiter/login'>
           <RecruiterLoginPage />
+
         </Route>
         <Route exact path='/recruiter/dashboard'>
           <RecruiterDashboardPage />

@@ -35,7 +35,7 @@ export default function NavBar() {
               activeClassName="activeNav"
               activeStyle={{ color: "white", marginRight:"10px" }}
             >
-              Post a Job
+              Create Job
             </NavLink>
             <NavLink
               exact

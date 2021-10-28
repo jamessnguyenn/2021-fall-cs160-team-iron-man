@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./RecruiterLogin.css";
 import NavBar from "../loggedOutNavBar/NavBar";
+import axios from 'axios';
+import { useHistory } from "react-router";
 
 export default function RecruiterLogin() {
   const [validated, setValidated] = useState(false);
@@ -11,15 +13,34 @@ export default function RecruiterLogin() {
   const [password, setPassword] = useState("");
   const [invalidEmail, setInvalidEmail] = useState(true);
   const [invalidPassword, setInvalidPassword] = useState(true);
+  const history = useHistory();
 
-  // for form validation on Submit
-  const handleSubmit = (e) => {
+   // for form validation on Submit
+   const handleSubmit = (e) => {
+    e.preventDefault()
     const form = e.currentTarget;
     if (!form.checkValidity()) {
-      e.preventDefault();
-      setValidated(true);
+      setValidated(true)
+    }else {
+      const jobSeeker ={
+        email: email,
+        password: password
+      }
+      axios.post("http://localhost:5000/recruiters/auth/", jobSeeker)
+      .then(res=>{
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('user_id', res.data.user_id)
+        history.push('/recruiter/dashboard')
+      })
+      .catch(err=>{
+        if(err.response && err.response.status === 401){
+          setInvalidEmail(true)
+          setInvalidPassword(true)
+          setValidated(true)
+        }
+      })
     }
-  };
+  }
   useEffect(() => {
     setInvalidEmail(email < 1);
     setInvalidPassword(password < 10);
@@ -129,7 +150,7 @@ export default function RecruiterLogin() {
                     }}
                   >
                     Don't have an account? &nbsp;
-                    <a href="/recuiter/createAccount">Join for free today</a>
+                    <a href="/recruiter/createAccount">Join for free today</a>
                   </div>
                 </Form>
               </div>

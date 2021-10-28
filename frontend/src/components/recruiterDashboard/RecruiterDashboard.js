@@ -1,21 +1,25 @@
 import React from "react";
-import NavBar from "./RecruiterNav";
+import NavBar from "../recruiterNav/RecruiterNav";
 import Form from "react-bootstrap/Form";
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Card } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
+const showPopUp = (firstName, lastName, city, state, experience)=>{
+
+}
+
 export default function RecruiterLogin() {
   return (
-    <div style={{ height: "100vh", overflow: "scroll" }}>
+    <div style={{ height: "100vh"}}>
       <NavBar />
-      <div className="row pt-5 mx-3">
+      <div className="row mx-1">
         <div
-          className="col-3"
-          style={{ backgroundColor: "#f8f8f8", height: "80vh" }}
+          className="col-3 px-4 sticky-top"
+          style={{ backgroundColor: "#f8f8f8", height: "90vh", overflow: "auto", top:"56px"}}
         >
-          <div className="mt-4">
-            <h3>Job Listed:</h3>
+          <div className="mt-5">
+            <h3>Jobs Listed:</h3>
             <Form.Group className="mb-3" controlId="basicCheckbox">
               <Form.Check
                 style={{ fontSize: "15px" }}
@@ -32,6 +36,16 @@ export default function RecruiterLogin() {
                 type="checkbox"
                 label="SWE Engineer Intern"
               />
+              <Form.Check
+                style={{ fontSize: "15px" }}
+                type="checkbox"
+                label="SWE Engineer Intern"
+              />
+              <Form.Check
+                style={{ fontSize: "15px" }}
+                type="checkbox"
+                label="SWE Engineer Intern"
+              />
             </Form.Group>
             <div
               id="addJob"
@@ -41,22 +55,21 @@ export default function RecruiterLogin() {
                 color: "white",
                 borderRadius: "10px",
                 height: "30px",
-                width: "100px",
+                width: "200px",
               }}
             >
-              <AddIcon /> Add Job
+              <AddIcon /> Add a Job
             </div>
           </div>
         </div>
 
-        <div className="col-9">
+        <div className="col-9 pt-5" >
           <Row>
-            <h2 className="d-flex justify-content-center pb-2">Applied</h2>
+            <h2 className="d-flex justify-content-center pb-2">Your Talent Pool</h2>
           </Row>
 
-          <Row className="pb-3 mx-3">
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+          <Row className="pb-3 mx-3 justify-content-center">
+              <Card style={{ width: "250px", borderRadius: "10px", margin:"10px" }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -73,9 +86,7 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+              <Card style={{ width: "250px", borderRadius: "10px",  margin:"10px"  }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -92,9 +103,7 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+              <Card style={{ width: "250px", borderRadius: "10px",  margin:"10px"  }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -111,11 +120,7 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-          </Row>
-          <Row className="pb-3 mx-3">
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+              <Card style={{ width: "250px", borderRadius: "10px",  margin:"10px"  }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -132,9 +137,7 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+              <Card style={{ width: "250px", borderRadius: "10px",  margin:"10px"  }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -151,9 +154,7 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+              <Card style={{ width: "250px", borderRadius: "10px",  margin:"10px"  }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -170,11 +171,7 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-          </Row>
-          <Row className="pb-3 mx-3">
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+              <Card style={{ width: "250px", borderRadius: "10px",  margin:"10px"  }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -191,9 +188,7 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
+              <Card style={{ width: "250px", borderRadius: "10px",  margin:"10px"  }}>
                 <Card.Body>
                   <Card.Title>John Doe</Card.Title>
                   <Card.Text>Santa Clara, California</Card.Text>
@@ -210,26 +205,8 @@ export default function RecruiterLogin() {
                   </Card.Link>
                 </Card.Body>
               </Card>
-            </Col>
-            <Col className="p-2">
-              <Card style={{ width: "18rem", borderRadius: "10px" }}>
-                <Card.Body>
-                  <Card.Title>John Doe</Card.Title>
-                  <Card.Text>Santa Clara, California</Card.Text>
-                  <Card.Link href="#" style={{ fontWeight: "bold" }}>
-                    UX/UI Designer
-                  </Card.Link>
-                  <br />
-                  <Card.Link
-                    href="#"
-                    style={{ fontSize: "12px", color: "#777" }}
-                  >
-                    Learn more
-                    <KeyboardArrowRightIcon style={{ fontSize: "12px" }} />
-                  </Card.Link>
-                </Card.Body>
-              </Card>
-            </Col>
+              
+              
           </Row>
         </div>
       </div>

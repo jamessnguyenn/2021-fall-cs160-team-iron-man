@@ -57,11 +57,24 @@ function RecruiterSignUp(){
     }
          return (
             <>
-                <NavBar/>
+             <NavBar/>
+              <div className="row mx-auto">
+                <div className="col-5 sticky-top recruiter-side-image" style={{ top:"56px"}}>
+                <div className="recruiter-signup-bg-img mx-auto"/>
+                <h1 className="text-center bottom-align-text" style={{fontSize:"2em", color: "white"}} >Discover New Talent</h1>
+                <div className='noAccount d-flex justify-content-center mb-4' style={{ fontSize: '15px', color: 'white',  marginTop:"20px" }}>
+                Already have an account? &nbsp;
+                <a href='/recruiter/login'  style={{color: "#add8e6"}}>Sign into your account</a>
+              </div>
+                    </div>
+                <div className="col-4 mx-auto">
+                
                 {firstStep? <StepOneRecruiterSignUp secondStep={secondStep} 
                     setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword}/>:
                     <StepTwoRecruiterSignUp setValue={setValue} company={company} description={description} logoLink={logoLink} website={website} />
                 }
+                </div>
+                </div>
             </>
          )
 }

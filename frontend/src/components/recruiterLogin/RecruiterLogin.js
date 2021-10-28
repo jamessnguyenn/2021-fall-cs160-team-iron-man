@@ -150,7 +150,7 @@ export default function RecruiterLogin() {
                     }}
                   >
                     Don't have an account? &nbsp;
-                    <a href="/recruiter/createAccount">Join for free today</a>
+                    <a href="/recruiter/signup">Join for free today</a>
                   </div>
                 </Form>
               </div>

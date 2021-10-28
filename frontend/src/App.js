@@ -21,7 +21,7 @@ function App () {
         <Route exact path='/'>
           <LandingPage />
         </Route>
-        <Route exact path='/jobSeeker/createAccount'>
+        <Route exact path='/jobSeeker/signup'>
           <JobSeekerCreateAccountPage/>
         </Route>
         <Route exact path='/jobSeeker/login'>
@@ -36,7 +36,7 @@ function App () {
         <Route exact path='/jobSeeker/home'>
           <JobSeekerHomePage />
         </Route>
-        <Route exact path='/recruiter/createAccount'>
+        <Route exact path='/recruiter/signup'>
           <RecruiterSignUpPage />
         </Route>
         <Route exact path='/recruiter/login'>

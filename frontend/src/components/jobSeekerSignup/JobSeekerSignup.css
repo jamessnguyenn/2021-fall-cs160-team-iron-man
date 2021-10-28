@@ -1,52 +1,32 @@
-.signUpBG {
-  height: 100vh;
-  background-size:100%;
-  background-position: center;
-  background-image: url("../../images/jobSeekerSignUp.svg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  .side-image{
+    height: calc(100vh - 56px);
+    background: linear-gradient(344deg, rgba(83,101,253,1) 0%, rgba(70,180,158,1) 100%);
   }
-  
+  .signup-bg-img{
+    background-size: 50%;
+    background-position: center;
+    height: 50vh;
+    margin-top:60px;
+    background-repeat: no-repeat;
+
+    background-image: url('../../images/jobSeekerSignUp.svg');
+  }
   .signUpBG > h1 {
     font-family: 'Roboto', 'sans-serif';
     color: black;
     font-weight: bold;
     font-size: 30px;
-    padding-top: 65px;
+    padding-top: 45px;
+
   }
   
-  .whiteBG {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #e6e6e6fa;
-    border-radius: 25px;
-    width: 650px;
-    height: 375px;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  .whiteBG::-webkit-scrollbar {
-    width: 10px;
-  }
-  .whiteBG::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-  
-  .whiteBG::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-  
-  .whiteBG::-webkit-scrollbar-thumb:hover {
-    background: rgb(129, 141, 150);
+  .signup-input-field{
+    height: 35px;
+    border-radius: 5px;
+    font-size: 15px;
   }
   .input-form{
-    position: absolute;
+    width:100%;
     top: 30px;
   }
   

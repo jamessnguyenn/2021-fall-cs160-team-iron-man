@@ -17,24 +17,21 @@ function StepTwoRecruiterSignUp({setValue, company, description, logoLink, websi
         <>
             <div className="signUpBG" style={{height: "800px"}} >
                 <h1 className='text-center'>
-                    One More Step..
+                    Company Information
                 </h1>
-            
-                <div className='whiteBG mx-auto mt-4' style={{width: '700px', height: '600px'}}>
+                <div className="text-center">We'll use this information to give seekers a glimpse of your company!</div>
+                <div className='mx-auto' style={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
                     <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
-                            <Form.Group className="mb-0" controlId="formGridWork">
-                                <Form.Label>Company</Form.Label>
-                            </Form.Group>
 
                             <div className="company mb-3">
                                 <Form.Group className="mt-3 mb-3" controlId="formGridCompany">
-                                        <Form.Label><span style={{fontSize: '15px', color: '#777'}}>Company Name</span></Form.Label>
+                                        <Form.Label>Company Name</Form.Label>
                                         <Form.Control value={company} id="company" onChange={e => setValue(e)} />
                                 </Form.Group>
 
                                 <Form.Group className="mt-3 mb-3" controlId="formGridDescription">
-                                    <Form.Label><span style={{fontSize: '15px', color: '#777'}}>Short Description</span></Form.Label>
+                                    <Form.Label>Short Description</Form.Label>
                                     <Form.Control as="textarea" value={description} id="description" onChange={e => setValue(e)} />
                                 </Form.Group>
                             </div>

@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 export default function StepOneRecruiterSignUp({secondStep, setValue, firstName, lastName, email, password, confirmPassword}) {
+
     const [validated, setValidated] = useState(false);
     const [passwordError, SetPasswordError] = useState(false);
 
@@ -50,22 +51,25 @@ export default function StepOneRecruiterSignUp({secondStep, setValue, firstName,
     return (
         <>
             <div className="signUpBG">
-                <h1 className='text-center'>
-                    Create an Account
+                <h1>
+                    Register
                 </h1>
-                <div className='whiteBG mx-auto mt-4'>
-                    <div className="input-form" style={{marginTop: '33px'}}>
+                <div className="pb-3" style={{fontSize: "20px"}}>Set Up Your Corporate Account</div>
+                <div style={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
-                            <Row className="mb-3">
+                            <Row className="mb-2">
                                 <Col>
-                                    <Form.Control required type="text" placeholder="First name" size="sm" id="firstName" value={firstName} onChange={e => setValue(e)} />
+                                <Form.Label>First Name</Form.Label>
+                                    <Form.Control required type="text" placeholder="First name" size="sm" id="firstName" value={firstName} onChange={e => setValue(e)} className="signup-input-field" />
                                     <Form.Control.Feedback type="invalid">
                                         Please enter your first name.
                                     </Form.Control.Feedback>
                                 </Col>
 
                                 <Col>
-                                    <Form.Control required type="text" placeholder="Last name" size="sm" id="lastName" value={lastName} onChange={e => setValue(e)} />
+                                    <Form.Label>Last Name</Form.Label>
+                                    <Form.Control required type="text" placeholder="Last name" size="sm" id="lastName" value={lastName} onChange={e => setValue(e)} className="signup-input-field"/>
                                     <Form.Control.Feedback type="invalid">
                                         Please enter your last name.
                                     </Form.Control.Feedback>
@@ -73,20 +77,23 @@ export default function StepOneRecruiterSignUp({secondStep, setValue, firstName,
                             </Row>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control required type="test" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Enter email" size="sm" id="email" value={email} onChange={e => setValue(e)} />
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control required type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Enter email" size="sm" id="email" value={email} onChange={e => setValue(e)} className="signup-input-field"/>
                                 <Form.Control.Feedback type="invalid">
                                     Please enter a valid email.
                                 </Form.Control.Feedback>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formPassword">
-                                <Form.Control required type="password" placeholder="Password" size="sm" id="password" value={password} onChange={e => setValue(e)} />
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control required type="password" placeholder="Password" size="sm" id="password" value={password} onChange={e => setValue(e)} className="signup-input-field" />
                                 <Form.Control.Feedback type="invalid">
                                     Please enter your password.
                                 </Form.Control.Feedback>
                             </Form.Group>
 
                             <Form.Group className="mb-4" controlId="formConfirmPassword">
+                                <Form.Label>Confirm Password</Form.Label>
                                 <Form.Control required 
                                 type="password" 
                                 id="confirmPassword"
@@ -94,6 +101,7 @@ export default function StepOneRecruiterSignUp({secondStep, setValue, firstName,
                                 size='sm' 
                                 value={confirmPassword} 
                                 onChange={e => setValue(e)} 
+                                className="signup-input-field"
                                 />
 
                                 <Form.Control.Feedback type="invalid">
@@ -113,5 +121,4 @@ export default function StepOneRecruiterSignUp({secondStep, setValue, firstName,
             </div>
         </>
     )
-
 }

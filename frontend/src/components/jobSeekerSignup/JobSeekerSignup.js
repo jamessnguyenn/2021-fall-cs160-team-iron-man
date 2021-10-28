@@ -42,7 +42,6 @@ function JobSeekerSignUp(){
     const [field, setField] = useState('');
 
 
-
     const signUp = ()=>{
         const experiences = []
         const websites = []
@@ -107,33 +106,6 @@ function JobSeekerSignUp(){
                 fieldOfStudy: field
             }
         }
-
-        /*-------------------------------------
-             For testing recruiter creation
-        --------------------------------------*/
-        const tempRecruiter = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password,
-            companyName: "Google",
-            logoLink: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
-            companyDescription: "Google LLC is an American multinational technology company that specializes in " +
-                                "Internet-related services and products, which include online advertising technologies, " + 
-                                "a search engine, cloud computing, software, and hardware. It is considered one of the " +
-                                "Big Five companies in the American information technology industry, along with Amazon, " + 
-                                "Facebook, Apple, and Microsoft.",
-            companyWebsite: "https://www.google.com/"
-        }
-        axios.post("http://localhost:5000/recruiters", tempRecruiter)
-        .then(res=>{
-            console.log(res.data.user_id)
-        })
-        .catch(err=>console.log(err))
-
-        /*--------------------------------------
-                    End of test
-        ---------------------------------------*/
 
         axios.post("http://localhost:5000/jobSeekers", jobSeeker)
         .then(res=>{
@@ -250,17 +222,30 @@ function JobSeekerSignUp(){
          return (
              <>
              <NavBar/>
-            {firstStep? <StepOneJobSeekerSignUp secondStep={secondStep} 
-                setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword}/>:
-                 <StepTwoJobSeekerSignUp setValue={setValue} address={address} apt={apt} city={city} state={state}
-                 zip={zip} positon={position} position2={position2} company={company} company2={company2} web1={web1}
-                 web2={web2} web3={web3} school={school} degree={degree} field={field} startDateMonth={startDateMonth} startDateYear={startDateYear}
-                 endDateMonth={endDateMonth} endDateYear={endDateYear} startDateMonth2={startDateMonth2} startDateYear2={startDateYear2}
-                 endDateMonth2={endDateMonth2} endDateYear2={endDateYear2} schoolEndDateMonth={schoolEndDateMonth} schoolEndDateYear={schoolEndDateYear}
-                 setCompany={setCompany} setCompany2={setCompany2} setPosition={setPosition} setPosition2={setPosition2} signUp={signUp}
-                 setStartDateMonth={setStartDateMonth} setEndDateMonth={setEndDateMonth} setStartDateMonth2={setStartDateMonth2} setEndDateMonth2={setEndDateMonth2}
-                 setStartDateYear={setStartDateYear} setEndDateYear={setEndDateYear} setStartDateYear2={setStartDateYear2} setEndDateYear2={setEndDateYear2} />}
+            <div className="row mx-auto">
+                <div className="col-5 sticky-top side-image" style={{ top:"56px"}}>
+                <div className="signup-bg-img mx-auto"/>
+                <h1 className="text-center bottom-align-text" style={{fontSize:"2em", color: "white"}} > Find Your Dream Job Now</h1>
+                <div className='noAccount d-flex justify-content-center mb-4' style={{ fontSize: '15px', color: 'white',  marginTop:"20px" }}>
+                Already have an account? &nbsp;
+                <a href='/jobSeeker/login'  style={{color: "#add8e6"}}>Sign into your account</a>
+              </div>
+                    </div>
+                <div className="col-4 mx-auto">
+                {firstStep? <StepOneJobSeekerSignUp secondStep={secondStep} 
+                    setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword}/>:
+                    <StepTwoJobSeekerSignUp setValue={setValue} address={address} apt={apt} city={city} state={state}
+                    zip={zip} positon={position} position2={position2} company={company} company2={company2} web1={web1}
+                    web2={web2} web3={web3} school={school} degree={degree} field={field} startDateMonth={startDateMonth} startDateYear={startDateYear}
+                    endDateMonth={endDateMonth} endDateYear={endDateYear} startDateMonth2={startDateMonth2} startDateYear2={startDateYear2}
+                    endDateMonth2={endDateMonth2} endDateYear2={endDateYear2} schoolEndDateMonth={schoolEndDateMonth} schoolEndDateYear={schoolEndDateYear}
+                    setCompany={setCompany} setCompany2={setCompany2} setPosition={setPosition} setPosition2={setPosition2} signUp={signUp}
+                    setStartDateMonth={setStartDateMonth} setEndDateMonth={setEndDateMonth} setStartDateMonth2={setStartDateMonth2} setEndDateMonth2={setEndDateMonth2}
+                    setStartDateYear={setStartDateYear} setEndDateYear={setEndDateYear} setStartDateYear2={setStartDateYear2} setEndDateYear2={setEndDateYear2} />}
+                    </div>
+            </div>
                  </>
+                 
          )
 }
 

@@ -11,12 +11,11 @@ export default function NavBar () {
       bg='dark'
       variant='dark'
       expand='lg'>
-      <Container>
-        <NavLink exact to='/' className='navbar-brand' activeClassName='activeNav'>
+        <NavLink exact to='/' className='navbar-brand' activeClassName='activeNav' style={{marginLeft: "30px"}}>
           <WorkIcon /> EZ Apply
         </NavLink>
         <Navbar.Toggle aria-controls='navLinks' />
-        <Navbar.Collapse id='navLinks'>
+        <Navbar.Collapse id='navLinks' style={{marginLeft: "20px"}}>
           <Nav className='ms-auto'>
             <NavLink
               exact
@@ -39,12 +38,12 @@ export default function NavBar () {
               to='/contact'
               className='nav-link'
               activeClassName='activeNav'
-              activeStyle={{color: 'white'}}>
+              activeStyle={{color: 'white'}}
+              style={{marginRight: "30px"}}>
               Contact Us
             </NavLink>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   )
 }

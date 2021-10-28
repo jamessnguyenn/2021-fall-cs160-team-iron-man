@@ -7,7 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 import ApplicantCard from './applicantCard';
 import recruiterDashboard from '../../images/recruiterDashboard.svg'
 import { useHistory } from "react-router";
-
+import './RecruiterDashboard.css'
 
 export default function RecruiterLogin() {
 
@@ -70,8 +70,8 @@ export default function RecruiterLogin() {
       <NavBar />
       <div className="row mx-1">
         <div
-          className="col-3 px-4 sticky-top"
-          style={{ backgroundColor: "#f8f8f8", height: "90vh", overflow: "auto", top:"56px"}}
+          className="col-3 px-4 side-bar sticky-top"
+          style={{ backgroundColor: "#f8f8f8", overflow: "auto", top:"56px"}}
         >
           <div className="mt-5">
             <h3>Jobs Listed</h3>

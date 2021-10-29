@@ -4,50 +4,27 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName, lastName, email, password, confirmPassword}) {
+export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName, lastName, email, password, confirmPassword, existEmail}) {
 
     const [validated, setValidated] = useState(false);
-    const [passwordError, SetPasswordError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
     useEffect(()=>{
-        if(document.getElementById("confirmPassword") != null){
-            if (password !== confirmPassword) {
-                SetPasswordError(true);
-                document.getElementById("confirmPassword").style.borderColor = "#dc3545";
-                document.getElementById("confirmPassword").style.backgroundImage = "none";
-            }
-            else {
-                SetPasswordError(false);
-                if(confirmPassword !== ""){
-                    document.getElementById("confirmPassword").style.borderColor = "#198754";
-                }else{
-                    if(!validated){
-                        document.getElementById("confirmPassword").style.borderColor = "#ced4da";
-                    }else{
-                        document.getElementById("confirmPassword").style.borderColor = "#dc3545";
-                    }
-                }
-            }
-        }
-       
-    }, [password, confirmPassword, validated])
+        setPasswordError(password !== confirmPassword && confirmPassword.length >0);
+    }, [password, confirmPassword])
     // for form validation on Submit
     const handleSubmit = (e) => {
         const form = e.currentTarget;
-       if (!form.checkValidity()) {
-           e.preventDefault();
-           setValidated(true);
-        }else if (password !== '' && confirmPassword !== '' && password === confirmPassword && firstName !== '' && lastName !== '' && email !== '') {
-           
+        e.preventDefault();
+        if (!form.checkValidity() && !existEmail){
+            setValidated(true);
+        }else if(password !== '' && confirmPassword !== '' && password === confirmPassword && firstName !== '' && lastName !== '' && email !== '' && !existEmail) {
             secondStep();
+            setValidated(false);
         }
-        else {
-            e.preventDefault();
-        }
+       
     };
-    
-    // checks if password and confirmPassword match, and make necessary changes to the style of the border
-   
+
     return (
         <>
             <div className="signUpBG">
@@ -78,10 +55,15 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control required type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Enter email" size="sm" id="email" value={email} onChange={e => setValue(e)} className="signup-input-field"/>
+                                <Form.Control required type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Enter email" isInvalid={existEmail} size="sm" id="email" value={email} 
+                                onChange={e => setValue(e)} 
+                                className="signup-input-field"/>
+                               {existEmail? <Form.Control.Feedback type="invalid">
+                                    Email already exists.
+                                </Form.Control.Feedback> :
                                 <Form.Control.Feedback type="invalid">
-                                    Please enter a valid email.
-                                </Form.Control.Feedback>
+                                Please enter a valid email.
+                            </Form.Control.Feedback>}
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formPassword">
@@ -94,7 +76,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
 
                             <Form.Group className="mb-4" controlId="formConfirmPassword">
                                 <Form.Label>Confirm Password</Form.Label>
-                                <Form.Control required 
+                                <Form.Control required
                                 type="password" 
                                 id="confirmPassword"
                                 placeholder="Confirm Password" 
@@ -102,12 +84,13 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
                                 value={confirmPassword} 
                                 onChange={e => setValue(e)} 
                                 className="signup-input-field"
+                                pattern={password}
                                 />
-
-                                <Form.Control.Feedback type="invalid">
+                                {passwordError? <Form.Control.Feedback type="invalid">
+                                    Passwords do not match.
+                                </Form.Control.Feedback> : <Form.Control.Feedback type="invalid">
                                     Please re-enter your password.
-                                </Form.Control.Feedback>
-                                {passwordError && <div style={{ color: "#dc3545", fontSize: "0.875em", marginTop: ".25rem", width: "100%" }}>Passwords don't match.</div>}
+                                </Form.Control.Feedback>}
                             </Form.Group>
 
                             <div class="d-flex justify-content-center mb-4">

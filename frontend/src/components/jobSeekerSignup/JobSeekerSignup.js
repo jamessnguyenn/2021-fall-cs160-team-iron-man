@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
 import StepOneJobSeekerSignUp from "./StepOneJobSeekerSignUp";
 import StepTwoJobSeekerSignUp from "./StepTwoJobSeekerSignUp";
@@ -40,6 +40,7 @@ function JobSeekerSignUp(){
     const [schoolEndDateYear, setSchoolEndDateYear] = useState('');
     const [degree, setDegree] = useState('');
     const [field, setField] = useState('');
+    const [existEmail, setExistEmail] = useState(false);
 
 
     const signUp = ()=>{
@@ -113,8 +114,14 @@ function JobSeekerSignUp(){
             localStorage.setItem('user_id', res.data.user_id)
             history.push('/jobseeker/home')
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{
+            if(err.response.status === 420){
+                setFirstStep(true)
+                setExistEmail(true)
+            }}
+            )
     }
+
     const setValue = (e)=>{
         switch(e.target.id){
             case 'firstName': 
@@ -125,6 +132,9 @@ function JobSeekerSignUp(){
                 break;
             case 'email':
                 setEmail(e.target.value)
+                if(existEmail === true){
+                    setExistEmail(false)
+                }
                 break;
             case 'password':
                 setPassword(e.target.value)
@@ -233,7 +243,7 @@ function JobSeekerSignUp(){
                     </div>
                 <div className="col-4 mx-auto">
                 {firstStep? <StepOneJobSeekerSignUp secondStep={secondStep} 
-                    setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword}/>:
+                    setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword} existEmail={existEmail}/>:
                     <StepTwoJobSeekerSignUp setValue={setValue} address={address} apt={apt} city={city} state={state}
                     zip={zip} positon={position} position2={position2} company={company} company2={company2} web1={web1}
                     web2={web2} web3={web3} school={school} degree={degree} field={field} startDateMonth={startDateMonth} startDateYear={startDateYear}

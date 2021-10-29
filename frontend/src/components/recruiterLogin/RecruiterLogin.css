@@ -9,19 +9,25 @@
     border-color: transparent;
 }
 
-.login-button:focus, .login-button:hover{
-    border-color: transparent;
-    background: #4682B4;
-
+.login-button:hover {
+border-color: transparent;
+background: #4682B4;
 }
+
+.login-button:active:focus, .login-button:focus{
+box-shadow:#4683b469 0px 0px 0px 3.23261px;
+border-color: transparent;
+background: #4682B4;
+}
+
 .login-input-field{
     height: 43.488372802734375px;
     width: 445px;
     left: 0px;
     top: 26.093017578125px;
     border-radius: 5px;
-
 }
+
 a {
     text-decoration: none;
     color: #055C9D;

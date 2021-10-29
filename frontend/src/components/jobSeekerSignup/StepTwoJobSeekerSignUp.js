@@ -123,6 +123,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
             setValidated(true);
         }else{
             signUp()
+            setValidated(false);
         }
     };
 

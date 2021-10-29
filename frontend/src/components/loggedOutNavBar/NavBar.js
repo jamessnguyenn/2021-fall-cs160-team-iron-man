@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import WorkIcon from '@material-ui/icons/Work'
 import { Navbar, Nav } from 'react-bootstrap'
-import Container from 'react-bootstrap/Container'
 
 export default function NavBar () {
   return (

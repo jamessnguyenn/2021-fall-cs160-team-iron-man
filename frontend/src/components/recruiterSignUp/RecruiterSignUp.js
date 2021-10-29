@@ -3,6 +3,8 @@ import './RecruiterSignup.css';
 import NavBar from '../loggedOutNavBar/NavBar';
 import StepOneRecruiterSignUp from "./StepOneRecruiterSignUp";
 import StepTwoRecruiterSignUp from "./StepTwoRecruiterSignUp";
+import axios from "axios";
+import { useHistory } from "react-router";
 
 function RecruiterSignUp(){
     const[firstStep, setFirstStep] = useState(true)
@@ -15,7 +17,8 @@ function RecruiterSignUp(){
     const [description, setDescription] = useState('');
     const [logoLink, setLogoLink] = useState('');
     const [website, setWebsite] = useState('');
-    
+    const [existEmail, setExistEmail] = useState(false);
+    const history = useHistory();
 
     const setValue = (e)=>{
         switch(e.target.id){
@@ -27,6 +30,9 @@ function RecruiterSignUp(){
                 break;
             case 'email':
                 setEmail(e.target.value)
+                if(existEmail === true){
+                    setExistEmail(false);
+                }
                 break;
             case 'password':
                 setPassword(e.target.value)
@@ -50,6 +56,32 @@ function RecruiterSignUp(){
                 console.log("Error")
         }
     }
+    const signUp = ()=>{
+        const recruiter = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            companyName: company,
+            companyDescription: description,
+            logoLink: logoLink,
+            companyWebsite: website
+        }
+        axios.post("http://localhost:5000/recruiters", recruiter)
+        .then(res=>{
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user_id', res.data.user_id)
+            history.push('/recruiter/dashboard')
+        })
+        .catch(err=>{
+            if(err.response.status === 420){
+                setFirstStep(true)
+                setExistEmail(true)
+            }
+        }
+           
+            )
+    }
 
     // proceed to the second step
     const secondStep = () => {
@@ -70,8 +102,8 @@ function RecruiterSignUp(){
                 <div className="col-4 mx-auto">
                 
                 {firstStep? <StepOneRecruiterSignUp secondStep={secondStep} 
-                    setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword}/>:
-                    <StepTwoRecruiterSignUp setValue={setValue} company={company} description={description} logoLink={logoLink} website={website} />
+                    setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword} existEmail={existEmail}/>:
+                    <StepTwoRecruiterSignUp setValue={setValue} company={company} description={description} logoLink={logoLink} website={website} signUp={signUp} />
                 }
                 </div>
                 </div>

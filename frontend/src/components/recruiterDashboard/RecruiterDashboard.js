@@ -32,9 +32,13 @@ export default function RecruiterLogin() {
       setLoading(true)
     })
     .catch(err=>{
+      if(err.response.status === 403 || err.response.status === 401){
+        localStorage.clear();
+        history.push('/recruiter/login')
+      }
       setLoading(true)
     })
-  }, [])
+  }, [history])
 
   useEffect(()=>{
     if(jobPostings.length > 0){
@@ -46,7 +50,6 @@ export default function RecruiterLogin() {
   }, [jobPostings])
 
   useEffect(()=>{
-    console.log("test")
     if(selected.length >0 ){
       setJobPostings(response.filter(jobPosting=>{
         return selected.indexOf(jobPosting._id) > -1;

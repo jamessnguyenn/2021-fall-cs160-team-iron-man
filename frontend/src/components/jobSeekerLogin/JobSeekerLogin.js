@@ -49,11 +49,11 @@ export default function JobSeekerLogin () {
   return (
     <div style={{height:"100vh"}}>
       <NavBar/>
-    <div className='container pt-5'>
+    <div className="container" style={{ paddingTop: "70px" }}>
       <Row className='mb-3'>
         <Col>
         <div>
-          <span style={{fontSize: '20px', fontWeight: '400', color: '#2D3748'}}>Welcome back</span>
+          <span style={{fontSize: '20px', fontWeight: '400', color: '#2D3748'}}>Job Seeker Portal</span>
           <h1 className='' style={{ fontWeight: 'bold' }}>Login to your account</h1>
         </div>
         <div className='bg mt-5 pt-2'>

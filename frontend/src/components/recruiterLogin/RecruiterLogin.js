@@ -60,7 +60,7 @@ export default function RecruiterLogin() {
                   color: "#2D3748",
                 }}
               >
-                Welcome back
+               Corporate portal
               </span>
               <h1 className="" style={{ fontWeight: "bold" }}>
                 Login to your account

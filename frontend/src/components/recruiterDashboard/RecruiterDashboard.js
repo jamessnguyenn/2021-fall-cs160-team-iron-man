@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
 import ApplicantCard from './applicantCard';
 import recruiterDashboard from '../../images/recruiterDashboard.svg'
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import './RecruiterDashboard.css'
 
 export default function RecruiterLogin() {
@@ -17,10 +17,8 @@ export default function RecruiterLogin() {
   const[selected, setSelected] = useState([]);
   const[response, setResponse] = useState([]);
   const history = useHistory();
-  
-  if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
-    history.push('/recruiter/login')
-  }
+ 
+ 
   useEffect(()=>{
     axios.get("http://localhost:5000/jobpostings?postedBy="+localStorage.getItem('user_id')+"&populate", {
       headers:{
@@ -32,13 +30,13 @@ export default function RecruiterLogin() {
       setLoading(true)
     })
     .catch(err=>{
-      if(err.response.status === 403 || err.response.status === 401){
+      if( err.response && (err.response.status === 403 || err.response.status === 401)){
         localStorage.clear();
         history.push('/recruiter/login')
       }
       setLoading(true)
     })
-  }, [history])
+  },[history])
 
   useEffect(()=>{
     if(jobPostings.length > 0){
@@ -67,7 +65,9 @@ export default function RecruiterLogin() {
     }
   }
   
-
+if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
+  return <Redirect to="/recruiter/login"/>
+}
   return (
     <div style={{ height: "100vh"}}>
       <NavBar />
@@ -120,7 +120,7 @@ export default function RecruiterLogin() {
               )}
           </Row>
           {loading && !applicants && <Row>
-            <h5 className="d-flex justify-content-center pb-2">No Applicants Curently</h5>
+            <h5 className="d-flex justify-content-center pb-2">No Applicants Currently</h5>
             <div className="d-flex justify-content-center pb-2" style={{ fontSize: '15px', color: '#777', marginRight:"165px", marginTop:"20px" }}>
                 Not Getting any Job Applicants? &nbsp;
                 <a href='/recruiter/addJob'>Add More Job Postings</a>

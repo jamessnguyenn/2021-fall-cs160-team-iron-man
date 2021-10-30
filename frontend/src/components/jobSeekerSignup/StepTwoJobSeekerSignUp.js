@@ -141,7 +141,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                 <h1 className='text-center'>
                     Personal Information
                 </h1>
-                <div className="text-center">This information will be used to get you closer to the dream job!</div>
+                <div className="text-center">This information will be used to get you closer to your dream job!</div>
                 <div className='mx-auto mt-4'  style={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
                     <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>

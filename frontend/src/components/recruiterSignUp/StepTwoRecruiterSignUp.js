@@ -53,7 +53,7 @@ function StepTwoRecruiterSignUp({setValue, company, description, logoLink, websi
                                 <Form.Label>Company Website</Form.Label>
                                 <Form.Control required className="mb-2" type="url" id="website" value={website} onChange={e => setValue(e)} />
                                 <Form.Control.Feedback type="invalid">
-                                        Please enter a valid email.
+                                        Please enter a valid link to your company website.
                                 </Form.Control.Feedback>
                             </Form.Group>
 

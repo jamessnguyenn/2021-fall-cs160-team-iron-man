@@ -1,75 +1,58 @@
-.signUpBG {
-  height: 100vh;
-  background-size:100%;
+.side-image{
+  height: calc(100vh - 56px);
+  background: linear-gradient(344deg, rgba(83,101,253,1) 0%, rgba(70,180,158,1) 100%);
+}
+.signup-bg-img{
+  background-size: 50%;
   background-position: center;
-  background-image: url("../../images/jobSeekerSignUp.svg");
+  height: 50vh;
+  margin-top:60px;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  }
-  
-  .signUpBG > h1 {
-    font-family: 'Roboto', 'sans-serif';
-    color: black;
-    font-weight: bold;
-    font-size: 30px;
-    padding-top: 65px;
-  }
-  
-  .whiteBG {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #e6e6e6fa;
-    border-radius: 25px;
-    width: 650px;
-    height: 375px;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  .whiteBG::-webkit-scrollbar {
-    width: 10px;
-  }
-  .whiteBG::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-  
-  .whiteBG::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-  
-  .whiteBG::-webkit-scrollbar-thumb:hover {
-    background: rgb(129, 141, 150);
-  }
-  .input-form{
-    position: absolute;
-    top: 30px;
-  }
-  
-  .AddWorkExperience{
-    border: 2px solid rgb(255, 255, 255);
-    padding-top: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 15px;
-  }
-  
-  .signup-button{
-    height: 57px;
-    width: 224px;
-    left: 469px;
-    top: 484px;
-    border-radius: 9px;
-    background: #4682B4;
-    border-color: transparent;
-  }
-  .signup-button:focus, .signup-button:hover{
-    border-color: transparent;
-    background: #4682B4;
 
-  }
-  
+  background-image: url('../../images/jobSeekerSignUp.svg');
+}
+.signUpBG > h1 {
+  font-family: 'Roboto', 'sans-serif';
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 45px;
+
+}
+
+.signup-input-field{
+  height: 35px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.input-form{
+  width:100%;
+  top: 30px;
+}
+
+.AddWorkExperience{
+  border: 2px solid rgb(255, 255, 255);
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 15px;
+}
+
+.signup-button{
+  height: 57px;
+  width: 224px;
+  left: 469px;
+  top: 484px;
+  border-radius: 9px;
+  background: #4682B4;
+  border-color: transparent;
+}
+.signup-button:hover {
+  border-color: transparent;
+  background: #4682B4;
+}
+.signup-button:active:focus, .signup-button:focus{
+  box-shadow:#4683b469 0px 0px 0px 3.23261px;
+  border-color: transparent;
+  background: #4682B4;
+}

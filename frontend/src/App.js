@@ -6,7 +6,7 @@ import JobSeekerCreateAccountPage from './components/jobSeekerSignup/JobSeekerSi
 import JobSeekerLoginPage from './components/jobSeekerLogin/JobSeekerLogin'
 import AboutPage from './components/about/About'
 import ContactPage from './components/contact/Contact'
-import JobSeekerHomePage from './components/jobSeekerHome/jobSeekerHome'
+import JobSeekerDashboardPage from './components/jobSeekerDashboard/jobSeekerDashboard'
 
 import RecruiterSignUpPage from './components/recruiterSignUp/RecruiterSignUp'
 
@@ -21,7 +21,7 @@ function App () {
         <Route exact path='/'>
           <LandingPage />
         </Route>
-        <Route exact path='/jobSeeker/createAccount'>
+        <Route exact path='/jobSeeker/signup'>
           <JobSeekerCreateAccountPage/>
         </Route>
         <Route exact path='/jobSeeker/login'>
@@ -33,10 +33,10 @@ function App () {
         <Route exact path='/contact'>
           <ContactPage />
         </Route>
-        <Route exact path='/jobSeeker/home'>
-          <JobSeekerHomePage />
+        <Route exact path='/jobSeeker/dashboard'>
+          <JobSeekerDashboardPage />
         </Route>
-        <Route exact path='/recruiter/createAccount'>
+        <Route exact path='/recruiter/signup'>
           <RecruiterSignUpPage />
         </Route>
         <Route exact path='/recruiter/login'>

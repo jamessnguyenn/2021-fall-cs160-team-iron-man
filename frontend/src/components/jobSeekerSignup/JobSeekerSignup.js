@@ -112,7 +112,7 @@ function JobSeekerSignUp(){
         .then(res=>{
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user_id', res.data.user_id)
-            history.push('/jobseeker/home')
+            history.push('/jobseeker/dashboard')
         })
         .catch(err=>{
             if(err.response.status === 420){

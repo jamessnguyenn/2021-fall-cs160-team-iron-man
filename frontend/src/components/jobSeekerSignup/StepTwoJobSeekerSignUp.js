@@ -123,6 +123,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
             setValidated(true);
         }else{
             signUp()
+            setValidated(false);
         }
     };
 
@@ -136,12 +137,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
     },[school, schoolEndDateMonth, schoolEndDateYear, degree, field])
     return ( 
         <>
-            <div className="signUpBG" style={{height: "1500px"}} >
+            <div className="signUpBG" >
                 <h1 className='text-center'>
-                    One More Step..
+                    Personal Information
                 </h1>
-            
-                <div className='whiteBG mx-auto mt-4' style={{width: '800px', height: '1250px'}}>
+                <div className="text-center">This information will be used to get you closer to your dream job!</div>
+                <div className='mx-auto mt-4'  style={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
                     <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                             <Form.Group className="mb-3" controlId="formGridAddress1">

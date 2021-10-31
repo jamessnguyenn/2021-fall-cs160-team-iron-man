@@ -1,15 +1,15 @@
-.side-image{
+.recruiter-side-image{
   height: calc(100vh - 56px);
-  background: linear-gradient(344deg, rgba(83,101,253,1) 0%, rgba(70,180,158,1) 100%);
+  background: linear-gradient(122deg, rgba(83,101,253,1) 0%, rgba(70,180,158,1) 100%);
 }
-.signup-bg-img{
+.recruiter-signup-bg-img{
   background-size: 50%;
   background-position: center;
   height: 50vh;
   margin-top:60px;
   background-repeat: no-repeat;
 
-  background-image: url('../../images/jobSeekerSignUp.svg');
+  background-image: url('../../images/recruiterSignUp.svg');
 }
 .signUpBG > h1 {
   font-family: 'Roboto', 'sans-serif';
@@ -55,4 +55,7 @@
   box-shadow:#4683b469 0px 0px 0px 3.23261px;
   border-color: transparent;
   background: #4682B4;
+}
+#description{
+  min-height:150px;
 }

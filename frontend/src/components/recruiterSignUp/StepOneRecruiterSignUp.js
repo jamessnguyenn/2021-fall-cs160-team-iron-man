@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName, lastName, email, password, confirmPassword, existEmail}) {
+export default function StepOneRecruiterSignUp({secondStep, setValue, firstName, lastName, email, password, confirmPassword, existEmail}) {
 
     const [validated, setValidated] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
@@ -29,9 +29,9 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
         <>
             <div className="signUpBG">
                 <h1>
-                    Sign Up
+                    Register
                 </h1>
-                <div className="pb-3" style={{fontSize: "20px"}}>Let's Get You Started</div>
+                <div className="pb-3" style={{fontSize: "20px"}}>Set Up Your Corporate Account</div>
                 <div style={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
                     <div className="input-form">
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>

@@ -30,7 +30,7 @@ export default function JobSeekerLogin () {
       .then(res=>{
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('user_id', res.data.user_id)
-        history.push('/jobseeker/home')
+        history.push('/jobseeker/dashboard')
       })
       .catch(err=>{
         if(err.response && err.response.status === 401){
@@ -47,13 +47,13 @@ export default function JobSeekerLogin () {
   }, [email, password])
 
   return (
-    <div style={{height:"100vh", overflow:"hidden"}}>
+    <div style={{height:"100vh"}}>
       <NavBar/>
-    <div className='container pt-5'>
+    <div className="container" style={{ paddingTop: "70px" }}>
       <Row className='mb-3'>
         <Col>
         <div>
-          <span style={{fontSize: '20px', fontWeight: '400', color: '#2D3748'}}>Welcome back</span>
+          <span style={{fontSize: '20px', fontWeight: '400', color: '#2D3748'}}>Job Seeker Portal</span>
           <h1 className='' style={{ fontWeight: 'bold' }}>Login to your account</h1>
         </div>
         <div className='bg mt-5 pt-2'>
@@ -114,7 +114,7 @@ export default function JobSeekerLogin () {
               </Form.Group>}
               <div className='noAccount d-flex justify-content-center mb-4' style={{ fontSize: '15px', color: '#777', marginRight:"165px", marginTop:"20px" }}>
                 Don't have an account? &nbsp;
-                <a href='/jobSeeker/createAccount'>Join for free today</a>
+                <a href='/jobSeeker/signup'>Join for free today</a>
               </div>
             </Form>
           </div>

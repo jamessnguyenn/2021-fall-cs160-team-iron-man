@@ -33,18 +33,18 @@ export default function NavBar() {
               to="/recruiter/dashboard"
               className="nav-link"
               activeClassName="activeNav"
-              activeStyle={{ color: "white" }}
+              activeStyle={{ color: "white", marginRight:"10px" }}
             >
-              Job Listings
+              Create Job
             </NavLink>
             <NavLink
               exact
               to="/recruiter/dashboard"
               className="nav-link"
               activeClassName="activeNav"
-              activeStyle={{ color: "white" }}
+              activeStyle={{ color: "white", background: "#5365FD", paddingLeft: "20px", paddingRight: "20px", borderRadius: "4px"}}
             >
-              Sarah
+              Sarah Doe
             </NavLink>
           </Nav>
         </Navbar.Collapse>

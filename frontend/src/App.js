@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import LandingPage from './components/landing/landing'
+import LandingPage from './components/landing/Landing'
 import JobSeekerCreateAccountPage from './components/jobSeekerSignup/JobSeekerSignup'
 import JobSeekerLoginPage from './components/jobSeekerLogin/JobSeekerLogin'
 import AboutPage from './components/about/About'

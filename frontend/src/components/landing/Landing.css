@@ -1,0 +1,55 @@
+.bg {
+    height: 420px;
+}
+
+.job-button {
+    height: 75px;
+    width: 270px;
+    left: 0px;
+    top: 0px;
+    border-radius: 15px;
+    background: #4682B4;
+    border-radius: 15px;
+    border-color: transparent;
+}
+
+.job-button:focus, .job-button:hover{
+    border-color: transparent;
+    background: #4682B4;
+
+}
+
+.hire-button {
+    height: 75px;
+    width: 270px;
+    left: 0px;
+    top: 0px;
+    border-radius: 15px;
+    background: #4682B4;
+    border-radius: 15px;
+    border-color: transparent;
+}
+
+.hire-button:focus, .hire-button:hover{
+    border-color: transparent;
+    background: #4682B4;
+
+}
+.landing-field{
+    height: 43.488372802734375px;
+    width: 445px;
+    left: 0px;
+    top: 26.093017578125px;
+    border-radius: 5px;
+}
+a {
+    text-decoration: none;
+    color: #055C9D;
+}
+
+
+.landing-Pic {
+    height: 100vh;
+    background-image: url('../../images/landing.svg');
+    background-repeat: no-repeat;
+}

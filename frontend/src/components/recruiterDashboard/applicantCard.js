@@ -8,7 +8,7 @@ export default function ApplicantPage({city, state, firstName, lastName, educati
                   <Card.Title>{firstName} {lastName}</Card.Title>
                   <Card.Text>{city}, {state}</Card.Text>
                   <Card.Link href="#" style={{ fontWeight: "bold" }}>
-                    {experiences.length > 0? experiences[1].position : education? education.job+" Student": "No Experience"}
+                    {experiences.length > 0? experiences[1].position : education? education.fieldOfStudy+" Student": "No Experience"}
                   </Card.Link>
                   <br />
                   <Card.Link

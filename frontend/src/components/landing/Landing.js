@@ -1,31 +1,39 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
+import { useHistory } from 'react-router'
 import Button from 'react-bootstrap/Button'
 import './Landing.css'
 import NavBar from './LandingNav'
 
 export default function LandingPage(){
+  const history = useHistory();
 
+  const jobseeker = ()=>{
+    history.push('/jobseeker/login')
+  }
+  const recruiter = ()=>{
+    history.push('/recruiter/login')
+  }
   return (
-    <div style={{height:"100vh", overflow:"hidden"}}>
+    <div style={{height:"100vh"}}>
       <NavBar/>
-    <div className='container pt-5'>
-      <Row className='mb-3 mt-5'>
+    <div className='container'>
+      <Row style={{marginTop: "10vh"}}>
         <Col className="text-center">
         <div>
-          <h1 className='' style={{ fontWeight: 'bold' }}>Click Your Way <br/> To Success</h1>
+          <h1 className='' style={{fontSize:"48px"}}>Click Your Way <br/> To Success</h1>
         </div>
         <div className='bg mt-5 pt-2'>
           <div className='landing-form' >
 
               <div class='d-flex mb-3 justify-content-center align-items-center'>
-                <Button variant='success' className='job-button' type='submit'>
+                <Button variant='success' className='landing-button' onClick={jobseeker}>
                   Looking for a job
                 </Button>
               </div>
               
-              <div class='d-flex mb-3 justify-content-center align-items-center'>
-                <Button variant='success' className='hire-button' type='submit'>
+              <div class='d-flex mb-3 justify-content-center align-items-center' style={{marginTop: "30px"}}>
+                <Button variant='success' className='landing-button' onClick={recruiter}>
                   Looking to hire
                 </Button>
               </div>

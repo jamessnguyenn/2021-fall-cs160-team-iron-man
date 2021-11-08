@@ -1,0 +1,26 @@
+.dismiss:hover {
+  cursor: pointer;
+}
+
+.apply:hover {
+  cursor: pointer;
+}
+
+.dismiss-img {
+  height: 48px;
+  width: 48px;
+  margin-left: 5px;
+}
+
+.apply-img {
+  margin-left: 10px;
+}
+
+.learn-more:hover {
+  cursor: pointer;
+}
+
+.job-title {
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+}

@@ -24,20 +24,20 @@ export default function JobPostCard({
               style={{
                 width: "50px",
                 borderRadius: "15px",
+                boxShadow: "0px 4px 2px lightgray",
               }}
             >
               Save
             </Button>
           </div>
         </Row>
-        <Row>
-          <Col sm={1}>Logo</Col>
+        <Row className="mb-3">
+          <Col sm={1}>
+            <img alt="" className="logo" src={companyLogo} />
+          </Col>
           <Col sm={11}>
             <Row>
-              <Card.Title>
-                {" "}
-                <h2 className="job-title">{jobTitle}</h2>
-              </Card.Title>
+              <Card.Title className="job-title">{jobTitle}</Card.Title>
             </Row>
             <Row>
               <Col xs={12} md="auto">
@@ -46,7 +46,11 @@ export default function JobPostCard({
               <Col xs={12} md="auto">
                 {city}, {state}
               </Col>
-              <Col xs={12} md="auto">
+              <Col
+                xs={12}
+                md="auto"
+                style={{ color: "#777", fontSize: "15px" }}
+              >
                 {timePeriod}
               </Col>
             </Row>
@@ -65,33 +69,33 @@ export default function JobPostCard({
         <Row>
           <Col className="dismiss">
             <Row>
-              <div>
+              <div className="d-flex justify-content-center">
                 <img
                   className="dismiss-img"
                   alt="svgImg"
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDAiIGhlaWdodD0iNDAiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PHBhdGggZD0iTTI2LjY2LDE3MmMtMTQuNzIzOTEsMCAtMjYuNjYsLTExLjkzNjA5IC0yNi42NiwtMjYuNjZ2LTExOC42OGMwLC0xNC43MjM5MSAxMS45MzYwOSwtMjYuNjYgMjYuNjYsLTI2LjY2aDExOC42OGMxNC43MjM5MSwwIDI2LjY2LDExLjkzNjA5IDI2LjY2LDI2LjY2djExOC42OGMwLDE0LjcyMzkxIC0xMS45MzYwOSwyNi42NiAtMjYuNjYsMjYuNjZ6IiBmaWxsPSIjZWNmMGYxIj48L3BhdGg+PGc+PHBhdGggZD0iTTg2LDE1MS4yMzFjLTM1Ljk2ODczLDAgLTY1LjIzMSwtMjkuMjYyMjcgLTY1LjIzMSwtNjUuMjMxYzAsLTM1Ljk2ODczIDI5LjI2MjI3LC02NS4yMzEgNjUuMjMxLC02NS4yMzFjMzUuOTY4NzMsMCA2NS4yMzEsMjkuMjYyMjcgNjUuMjMxLDY1LjIzMWMwLDM1Ljk2ODczIC0yOS4yNjIyNyw2NS4yMzEgLTY1LjIzMSw2NS4yMzF6IiBmaWxsPSIjOThjY2ZkIj48L3BhdGg+PHBhdGggZD0iTTg2LDIyLjUzMmMzNC45OTU1NSwwIDYzLjQ2OCwyOC40NzI0NSA2My40NjgsNjMuNDY4YzAsMzQuOTk1NTUgLTI4LjQ3MjQ1LDYzLjQ2OCAtNjMuNDY4LDYzLjQ2OGMtMzQuOTk1NTUsMCAtNjMuNDY4LC0yOC40NzI0NSAtNjMuNDY4LC02My40NjhjMCwtMzQuOTk1NTUgMjguNDcyNDUsLTYzLjQ2OCA2My40NjgsLTYzLjQ2OE04NiwxOS4wMDZjLTM2Ljk5ODMyLDAgLTY2Ljk5NCwyOS45OTU2OCAtNjYuOTk0LDY2Ljk5NGMwLDM2Ljk5ODMyIDI5Ljk5NTY4LDY2Ljk5NCA2Ni45OTQsNjYuOTk0YzM2Ljk5ODMyLDAgNjYuOTk0LC0yOS45OTU2OCA2Ni45OTQsLTY2Ljk5NGMwLC0zNi45OTgzMiAtMjkuOTk1NjgsLTY2Ljk5NCAtNjYuOTk0LC02Ni45OTR6IiBmaWxsPSIjNDc4OGM3Ij48L3BhdGg+PHBhdGggZD0iTTY0LjgwNjgsMTE0LjY3MjFsLTcuNDc5NjQsLTcuNDc5OTFsNDkuODY2MDQsLTQ5Ljg2NDNsNy40Nzk2NCw3LjQ3OTkxeiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjxwYXRoIGQ9Ik01Ny4zMjcxNiw2NC44MDc4bDcuNDc5NjQsLTcuNDc5OTFsNDkuODY2MDQsNDkuODY0M2wtNy40Nzk2NCw3LjQ3OTkxeiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0xMTQuNjczNDMsNjQuODA4NzRsLTcuNDgyMTcsLTcuNDgyMTdsLTIxLjE5MTI2LDIxLjE5NDc5bC0yMS4xOTEyNiwtMjEuMTk0NzlsLTcuNDgyMTcsNy40ODIxN2wyMS4xOTQ3OSwyMS4xOTEyNmwtMjEuMTk0NzksMjEuMTkxMjZsNy40ODIxNyw3LjQ4MjE3bDIxLjE5MTI2LC0yMS4xOTQ3OWwyMS4xOTEyNiwyMS4xOTQ3OWw3LjQ4MjE3LC03LjQ4MjE3bC0yMS4xOTQ3OSwtMjEuMTkxMjZ6Ij48L3BhdGg+PC9nPjwvZz48L2c+PC9zdmc+"
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDAiIGhlaWdodD0iNDAiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzRhOTBlMjsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PHBhdGggZD0iTTI2LjY2LDE3MmMtMTQuNzIzOTEsMCAtMjYuNjYsLTExLjkzNjA5IC0yNi42NiwtMjYuNjZ2LTExOC42OGMwLC0xNC43MjM5MSAxMS45MzYwOSwtMjYuNjYgMjYuNjYsLTI2LjY2aDExOC42OGMxNC43MjM5MSwwIDI2LjY2LDExLjkzNjA5IDI2LjY2LDI2LjY2djExOC42OGMwLDE0LjcyMzkxIC0xMS45MzYwOSwyNi42NiAtMjYuNjYsMjYuNjZ6IiBmaWxsPSIjZWNmMGYxIj48L3BhdGg+PGc+PHBhdGggZD0iTTg2LDE1MC40MzU1Yy0zNS41MzAwOCwwIC02NC40MzU1LC0yOC45MDU0MiAtNjQuNDM1NSwtNjQuNDM1NWMwLC0zNS41MzAwOCAyOC45MDU0MiwtNjQuNDM1NSA2NC40MzU1LC02NC40MzU1YzM1LjUzMDA4LDAgNjQuNDM1NSwyOC45MDU0MiA2NC40MzU1LDY0LjQzNTVjMCwzNS41MzAwOCAtMjguOTA1NDIsNjQuNDM1NSAtNjQuNDM1NSw2NC40MzU1eiIgZmlsbD0iIzVjOGNlMyI+PC9wYXRoPjxwYXRoIGQ9Ik04NiwyMy4zMDZjMzQuNTY4NzgsMCA2Mi42OTQsMjguMTI1MjIgNjIuNjk0LDYyLjY5NGMwLDM0LjU2ODc4IC0yOC4xMjUyMyw2Mi42OTQgLTYyLjY5NCw2Mi42OTRjLTM0LjU2ODc3LDAgLTYyLjY5NCwtMjguMTI1MjMgLTYyLjY5NCwtNjIuNjk0YzAsLTM0LjU2ODc3IDI4LjEyNTIyLC02Mi42OTQgNjIuNjk0LC02Mi42OTRNODYsMTkuODIzYy0zNi41NDcxMiwwIC02Ni4xNzcsMjkuNjI5ODggLTY2LjE3Nyw2Ni4xNzdjMCwzNi41NDcxMiAyOS42Mjk4OCw2Ni4xNzcgNjYuMTc3LDY2LjE3N2MzNi41NDcxMiwwIDY2LjE3NywtMjkuNjI5ODggNjYuMTc3LC02Ni4xNzdjMCwtMzYuNTQ3MTIgLTI5LjYyOTg4LC02Ni4xNzcgLTY2LjE3NywtNjYuMTc3eiIgZmlsbD0iIzVjOGNlMyI+PC9wYXRoPjxwYXRoIGQ9Ik02NS4wNjUyNiwxMTQuMzIyNDRsLTcuMzg4NDMsLTcuMzg4NjlsNDkuMjU3OTIsLTQ5LjI1NjJsNy4zODg0Myw3LjM4ODY5eiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjxwYXRoIGQ9Ik01Ny42NzY4Myw2NS4wNjYyNGw3LjM4ODQzLC03LjM4ODY5bDQ5LjI1NzkyLDQ5LjI1NjJsLTcuMzg4NDMsNy4zODg2OXoiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48ZyBmaWxsPSIjZmZmZmZmIj48cGF0aCBkPSJNMTE0LjMyMzc2LDY1LjA2NzE3bC03LjM5MDkzLC03LjM5MDkzbC0yMC45MzI4MywyMC45MzYzMWwtMjAuOTMyODMsLTIwLjkzNjMxbC03LjM5MDkzLDcuMzkwOTNsMjAuOTM2MzEsMjAuOTMyODNsLTIwLjkzNjMxLDIwLjkzMjgzbDcuMzkwOTMsNy4zOTA5M2wyMC45MzI4MywtMjAuOTM2MzFsMjAuOTMyODMsMjAuOTM2MzFsNy4zOTA5MywtNy4zOTA5M2wtMjAuOTM2MzEsLTIwLjkzMjgzeiI+PC9wYXRoPjwvZz48L2c+PC9nPjwvc3ZnPg=="
                 />
               </div>
             </Row>
             <Row>
-              <Card.Text style={{ fontWeight: "bold" }}>Dismiss</Card.Text>
+              <Card.Text
+                className="d-flex justify-content-center"
+                style={{ fontWeight: "bold" }}
+              >
+                Dismiss
+              </Card.Text>
             </Row>
           </Col>
-          <Col className="mt-4 learn-more">
+          <Col className="mt-5 learn-more d-flex justify-content-center">
             <Row>
               <Card.Link href="#" style={{ color: "#777" }}>
-                Learn more
+                Learn more <KeyboardArrowDownIcon />
               </Card.Link>
-            </Row>
-            <Row>
-              <div style={{ marginLeft: "2em", color: "#777" }}>
-                <KeyboardArrowDownIcon />
-              </div>
             </Row>
           </Col>
           <Col className="apply">
             <Row>
-              <div>
+              <div className="d-flex justify-content-center">
                 <img
                   className="apply-img"
                   alt=""
@@ -99,7 +103,12 @@ export default function JobPostCard({
                 />
               </div>
             </Row>
-            <Card.Text style={{ fontWeight: "bold" }}>EZ Apply</Card.Text>
+            <Card.Text
+              className="d-flex justify-content-center"
+              style={{ fontWeight: "bold" }}
+            >
+              EZ Apply
+            </Card.Text>
           </Col>
         </Row>
       </Card.Body>

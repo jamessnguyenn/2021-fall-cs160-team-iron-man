@@ -6,7 +6,8 @@ import JobPostCard from "./JobPostCard";
 export default function JobSeekerDashboard() {
   let jobList = [
     {
-      companyLogo: "",
+      companyLogo:
+        "https://www.ibm.com/brand/experience-guides/developer/8f4e3cc2b5d52354a6d43c8edba1e3c9/02_8-bar-reverse.svg",
       jobTitle: "UX Designer",
       company: "IBM",
       city: "San Francisco",
@@ -22,9 +23,10 @@ export default function JobSeekerDashboard() {
     },
 
     {
-      companyLogo: "",
+      companyLogo:
+        "https://seeklogo.com/images/N/netflix-n-logo-0F1ED3EBEB-seeklogo.com.png",
       jobTitle: "Software Engineer",
-      company: "OmniVision Technologies, Inc.",
+      company: "Netflix",
       city: "San Francisco",
       state: "CA",
       timePeriod: "5 days ago",
@@ -38,9 +40,10 @@ export default function JobSeekerDashboard() {
     },
 
     {
-      companyLogo: "",
+      companyLogo:
+        "https://oceansquare.com/wp-content/uploads/2018/04/tesla-logo-500.jpg",
       jobTitle: "Frontend Engineer",
-      company: "IBM",
+      company: "Tesla",
       city: "San Jose",
       state: "CA",
       timePeriod: "1 day ago",
@@ -77,9 +80,6 @@ export default function JobSeekerDashboard() {
           </div>
         </Row>
       </div>
-      {/* <div style={{ backgroundColor: "#F0F0F0" }}>Posting 1</div>
-      <div style={{ backgroundColor: "#F0F0F0" }}>Posting 2</div>
-      <div style={{ backgroundColor: "#F0F0F0" }}>Posting 3</div> */}
     </>
   );
 }

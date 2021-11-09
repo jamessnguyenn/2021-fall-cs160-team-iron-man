@@ -30,3 +30,9 @@
   width: 90px;
   height: 80px;
 }
+
+@media (max-width: 767px) {
+  .job-card {
+    border: none;
+  }
+}

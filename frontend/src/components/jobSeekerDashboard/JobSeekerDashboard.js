@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../jobSeekerNav/JobSeekerNav";
 import { Row } from "react-bootstrap";
 import JobPostCard from "./JobPostCard";
 
 export default function JobSeekerDashboard() {
+  const [currPost, setCurrPost] = useState(1);
+  const [postPerPage] = useState(1);
+
   let jobList = [
     {
       companyLogo:
@@ -56,13 +59,22 @@ export default function JobSeekerDashboard() {
         "Intro: This is a summer 2022 position. Appicants should be rising Junior or rising Senior students pursuing a Bachelor's degree in the areas of Computer Science, Data Science, Computer Engineering, Analytics, Electrical Engineering, Information Technology or similar disciplines.",
     },
   ];
+
+  const indexOfLastPost = currPost * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const currJobList = jobList.slice(indexOfFirstPost, indexOfLastPost);
+
+  const changePost = () => {
+    currPost >= jobList.length ? setCurrPost(1) : setCurrPost(currPost + 1);
+  };
+
   return (
     <>
       <NavBar />
-      <div className="container mt-4 mb-4">
-        <Row className="">
+      <div className="container mt-md-4">
+        <Row>
           <div>
-            {jobList.map((j, i) => {
+            {currJobList.map((j, i) => {
               return (
                 <JobPostCard
                   key={i}
@@ -74,6 +86,7 @@ export default function JobSeekerDashboard() {
                   timePeriod={j.timePeriod}
                   requirement={j.requirement}
                   description={j.description}
+                  changePost={changePost}
                 />
               );
             })}

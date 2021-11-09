@@ -12,10 +12,11 @@ export default function JobPostCard({
   timePeriod,
   requirement,
   description,
+  changePost,
 }) {
   return (
-    <Card className="mb-2">
-      <Card.Body>
+    <Card className="mt-3 job-card" style={{ height: "625px" }}>
+      <Card.Body className="mt-3">
         <Row>
           <div className="d-flex justify-content-end">
             <Button
@@ -31,8 +32,8 @@ export default function JobPostCard({
             </Button>
           </div>
         </Row>
-        <Row className="mb-3">
-          <Col sm={1}>
+        <Row className="mb-3 ms-4">
+          <Col className="mb-3" sm={1}>
             <img alt="" className="logo" src={companyLogo} />
           </Col>
           <Col sm={11}>
@@ -56,18 +57,18 @@ export default function JobPostCard({
             </Row>
           </Col>
         </Row>
-        <Row className="mb-3">
+        <Row className="mt-4 mb-4 ms-5">
           <Card.Text>
             {requirement.map((req) => (
               <li>{req}</li>
             ))}
           </Card.Text>
         </Row>
-        <Row className="mb-5">
+        <Row className="mb-5 ms-4 mx-4">
           <Card.Text>{description}</Card.Text>
         </Row>
-        <Row>
-          <Col className="dismiss">
+        <Row className="pt-md-5">
+          <Col className="dismiss" onClick={() => changePost()}>
             <Row>
               <div className="d-flex justify-content-center">
                 <img
@@ -93,7 +94,7 @@ export default function JobPostCard({
               </Card.Link>
             </Row>
           </Col>
-          <Col className="apply">
+          <Col className="apply" onClick={() => changePost()}>
             <Row>
               <div className="d-flex justify-content-center">
                 <img

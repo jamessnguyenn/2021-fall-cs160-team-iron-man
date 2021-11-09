@@ -115,7 +115,7 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
                 <img src={recruiterDashboard} alt="recruiterDashboard" style={{height: "40vh", marginTop: "30px"}}/>
               </div>: jobPostings.map(jobPosting=>
                 jobPosting.applicants.map(applicant=>
-                  <ApplicantCard city={applicant.address.city} state={applicant.address.state} firstName={applicant.firstName} lastName={applicant.lastName} education={applicant.education} experiences={applicant.experiences}/>
+                  <ApplicantCard street={applicant.address.street} apt={applicant.address.apt} zip={applicant.address.zip} city={applicant.address.city} state={applicant.address.state} firstName={applicant.firstName} lastName={applicant.lastName} education={applicant.education} experiences={applicant.experiences} email={applicant.email} websites={applicant.websites}/>
                 )
               )}
           </Row>

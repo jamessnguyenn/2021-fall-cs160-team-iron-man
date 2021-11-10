@@ -2,17 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import WorkIcon from "@material-ui/icons/Work";
 import { Navbar, Nav } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
 
-export default function NavBar() {
+export default function RecruiterNavBar() {
   return (
     <Navbar className="sticky-top" bg="dark" variant="dark" expand="lg">
-      <Container>
         <NavLink
           exact
           to="/"
           className="navbar-brand"
           activeClassName="activeNav"
+          style={{marginLeft: "40px"}}
         >
           <WorkIcon /> EZ Apply
         </NavLink>
@@ -30,10 +29,11 @@ export default function NavBar() {
             </NavLink>
             <NavLink
               exact
-              to="/recruiter/dashboard"
+              to="/recruiter/addjob"
               className="nav-link"
               activeClassName="activeNav"
               activeStyle={{ color: "white", marginRight:"10px" }}
+              style={{marginRight:"10px"}}
             >
               Create Job
             </NavLink>
@@ -42,13 +42,12 @@ export default function NavBar() {
               to="/recruiter/dashboard"
               className="nav-link"
               activeClassName="activeNav"
-              activeStyle={{ color: "white", background: "#5365FD", paddingLeft: "20px", paddingRight: "20px", borderRadius: "4px"}}
+              style={{ color: "white", background: "#5365FD", paddingLeft: "20px", paddingRight: "20px", borderRadius: "4px", marginRight:"40px"}}
             >
               Sarah Doe
             </NavLink>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   );
 }

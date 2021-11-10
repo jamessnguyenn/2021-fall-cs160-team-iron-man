@@ -9,7 +9,7 @@ import recruiterDashboard from '../../images/recruiterDashboard.svg'
 import { Redirect, useHistory } from "react-router";
 import './RecruiterDashboard.css'
 
-export default function RecruiterLogin() {
+export default function RecruiterDashboard() {
 
   const[jobPostings, setJobPostings] = useState([]);
   const[applicants, setApplicants] = useState(false); // whether there are applicants or not
@@ -69,7 +69,7 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
   return <Redirect to="/recruiter/login"/>
 }
   return (
-    <div style={{ height: "100vh"}}>
+    <div>
       <NavBar />
       <div className="row mx-1">
         <div
@@ -92,15 +92,18 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
             <div
               id="addJob"
               className="btn btn-block btn-sm mb-2"
-              style={{
-                backgroundColor: "black",
+              style={{  
+                textAlign: "center",
+                backgroundColor: "#212529",
                 color: "white",
                 borderRadius: "10px",
                 height: "30px",
                 width: "200px",
               }}
             >
+              <div className="mx-auto"> 
               <AddIcon /> Add a Job
+              </div>
             </div>
           </div>
         </div>

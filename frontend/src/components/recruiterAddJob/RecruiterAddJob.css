@@ -1,0 +1,23 @@
+.post-job-button{
+    height: 57px;
+    width: 55%;
+    left: 469px;
+    top: 484px;
+    border-radius: 9px;
+    background: #4682B4;
+    border-color: transparent;
+}
+.post-job-button:hover {
+    border-color: transparent;
+    background: #4682B4;
+}
+.post-job-button:active:focus, .signup-button:focus{
+    box-shadow:#4683b469 0px 0px 0px 3.23261px;
+    border-color: transparent;
+    background: #4682B4;
+}
+
+.form-link:hover{
+    cursor: pointer;
+    color: #7cafd8;
+}

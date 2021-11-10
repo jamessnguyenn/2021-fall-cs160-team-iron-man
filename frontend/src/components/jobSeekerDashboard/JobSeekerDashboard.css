@@ -31,8 +31,27 @@
   height: 80px;
 }
 
+ /* screen that are 767px or less */
 @media (max-width: 767px) {
   .job-card {
     border: none;
   }
 }
+ /* screen that are 991px or more */
+@media screen and (min-width: 991px){
+  .company-info{
+    padding-left: 32px;
+  }
+}
+
+/* screen that are 1200px or more */
+@media screen and (min-width: 1200px){
+  .company-info{
+    padding-left: 20px;
+  }
+}
+
+
+
+
+

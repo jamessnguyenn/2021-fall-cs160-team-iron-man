@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import axios from 'axios';
 import { Row } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
-import ApplicantCard from './ApplicantCard';
+import ApplicantCard from './applicantCard';
 import recruiterDashboard from '../../images/recruiterDashboard.svg'
 import { Redirect, useHistory } from "react-router";
 import './RecruiterDashboard.css'

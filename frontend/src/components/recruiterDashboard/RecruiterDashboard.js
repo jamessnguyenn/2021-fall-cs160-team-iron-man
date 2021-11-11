@@ -9,7 +9,7 @@ import recruiterDashboard from '../../images/recruiterDashboard.svg'
 import { Redirect, useHistory } from "react-router";
 import './RecruiterDashboard.css'
 
-export default function RecruiterLogin() {
+export default function RecruiterDashboard() {
 
   const[jobPostings, setJobPostings] = useState([]);
   const[applicants, setApplicants] = useState(false); // whether there are applicants or not

@@ -18,6 +18,7 @@ function RecruiterSignUp(){
     const [logoLink, setLogoLink] = useState('');
     const [website, setWebsite] = useState('');
     const [existEmail, setExistEmail] = useState(false);
+    const [descriptionCount, setDescriptionCount] = useState(0);
     const history = useHistory();
 
     const setValue = (e)=>{
@@ -45,6 +46,7 @@ function RecruiterSignUp(){
                 break;
             case 'description':
                 setDescription(e.target.value)
+                setDescriptionCount(e.target.value.length)
                 break;
             case 'logoLink':
                 setLogoLink(e.target.value)
@@ -103,7 +105,7 @@ function RecruiterSignUp(){
                 
                 {firstStep? <StepOneRecruiterSignUp secondStep={secondStep} 
                     setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword} existEmail={existEmail}/>:
-                    <StepTwoRecruiterSignUp setValue={setValue} company={company} description={description} logoLink={logoLink} website={website} signUp={signUp} />
+                    <StepTwoRecruiterSignUp setValue={setValue} company={company} description={description} logoLink={logoLink} website={website} signUp={signUp} descriptionCount={descriptionCount} />
                 }
                 </div>
                 </div>

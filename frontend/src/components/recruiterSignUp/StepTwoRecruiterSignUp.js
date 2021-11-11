@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 
-function StepTwoRecruiterSignUp({setValue, company, description, logoLink, website, signUp}) { 
+function StepTwoRecruiterSignUp({setValue, company, description, descriptionCount, logoLink, website, signUp}) { 
     const [validated, setValidated] = useState(false);
   
     const handleSubmit = (e) => {
@@ -37,6 +37,7 @@ function StepTwoRecruiterSignUp({setValue, company, description, logoLink, websi
                             <Form.Group className="mt-3 mb-3" controlId="formGridDescription">
                                 <Form.Label>Short Description</Form.Label>
                                 <Form.Control required as="textarea" value={description} id="description" minlength="1" maxLength="500" onChange={e => setValue(e)} />
+                                <Form.Text>{descriptionCount}/500</Form.Text>
                                 <Form.Control.Feedback type="invalid">
                                         Please enter a short description about your company.
                                 </Form.Control.Feedback>

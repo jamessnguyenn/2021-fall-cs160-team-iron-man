@@ -147,13 +147,13 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                         <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                             <Form.Group className="mb-3" controlId="formGridAddress1">
                                 <Form.Label>Address</Form.Label>
-                                <Form.Control required placeholder="eg. 1234 Main St" id="address" value={address} onChange={e => setValue(e)} />
+                                <Form.Control required placeholder="eg. 1 Washington Square" id="address" value={address} onChange={e => setValue(e)} />
                                 <Form.Control.Feedback type="invalid">
                                         Please enter your street address.
                                 </Form.Control.Feedback>
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formGridAddress2">
+                            <Form.Group className="mb-3" controlId="formGridApt">
                                 <Form.Label>Apartment, studio, or floor</Form.Label>
                                 <Form.Control placeholder="" value={apt} id="apt" onChange={e => setValue(e)} />
                             </Form.Group>

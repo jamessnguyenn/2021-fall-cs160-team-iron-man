@@ -1,17 +1,16 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import LandingPage from "./components/landing/Landing";
-import JobSeekerCreateAccountPage from "./components/jobSeekerSignup/JobSeekerSignup";
-import JobSeekerLoginPage from "./components/jobSeekerLogin/JobSeekerLogin";
-import AboutPage from "./components/about/About";
-import ContactPage from "./components/contact/Contact";
-import JobSeekerDashboardPage from "./components/jobSeekerDashboard/JobSeekerDashboard";
-
-import RecruiterSignUpPage from "./components/recruiterSignUp/RecruiterSignUp";
-
-import RecruiterLoginPage from "./components/recruiterLogin/RecruiterLogin";
-import RecruiterDashboardPage from "./components/recruiterDashboard/RecruiterDashboard";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import LandingPage from './components/landing/Landing'
+import JobSeekerCreateAccountPage from './components/jobSeekerSignup/JobSeekerSignup'
+import JobSeekerLoginPage from './components/jobSeekerLogin/JobSeekerLogin'
+import AboutPage from './components/about/About'
+import ContactPage from './components/contact/Contact'
+import JobSeekerDashboardPage from './components/jobSeekerDashboard/JobSeekerDashboard'
+import RecruiterSignUpPage from './components/recruiterSignUp/RecruiterSignUp'
+import RecruiterLoginPage from './components/recruiterLogin/RecruiterLogin'
+import RecruiterDashboardPage from './components/recruiterDashboard/RecruiterDashboard'
+import RecruiterAddJob from './components/recruiterAddJob/RecruiterAddJob'
 
 function App() {
   return (
@@ -43,6 +42,9 @@ function App() {
         </Route>
         <Route exact path="/recruiter/dashboard">
           <RecruiterDashboardPage />
+        </Route>
+        <Route exact path='/recruiter/addjob'>
+          <RecruiterAddJob />
         </Route>
       </Switch>
     </Router>

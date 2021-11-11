@@ -42,3 +42,6 @@
     border-color: transparent;
     background: grey;
 }
+.add-job-side-bar{
+    height: calc(100vh - 56px);
+}

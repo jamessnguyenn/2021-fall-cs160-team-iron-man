@@ -245,7 +245,7 @@ export default function RecruiterAddJob(){
                     </div>
                 </div>
                 </div>
-                <div className="col-3 sticky-top side-bar" style={{paddingTop:"4rem", marginLeft:"30px", top:"56px"}}>
+                <div className="col-3 sticky-top add-job-side-bar" style={{paddingTop:"4rem", marginLeft:"30px", top:"56px"}}>
                 <div className="form-link" onClick={executeGenScroll}> 
                     <One/>&nbsp;&nbsp;&nbsp;GENERAL INFORMATION
                 </div>

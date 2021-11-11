@@ -72,14 +72,14 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
   return (
     <div>
       <NavBar />
-      <div className="row mx-1">
+      <div className="row mx-auto">
         <div
           className="col-3 px-5 side-bar sticky-top"
-          style={{ backgroundColor: "#f8f8f8", overflow: "auto", top:"56px"}}
+          style={{overflowY: "scroll", top:"56px"}}
         >
           <div className="mt-5">
             <h3>Jobs Listed</h3>
-            <div>{!loading || response.length >0? "Filter Applicants By Job" : "Get Started by Posting a Job!"}</div>
+            <div>{!loading || response.length >0? "Filter Applicants By Posting" : "Get Started by Posting a Job!"}</div>
             {!loading || response.length >0? <Form.Group className="mb-3 mt-4" controlId="basicCheckbox">
               {response.map(jobPosting=>{
                 return <Form.Check
@@ -124,7 +124,7 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
           {loading && !applicants && <Row>
             <h5 className="d-flex justify-content-center pb-2">No Applicants Currently</h5>
             <div className="d-flex justify-content-center pb-2" style={{ fontSize: '15px', color: '#777', marginRight:"165px", marginTop:"20px" }}>
-                Not Getting any Job Applicants? &nbsp;
+                Not getting any job applicants? &nbsp;
                 <a href='/recruiter/addJob'>Add More Job Postings</a>
               </div>
           </Row>}

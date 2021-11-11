@@ -1,3 +1,18 @@
 .side-bar{
     height: calc(100vh - 56px);
+    background: rgb(248,248,248);
+    background: linear-gradient(0deg, rgba(248,248,248,1) 0%, rgba(227,237,255,1) 100%);
+}
+
+#addJob{
+    text-align: center;
+    background-color: #212529;
+    color: white;
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+}
+
+#addJob:hover{
+    background-color: #2a2e33;
 }

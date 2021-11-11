@@ -1,0 +1,47 @@
+.post-job-button{
+    height: 57px;
+    width: 55%;
+    left: 469px;
+    top: 484px;
+    border-radius: 9px;
+    background: #4682B4;
+    border-color: transparent;
+}
+.post-job-button:hover {
+    border-color: transparent;
+    background: #4682B4;
+}
+.post-job-button:active:focus, .post-job-button:focus{
+    box-shadow:#4683b469 0px 0px 0px 3.23261px;
+    border-color: transparent;
+    background: #4682B4;
+}
+
+.form-link{
+    color: #4682B4;
+}
+.form-link:hover{
+    cursor: pointer;
+    color: #8bacc7;
+}
+#job-description, #requirements, #benefits{
+    min-height: 150px;
+}
+.clear-button{
+    padding:5px;
+    background:grey;
+    border: none;
+    font-size: 10px;
+}
+.clear-button:hover{
+    border-color:transparent;
+    background: grey;
+}
+.clear-button:active:focus, .clear-button:focus{
+    box-shadow:#c2c2c269 0px 0px 0px 3.23261px;
+    border-color: transparent;
+    background: grey;
+}
+.add-job-side-bar{
+    height: calc(100vh - 56px);
+}

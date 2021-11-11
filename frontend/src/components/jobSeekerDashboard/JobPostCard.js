@@ -1,5 +1,6 @@
-import { Card } from "react-bootstrap";
+import React, { useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
+import { Card, Modal } from "react-bootstrap";
 import "./JobSeekerDashboard.css";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
@@ -12,8 +13,20 @@ export default function JobPostCard({
   timePeriod,
   requirement,
   description,
-  changePost,
+  fullRequirements,
+  benefits,
+  businessEmail,
+  salary,
+  changePost
 }) {
+  const [lgShow, setLgShow] = useState(false);
+
+  const handleLgShow = () => {
+    setLgShow(true);
+  };
+
+  const handleClose = () => setLgShow(false);
+
   return (
     <Card className="mt-3 job-card" style={{ height: "625px" }}>
       <Card.Body className="mt-3">
@@ -33,15 +46,15 @@ export default function JobPostCard({
           </div>
         </Row>
         <Row className="mb-3 ms-4">
-          <Col className="mb-3" sm={1}>
+          <Col className="mb-3" xs={12} sm={3} md={2} lg={1}>
             <img alt="" className="logo" src={companyLogo} />
           </Col>
-          <Col sm={11}>
+          <Col xs={12} sm={9} md={10} lg={11} className="company-info">
             <Row>
               <Card.Title className="job-title">{jobTitle}</Card.Title>
             </Row>
             <Row>
-              <Col xs={12} md="auto">
+              <Col xs={12} md="auto" >
                 {company}
               </Col>
               <Col xs={12} md="auto">
@@ -89,9 +102,37 @@ export default function JobPostCard({
           </Col>
           <Col className="mt-5 learn-more d-flex justify-content-center">
             <Row>
-              <Card.Link href="#" style={{ color: "#777" }}>
+              <Card.Link href="#" style={{ color: "#777" }} onClick={handleLgShow}>
                 Learn more <KeyboardArrowDownIcon />
               </Card.Link>
+              <Modal size="lg" show={lgShow} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title ><h2>{jobTitle}</h2></Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                    <div style={{fontSize: "17px", fontWeight: "400"}}> <div style={{fontSize: "20px", fontWeight: "bold"}}>{company}</div> {city}, {state} </div>
+                    <div style={{fontSize: "15px"}}><em>{businessEmail}</em></div>
+                    <div className="mb-4" style={{fontSize: "14px", color: '#777'}}>{timePeriod}</div>
+                    <p><strong>Job Type: </strong><div className="ms-5">{requirement[0]}</div> </p>
+                    <p><strong>Job Description: </strong><div className="ms-5">{description}</div></p>
+                    <p><strong>Full Requirements: </strong><div className="ms-5">{fullRequirements.map((req) => (
+                        <li>{req}</li>
+                      ))}</div>
+                    </p>
+                    <p><div><strong>Benefits: </strong><div className="ms-5">{benefits.map((b) => (
+                        <li>{b}</li>
+                      ))}</div>
+                    </div></p>
+                    <div><strong>Salary: </strong><div className="ms-5">{salary}</div></div>
+                    
+                    </Modal.Body>
+                    
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+              </Modal>
             </Row>
           </Col>
           <Col className="apply" onClick={() => changePost()}>

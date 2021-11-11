@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "d82b2d41-f6d1-4f7f-8e82-7b4cb4af2779",
+		"name": "Recruiter-create-get-delete",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"pm.test(\"Body has user_id\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"user_id\");",
+							"});",
+							"pm.test(\"Body has token\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"token\");",
+							"});",
+							"",
+							"const jsonResponse = pm.response.json();",
+							"pm.collectionVariables.set(\"oauth_token\", jsonResponse.token);",
+							"pm.collectionVariables.set(\"temp_id\", jsonResponse.user_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE3MzI5NDcwNGRmNWE3ODMyYWE4NjFlIiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTYzNDkzNzE1OX0.ro7seYQY1vDG0wAKoy3knp3ofeD6ALuPzxQ9ySscxrI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Franklin\",\n    \"lastName\": \"Roosevelt\",\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\",\n    \"companyName\": \"United States Government\",\n    \"logoLink\": \"htttps:///whitehouse.gov\",\n    \"companyDescription\":\"The office of the president of the United States\",\n    \"companyWebsite\": \"https:/whitehouse.gov/fdr.png\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"pm.test(\"Body matches string: fdr@usa.gov\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"fdr@usa.gov\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE3MzI5NDcwNGRmNWE3ODMyYWE4NjFlIiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTYzNDkzNzE1OX0.ro7seYQY1vDG0wAKoy3knp3ofeD6ALuPzxQ9ySscxrI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Michael\",\n    \"lastName\": \"Jordan\",\n    \"email\": \"mj@airjordan.com\",\n    \"password\": \"password\",\n    \"companyName\": \"Air Jordan LLC\",\n    \"logoLink\": \"htttps:///airjordan.com/shoes.png\",\n    \"companyDescription\": \"We make shoes or something\",\n    \"companyWebsite\": \"https:/airjordan.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Body matches string: Bad Request\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Bad Request\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "oauth_token",
+			"value": ""
+		},
+		{
+			"key": "temp_id",
+			"value": ""
+		}
+	]
+}

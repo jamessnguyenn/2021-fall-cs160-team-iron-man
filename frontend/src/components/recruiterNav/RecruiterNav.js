@@ -1,10 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import WorkIcon from "@material-ui/icons/Work";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, DropdownButton, Dropdown } from "react-bootstrap";
+import axios from 'axios';
+import { Redirect, useHistory } from "react-router";
+import './RecruiterNav.css'
 
 export default function RecruiterNavBar() {
+  const [name, setName] = useState('. . .');
+  const [fontSize, setFontSize] = useState('16px');
+  const history = useHistory();
+  const logout = ()=>{
+    localStorage.clear()
+  }
+
+  
+  useEffect(()=>{
+    axios.get("http://localhost:5000/recruiters/"+localStorage.getItem('user_id'), 
+    {
+      headers:{
+        'Authorization': 'Bearer '+ localStorage.getItem('token')
+      }
+    })
+    .then(res=>{
+      const responseName = res.data.firstName +" "+ res.data.lastName;
+      if(responseName.length <= 12){
+        setName(responseName)
+      }else{
+        const nameLength = responseName.length -12;
+        setFontSize(16-nameLength/2+"px");
+        setName(responseName)
+      }
+    }) 
+    .catch(err=>{
+      if( err.response && (err.response.status === 403 || err.response.status === 401)){
+        localStorage.clear();
+        history.push('/recruiter/login')
+      }
+    })
+  },[history])
+
+  if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
+    return <Redirect to="/recruiter/login"/>
+  }
   return (
+    <>
     <Navbar className="sticky-top" bg="dark" variant="dark" expand="lg">
         <NavLink
           exact
@@ -37,17 +77,18 @@ export default function RecruiterNavBar() {
             >
               Post Job
             </NavLink>
-            <NavLink
-              exact
-              to="/recruiter/dashboard"
-              className="nav-link"
-              activeClassName="activeNav"
-              style={{ color: "white", background: "#5365FD", paddingLeft: "20px", paddingRight: "20px", borderRadius: "4px", marginRight:"40px"}}
+            <DropdownButton
+              align="end"
+              className="profile-name-btn"
+              style={{color:"white", fontSize: fontSize}}
+              title={name}
             >
-              Sarah Doe
-            </NavLink>
+             <Dropdown.Item>Edit Profile</Dropdown.Item>
+             <Dropdown.Item href="/" onClick={logout}>Logout</Dropdown.Item>
+            </DropdownButton>
           </Nav>
         </Navbar.Collapse>
     </Navbar>
+    </>
   );
 }

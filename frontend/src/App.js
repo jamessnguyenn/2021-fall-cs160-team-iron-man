@@ -6,42 +6,41 @@ import JobSeekerCreateAccountPage from './components/jobSeekerSignup/JobSeekerSi
 import JobSeekerLoginPage from './components/jobSeekerLogin/JobSeekerLogin'
 import AboutPage from './components/about/About'
 import ContactPage from './components/contact/Contact'
-import JobSeekerDashboardPage from './components/jobSeekerDashboard/jobSeekerDashboard'
+import JobSeekerDashboardPage from './components/jobSeekerDashboard/JobSeekerDashboard'
 import RecruiterSignUpPage from './components/recruiterSignUp/RecruiterSignUp'
 import RecruiterLoginPage from './components/recruiterLogin/RecruiterLogin'
 import RecruiterDashboardPage from './components/recruiterDashboard/RecruiterDashboard'
 import RecruiterAddJob from './components/recruiterAddJob/RecruiterAddJob'
 
-
-function App () {
+function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route exact path='/jobSeeker/signup'>
-          <JobSeekerCreateAccountPage/>
+        <Route exact path="/jobSeeker/signup">
+          <JobSeekerCreateAccountPage />
         </Route>
-        <Route exact path='/jobSeeker/login'>
+        <Route exact path="/jobSeeker/login">
           <JobSeekerLoginPage />
         </Route>
-        <Route exact path='/about'>
+        <Route exact path="/about">
           <AboutPage />
         </Route>
-        <Route exact path='/contact'>
+        <Route exact path="/contact">
           <ContactPage />
         </Route>
-        <Route exact path='/jobSeeker/dashboard'>
+        <Route exact path="/jobSeeker/dashboard">
           <JobSeekerDashboardPage />
         </Route>
-        <Route exact path='/recruiter/signup'>
+        <Route exact path="/recruiter/signup">
           <RecruiterSignUpPage />
         </Route>
-        <Route exact path='/recruiter/login'>
+        <Route exact path="/recruiter/login">
           <RecruiterLoginPage />
         </Route>
-        <Route exact path='/recruiter/dashboard'>
+        <Route exact path="/recruiter/dashboard">
           <RecruiterDashboardPage />
         </Route>
         <Route exact path='/recruiter/addjob'>
@@ -49,7 +48,7 @@ function App () {
         </Route>
       </Switch>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

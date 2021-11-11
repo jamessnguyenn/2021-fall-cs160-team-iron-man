@@ -31,7 +31,7 @@ export default function ApplicantPage({street, apt, zip, city, state, firstName,
                   </Card.Link>
                   <Modal size="lg" show={lgShow} onHide={handleClose} style={{marginTop:"5vh"}}>
                     <Modal.Header closeButton>
-                      <Modal.Title>{firstName} {lastName} <p style={{fontSize: "14px", color: '#777'}}>{email}</p> </Modal.Title>
+                      <Modal.Title>{firstName} {lastName} <div style={{fontSize: "14px", color: '#777'}}>{email}</div> </Modal.Title>
                     </Modal.Header>
                     <Modal.Body><p><strong>Address</strong><div className="ms-5">{street} {apt}, {city}, {state} {zip}</div> </p>
                     <p><strong>Experiences </strong>{experiences.length === 2 ? <div className="ms-5"> {experiences[1].position + ", " + experiences[1].company +  " (" + experiences[1].startDate + " - " +  experiences[1].endDate + ")"} <p> {experiences[0].position + ", " + experiences[0].company +  " (" + experiences[0].startDate + " - " + experiences[0].endDate + ")"} </p> </div> : experiences.length === 1 ? experiences[0].position + ", " + experiences[0].company +  " (" + experiences[0].startDate + " - " +  experiences[0].endDate + ")" : education? education.fieldOfStudy+" Student": "No Experience" }</p>

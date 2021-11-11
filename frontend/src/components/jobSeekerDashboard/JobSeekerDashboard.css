@@ -1,0 +1,57 @@
+.dismiss:hover {
+  cursor: pointer;
+}
+
+.apply:hover {
+  cursor: pointer;
+}
+
+.dismiss-img {
+  height: 48px;
+  width: 48px;
+  margin-left: 5px;
+}
+
+.apply-img {
+  margin-left: 10px;
+}
+
+.learn-more:hover {
+  cursor: pointer;
+}
+
+.job-title {
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.logo {
+  width: 90px;
+  height: 80px;
+}
+
+ /* screen that are 767px or less */
+@media (max-width: 767px) {
+  .job-card {
+    border: none;
+  }
+}
+ /* screen that are 991px or more */
+@media screen and (min-width: 991px){
+  .company-info{
+    padding-left: 32px;
+  }
+}
+
+/* screen that are 1200px or more */
+@media screen and (min-width: 1200px){
+  .company-info{
+    padding-left: 20px;
+  }
+}
+
+
+
+
+

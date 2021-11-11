@@ -8,7 +8,7 @@ export default function RecruiterNavBar() {
     <Navbar className="sticky-top" bg="dark" variant="dark" expand="lg">
         <NavLink
           exact
-          to="/"
+          to="/recruiter/dashboard"
           className="navbar-brand"
           activeClassName="activeNav"
           style={{marginLeft: "40px"}}
@@ -35,7 +35,7 @@ export default function RecruiterNavBar() {
               activeStyle={{ color: "white", marginRight:"10px" }}
               style={{marginRight:"10px"}}
             >
-              Create Job
+              Post Job
             </NavLink>
             <NavLink
               exact

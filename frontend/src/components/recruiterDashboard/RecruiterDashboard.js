@@ -6,6 +6,7 @@ import { Row } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
 import ApplicantCard from './applicantCard';
 import recruiterDashboard from '../../images/recruiterDashboard.svg'
+import recruiterDashboard2 from '../../images/recruiterDashboard2.svg'
 import { Redirect, useHistory } from "react-router";
 import './RecruiterDashboard.css'
 
@@ -73,12 +74,13 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
       <NavBar />
       <div className="row mx-1">
         <div
-          className="col-3 px-4 side-bar sticky-top"
+          className="col-3 px-5 side-bar sticky-top"
           style={{ backgroundColor: "#f8f8f8", overflow: "auto", top:"56px"}}
         >
           <div className="mt-5">
             <h3>Jobs Listed</h3>
-            <Form.Group className="mb-3 mt-4" controlId="basicCheckbox">
+            <div>{!loading || response.length >0? "Filter Applicants By Job" : "Get Started by Posting a Job!"}</div>
+            {!loading || response.length >0? <Form.Group className="mb-3 mt-4" controlId="basicCheckbox">
               {response.map(jobPosting=>{
                 return <Form.Check
                 style={{ fontSize: "15px" }}
@@ -88,21 +90,18 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
                 onChange={handleCheckBoxChange}
               ></Form.Check>
               })}
-            </Form.Group>
+            </Form.Group> : <div className="mt-3 mb-3" style={{fontSize: "10px"}}>
+            <img src={recruiterDashboard2} alt="recruiterDashboard" style={{height: "20vh", marginTop: "30px", marginLeft:"3vw"}}/>
+            <div className="mt-4" style={{ fontSize: '15px', color: '#777'}}>
+              </div>
+              </div>}
             <div
               id="addJob"
               className="btn btn-block btn-sm mb-2"
-              style={{  
-                textAlign: "center",
-                backgroundColor: "#212529",
-                color: "white",
-                borderRadius: "10px",
-                height: "30px",
-                width: "200px",
-              }}
+              onClick={e=>history.push('/recruiter/addJob')}
             >
-              <div className="mx-auto"> 
-              <AddIcon /> Add a Job
+              <div style={{height:"100%"}}> 
+              <AddIcon style={{paddingBottom: "2px"}} /> &nbsp;{!loading || response.length >0? "Add a Job" : "Get Started"}
               </div>
             </div>
           </div>

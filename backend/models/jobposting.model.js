@@ -15,7 +15,7 @@ const jobpostingSchema = new mongoose.Schema({
     type: {
         type: [String],
         required: true,
-        enum: ["full-time", "work-from-home", "part-time"]
+        enum: ["Full Time", "Work From Home", "Part Time", "Contract", "Hourly"]
     },
     location: {
         city: {

@@ -115,7 +115,7 @@ function JobSeekerSignUp(){
             history.push('/jobseeker/dashboard')
         })
         .catch(err=>{
-            if(err.response.status === 420){
+            if(err.response && err.response.status === 420){
                 setFirstStep(true)
                 setExistEmail(true)
             }}

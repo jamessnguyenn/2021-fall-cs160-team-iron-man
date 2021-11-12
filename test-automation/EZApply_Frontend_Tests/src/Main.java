@@ -20,20 +20,29 @@ public class Main {
         options.addArguments("--no-sandbox");               // Bypass OS security model
         WebDriver driver = new ChromeDriver(options);
 
+        invalidRecruiterTest(driver);
+        invalidJobseekerTest(driver);
+        recruiterLoginTest(driver);
+        jobseekerLoginTest(driver);
+
+        /*
         if (invalidUserTest(driver) != 0)
             return;
         if(recruiterLoginTest(driver) != 0)
             return;
+        if(jobseekerLoginTest(driver) != 0)
+            return;
+         */
         driver.quit();
     }
 
-    private static int invalidUserTest(WebDriver driver) {
+    private static int invalidRecruiterTest(WebDriver driver) {
         driver.get("http://localhost:3000/");
-        WebElement element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/div[1]/button"));
+        WebElement element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/div[2]/button"));
         element.click();
 
 
-        //Invalid user test (user doesn't exist)
+        //Invalid recruiter test (recruiter doesn't exist)
         try {
             element = driver.findElement(By.xpath("//*[@id=\"email\"]"));        //Find input field
             element.sendKeys("test@yahoo.com");                    //Input an invalid email
@@ -51,14 +60,49 @@ public class Main {
             try {
                 element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/form/div[2]/div"));
             } catch (Exception e) {
-                throw new Exception("FAIL: Invalid User Test");
+                throw new Exception("FAIL: Invalid Recruiter Test");
             }
         } catch (Exception e) {
             System.out.println(e);
             return -1;
         }
 
-        System.out.println("PASS: Invalid User Test");
+        System.out.println("PASS: Invalid Recruiter Test");
+        return 0;
+    }
+
+    private static int invalidJobseekerTest(WebDriver driver) {
+        driver.get("http://localhost:3000/");
+        WebElement element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/div[1]/button"));
+        element.click();
+
+
+        //Invalid jobseeker test (jobseeker doesn't exist)
+        try {
+            element = driver.findElement(By.xpath("//*[@id=\"email\"]"));        //Find input field
+            element.sendKeys("test@yahoo.com");                    //Input an invalid email
+            element = driver.findElement(By.xpath("//*[@id=\"password\"]"));    //Find password field
+            element.sendKeys("password");                         //Input some password
+            element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/form/div[3]/button"));
+            element.click();
+
+            //Wait 2 seconds for the page to update
+            long end = System.currentTimeMillis() + 2000;
+            while (System.currentTimeMillis() < end) {
+            }
+
+            //Another try/catch to throw a more useful exception
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/form/div[2]/div"));
+            } catch (Exception e) {
+                throw new Exception("FAIL: Invalid Jobseeker Test");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return -1;
+        }
+
+        System.out.println("PASS: Invalid Jobseeker Test");
         return 0;
     }
 
@@ -66,6 +110,7 @@ public class Main {
         driver.get("http://localhost:3000/");
         WebElement element;
         try {
+            //Login as recruiter
             try {
                 element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/div[2]/button"));
                 element.click();
@@ -75,14 +120,15 @@ public class Main {
                 element.sendKeys("password");
                 element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/form/div[3]/button"));     //Find submit button
                 element.click();                                                                                                //Click submit
+                long end = System.currentTimeMillis() + 2000;       //Wait 2 sec for page to load
+                while (System.currentTimeMillis() < end) {
+                }
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/h3")); //Check for dashboard element, if not found login failed
             } catch(Exception e) {
                 throw new Exception("FAIL: Recruiter Login Test -- Login failed");
             }
 
-            long end = System.currentTimeMillis() + 2000;       //Wait 2 sec for page to load
-            while (System.currentTimeMillis() < end) {
-            }
-
+            //Click job filter
             try {
                 element = driver.findElement(By.xpath("//*[@id=\"618d577d6948161cbb5c6a44\"]"));   //Find job filter
                 element.click();                                                                    //Click job filter
@@ -90,6 +136,7 @@ public class Main {
                 throw new Exception("FAIL: Recruiter Login Test -- click filter failed");
             }
 
+            //Click learn more
             try {
                 element = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div[2]/div/div/a"));  //Find "learn more"
                 element.click();                                                                            //Click "learn more"
@@ -97,6 +144,7 @@ public class Main {
                 throw new Exception("FAIL: Recruiter Login Test -- click \"Learn more\" failed");
             }
 
+            //Check for email of applicant
             try {
                 element = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/div"));  //Find email of applicant
             } catch(Exception e) {
@@ -104,7 +152,6 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println(e);
-            driver.quit();
             return -1;
         }
 
@@ -115,4 +162,54 @@ public class Main {
         return 0;
     }
 
+    private static int jobseekerLoginTest(WebDriver driver) {
+        driver.get("http://localhost:3000/");
+        WebElement element;
+
+        try {
+            //Login jobseeker
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/div[1]/button"));
+                element.click();
+                element = driver.findElement(By.xpath("//*[@id=\"email\"]"));       //Find user field
+                element.sendKeys("seeker@email.com");
+                element = driver.findElement(By.xpath("//*[@id=\"password\"]"));    //Find password field
+                element.sendKeys("password");
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/form/div[3]/button"));     //Find submit button
+                element.click();                                                                                                //Click submit
+                long end = System.currentTimeMillis() + 1000;       //Wait 1 second for page to fully load
+                while (System.currentTimeMillis() < end) {
+                }
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[3]/div/div/img")); //Check for dashboard element, if not found login failed
+            } catch (Exception e) {
+                throw new Exception("FAIL: Jobseeker Login Test -- Login failed");
+            }
+
+            //Click the Learn more
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[2]/div/a"));
+                element.click();
+            }catch(Exception e){
+                throw new Exception("FAIL: Jobseeker Login Test -- click \"Learn more\" failed");
+            }
+
+            //Check learn more job title
+            try {
+                element = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/h2"));
+            }catch(Exception e){
+                throw new Exception("FAIL: Jobseeker Login Test -- Unable to find job title in \"Learn more\"");
+            }
+
+        }catch(Exception e)
+        {
+            System.out.println(e);
+            return -1;
+        }
+
+        long end = System.currentTimeMillis() + 1000;       //Wait 1 second before closing
+        while (System.currentTimeMillis() < end) {
+        }
+        System.out.println("PASS: Jobseeker Login Test");
+        return 0;
+    }
 }

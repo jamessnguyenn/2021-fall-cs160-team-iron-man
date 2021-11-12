@@ -8,7 +8,7 @@ import './RecruiterNav.css'
 
 export default function RecruiterNavBar() {
   const [name, setName] = useState('. . .');
-  const [fontSize, setFontSize] = useState('16px');
+  const [fontSize, setFontSize] = useState("16px");
   const history = useHistory();
   const logout = ()=>{
     localStorage.clear()
@@ -28,7 +28,7 @@ export default function RecruiterNavBar() {
         setName(responseName)
       }else{
         const nameLength = responseName.length -12;
-        setFontSize(16-nameLength/2+"px");
+        setFontSize(16-(nameLength/2)+"px");
         setName(responseName)
       }
     }) 
@@ -80,10 +80,9 @@ export default function RecruiterNavBar() {
             <DropdownButton
               align="end"
               className="profile-name-btn"
-              style={{color:"white", fontSize: fontSize}}
-              title={name}
+              title={<div style={{fontSize: fontSize}}>{name}</div>}
             >
-             <Dropdown.Item>Edit Profile</Dropdown.Item>
+             <Dropdown.Item>Edit Profile</Dropdown.Item> {/*todo*/}
              <Dropdown.Item href="/" onClick={logout}>Logout</Dropdown.Item>
             </DropdownButton>
           </Nav>

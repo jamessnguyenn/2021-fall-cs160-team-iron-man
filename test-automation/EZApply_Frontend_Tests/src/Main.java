@@ -20,19 +20,12 @@ public class Main {
         options.addArguments("--no-sandbox");               // Bypass OS security model
         WebDriver driver = new ChromeDriver(options);
 
+        System.out.println("\nEZ Apply Frontend Test Results");
+        System.out.println("------------------------------");
         invalidRecruiterTest(driver);
         invalidJobseekerTest(driver);
         recruiterLoginTest(driver);
         jobseekerLoginTest(driver);
-
-        /*
-        if (invalidUserTest(driver) != 0)
-            return;
-        if(recruiterLoginTest(driver) != 0)
-            return;
-        if(jobseekerLoginTest(driver) != 0)
-            return;
-         */
         driver.quit();
     }
 

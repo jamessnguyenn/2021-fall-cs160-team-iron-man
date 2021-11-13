@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "ef7fca5b-3884-4d30-9856-130c776c420b",
+		"name": "Jobposting-create-addSeeker-getJobposting-deleteJobposting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE JOBPOSTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZWZlMmU3OWY0NGUxNTIyZGM5NjI4Iiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTYzNjc2MTEzNH0.CKisMJTgTYiupgpPRyMBStafQthXdFvodEsuaBxb-7o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"location\": {\n            \"city\": \"Fremont\",\n            \"state\": \"California\"\n        },\n        \"position\": \"Computer Engineer\",\n        \"type\": [\n            \"Full Time\"\n        ],\n        \"description\": \"Computer engineering description\",\n        \"requirements\": \"Degree\",\n        \"benefits\": \"No\",\n        \"businessEmail\": \"compEngi@email.com\",\n        \"salary\": 173000\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/jobpostings/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET JOBPOSTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string compEngi@email.com\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"compEngi@email.com\");",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"job_id\", data[data.length-1]._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZDU4NWI2OTQ4MTYxY2JiNWM2YTQ4Iiwicm9sZSI6ImpvYnNlZWtlciIsImlhdCI6MTYzNjY1MzE0N30.aJiw7icaock4WAJWgOeBRBQTlzRXLKgbBQ-_Ivf0sUg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/jobpostings/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APPLY TO JOBPOSTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZDU4NWI2OTQ4MTYxY2JiNWM2YTQ4Iiwicm9sZSI6ImpvYnNlZWtlciIsImlhdCI6MTYzNjY1MzUyMX0.hUsjm4WtFBn-2CC4mQDs2x3L8yyKsYVvz7HQqbYPmCs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"618d585b6948161cbb5c6a48\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/jobpostings/{{job_id}}/applicants",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings",
+						"{{job_id}}",
+						"applicants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TEST FOR APPLICANT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string, job \" + pm.collectionVariables.get(\"job_id\") + \" exists\", function () {",
+							"    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"job_id\"));",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var element = data[data.length-1].applicants;",
+							"pm.test('Job listing has applicant 618d585b6948161cbb5c6a48', function() {",
+							"    pm.expect(element).to.include(\"618d585b6948161cbb5c6a48\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZWZlMmU3OWY0NGUxNTIyZGM5NjI4Iiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTYzNjc2MTEzNH0.CKisMJTgTYiupgpPRyMBStafQthXdFvodEsuaBxb-7o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/jobpostings/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE JOBPOSTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZWZlMmU3OWY0NGUxNTIyZGM5NjI4Iiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTYzNjc2MTEzNH0.CKisMJTgTYiupgpPRyMBStafQthXdFvodEsuaBxb-7o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/jobpostings/{{job_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings",
+						"{{job_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CHECK FOR DELETION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Jobposting \" + pm.collectionVariables.get(\"job_id\") + \" not found\", function () {",
+							"    pm.expect(pm.response.text()).to.not.include(pm.collectionVariables.get(\"job_id\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZWZlMmU3OWY0NGUxNTIyZGM5NjI4Iiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTYzNjc2MTEzNH0.CKisMJTgTYiupgpPRyMBStafQthXdFvodEsuaBxb-7o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/jobpostings/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "job_id",
+			"value": ""
+		}
+	]
+}

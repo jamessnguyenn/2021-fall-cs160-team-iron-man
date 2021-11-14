@@ -12,17 +12,18 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
+							"const jsonResponse = pm.response.json();",
+							"",
+							"pm.test(\"Successful POST request: Recruiter created\", function () {",
 							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
 							"});",
-							"pm.test(\"Body has user_id\", function () {",
+							"pm.test(\"Body has user_id: \" + jsonResponse.user_id, function () {",
 							"    pm.expect(pm.response.text()).to.include(\"user_id\");",
 							"});",
-							"pm.test(\"Body has token\", function () {",
+							"pm.test(\"Body has token: \" + jsonResponse.token, function () {",
 							"    pm.expect(pm.response.text()).to.include(\"token\");",
 							"});",
 							"",
-							"const jsonResponse = pm.response.json();",
 							"pm.collectionVariables.set(\"oauth_token\", jsonResponse.token);",
 							"pm.collectionVariables.set(\"temp_id\", jsonResponse.user_id);"
 						],
@@ -63,7 +64,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" found\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
@@ -105,7 +106,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Job created successfully\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
 						],
@@ -152,7 +153,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" deleted successfully\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
 						],
@@ -190,7 +191,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 400\", function () {",
+							"pm.test(\"Status code is 400: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" not found\", function () {",
 							"    pm.response.to.have.status(400);",
 							"});",
 							"",
@@ -244,7 +245,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Body matches string\", function () {",
+							"pm.test(\"Body does not matches string: mechJob@email.com\", function () {",
 							"    pm.expect(pm.response.text()).to.not.include(\"mechJob@email.com\");",
 							"});"
 						],

@@ -12,17 +12,18 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
+							"const jsonResponse = pm.response.json();",
+							"",
+							"pm.test(\"Successful POST request: Recruiter \" + jsonResponse.user_id + \" created successfully\", function () {",
 							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
 							"});",
-							"pm.test(\"Body has user_id\", function () {",
+							"pm.test(\"Body has user_id: \" + jsonResponse.user_id, function () {",
 							"    pm.expect(pm.response.text()).to.include(\"user_id\");",
 							"});",
-							"pm.test(\"Body has token\", function () {",
+							"pm.test(\"Body has token: \" + jsonResponse.token, function () {",
 							"    pm.expect(pm.response.text()).to.include(\"token\");",
 							"});",
 							"",
-							"const jsonResponse = pm.response.json();",
 							"pm.collectionVariables.set(\"oauth_token\", jsonResponse.token);",
 							"pm.collectionVariables.set(\"temp_id\", jsonResponse.user_id);"
 						],
@@ -64,7 +65,7 @@
 					"script": {
 						"exec": [
 							"",
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Get Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" successful\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
@@ -110,7 +111,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" updated successfully\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
 						],
@@ -157,7 +158,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Get Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" successful\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
@@ -211,7 +212,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Delete Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" successful\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
 						],
@@ -249,7 +250,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 400\", function () {",
+							"pm.test(\"Status code is 400: Unable to get Recruiter \" + pm.collectionVariables.get(\"temp_id\"), function () {",
 							"    pm.response.to.have.status(400);",
 							"});"
 						],

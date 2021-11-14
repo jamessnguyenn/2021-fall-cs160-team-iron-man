@@ -12,7 +12,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Successful Job Creation\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							""
@@ -101,7 +101,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Successful Job Apply by id: 618d585b6948161cbb5c6a48\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
 						],
@@ -193,7 +193,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
+							"pm.test(\"Status code is 200: Job deleted successfully\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
 						],

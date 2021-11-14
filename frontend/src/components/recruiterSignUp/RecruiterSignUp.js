@@ -101,7 +101,7 @@ function RecruiterSignUp(){
                 <a href='/recruiter/login'  style={{color: "#add8e6"}}>Sign into your account</a>
               </div>
                     </div>
-                <div className="col-4 mx-auto">
+                <div className="col-5 mx-auto">
                 
                 {firstStep? <StepOneRecruiterSignUp secondStep={secondStep} 
                     setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword} existEmail={existEmail}/>:

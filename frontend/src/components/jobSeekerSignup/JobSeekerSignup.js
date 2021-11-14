@@ -241,7 +241,7 @@ function JobSeekerSignUp(){
                 <a href='/jobSeeker/login'  style={{color: "#add8e6"}}>Sign into your account</a>
               </div>
                     </div>
-                <div className="col-4 mx-auto">
+                <div className="col-5 mx-auto">
                 {firstStep? <StepOneJobSeekerSignUp secondStep={secondStep} 
                     setValue={setValue} firstName={firstName} lastName={lastName} email={email} password={password} confirmPassword={confirmPassword} existEmail={existEmail}/>:
                     <StepTwoJobSeekerSignUp setValue={setValue} address={address} apt={apt} city={city} state={state}

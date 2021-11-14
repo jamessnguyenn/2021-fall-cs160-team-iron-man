@@ -43,8 +43,10 @@ function StepTwoRecruiterSignUp({setValue, company, description, descriptionCoun
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group className="mb-4 mt-4" controlId="formGridLogo">
-                                <Form.Label>Company Logo Link</Form.Label>
-                                <Form.Control required className="mb-2" type="url" id="logoLink" pattern="(https?:\/\/.*\.(?:png|jpg))" value={logoLink} onChange={e => setValue(e)} />
+                                <Form.Label>Link to Company Logo</Form.Label>
+                                <Form.Text>&nbsp; &nbsp;(Must have same width and height)</Form.Text>
+                                <Form.Control required  type="url" id="logoLink" pattern="(https?:\/\/.*\.(?:png|jpg))" value={logoLink} onChange={e => setValue(e)} />
+                                <Form.Text style={{fontSize: "10px"}}>Invalid Images will be use our default logo</Form.Text>
                                 <Form.Control.Feedback type="invalid">
                                         Please enter a valid link to your company logo.
                                 </Form.Control.Feedback>
@@ -57,7 +59,6 @@ function StepTwoRecruiterSignUp({setValue, company, description, descriptionCoun
                                         Please enter a valid link to your company website.
                                 </Form.Control.Feedback>
                             </Form.Group>
-
                             <div className="agreement mb-4 mt-3" style={{fontSize: '12px', color: '#777'}}>
                                 By clicking Join Now, you are agreeing to our Terms, Data Policy, and Cookies Policy.
                             </div>

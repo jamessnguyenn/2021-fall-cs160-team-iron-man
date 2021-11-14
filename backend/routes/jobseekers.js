@@ -63,6 +63,20 @@ router.route('/auth').post((req, res)=>{
         })
 })
 
+router.route('/:id').get(authenticateToken, (req, res) => {
+    JobSeeker.findById(req.params.id, '-hashedPassword')
+    .then(jobseeker => {
+        if(!jobseeker) {
+            return res.status(400).json({error: "User does not exist"});
+        }
+        if(req.user.user_id !== req.params.id) {
+            return res.status(403).json({error: "Unathorized to view jobseeker"});
+        }
+        res.status(200).json(jobseeker)
+    })
+    .catch(err => res.status(400).json(err))
+})
+
 //ONLY FOR TESTING, WILL BE DELETED 
 router.route('/').get((req, res)=>{
     JobSeeker.find({})

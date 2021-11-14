@@ -97,11 +97,10 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
               </div>}
             <div
               id="addJob"
-              className="btn btn-block btn-sm mb-2"
               onClick={e=>history.push('/recruiter/addJob')}
             >
-              <div style={{height:"100%"}}> 
-              <AddIcon style={{paddingBottom: "2px"}} /> &nbsp;{!loading || response.length >0? "Add a Job" : "Get Started"}
+              <div style={{lineHeight:"35px", verticalAlign: "true"}}> 
+              <AddIcon style={{paddingBottom: "2px"}} />{!loading || response.length >0? "Add a Job" : "Get Started"}
               </div>
             </div>
           </div>

@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "1e8c9a58-145e-4497-b99a-aefc4d37421e",
+		"name": "Recruiter-create-getSpecific-update-getSpecific-delete-getSpecific",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonResponse = pm.response.json();",
+							"",
+							"pm.test(\"Successful POST request: Recruiter \" + jsonResponse.user_id + \" created successfully\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"pm.test(\"Body has user_id: \" + jsonResponse.user_id, function () {",
+							"    pm.expect(pm.response.text()).to.include(\"user_id\");",
+							"});",
+							"pm.test(\"Body has token: \" + jsonResponse.token, function () {",
+							"    pm.expect(pm.response.text()).to.include(\"token\");",
+							"});",
+							"",
+							"pm.collectionVariables.set(\"oauth_token\", jsonResponse.token);",
+							"pm.collectionVariables.set(\"temp_id\", jsonResponse.user_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Franklin\",\n    \"lastName\": \"Roosevelt\",\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\",\n    \"companyName\": \"United States Government\",\n    \"logoLink\": \"htttps:///whitehouse.gov\",\n    \"companyDescription\":\"The office of the president of the United States\",\n    \"companyWebsite\": \"https:/whitehouse.gov/fdr.png\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200: Get Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" successful\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string: Franklin\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Franklin\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string: Roosevelt\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Roosevelt\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" updated successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Harry\",\n    \"lastName\": \"Truman\",\n    \"companyName\": \"Truman Administration\",\n    \"logoLink\": \"htttps:///whitehouse.gov/truman.png\",\n    \"companyDescription\":\"The office of Harry Truman\",\n    \"companyWebsite\": \"https:/whitehouse.gov/\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: Get Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" successful\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string: Harry\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Harry\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string: Truman\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Truman\");",
+							"});",
+							"",
+							"pm.test(\"Body does not matches string: Franklin\", function () {",
+							"    pm.expect(pm.response.text()).to.not.include(\"Franklin\");",
+							"});",
+							"",
+							"pm.test(\"Body does not matches string: Roosevelt\", function () {",
+							"    pm.expect(pm.response.text()).to.not.include(\"Roosevelt\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: Delete Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" successful\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400: Unable to get Recruiter \" + pm.collectionVariables.get(\"temp_id\"), function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "oauth_token",
+			"value": ""
+		},
+		{
+			"key": "temp_id",
+			"value": ""
+		}
+	]
+}

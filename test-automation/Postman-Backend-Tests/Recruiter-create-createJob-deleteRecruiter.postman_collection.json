@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "6d7a896a-676f-42ec-9ae0-3eaa661d1e86",
+		"name": "Recruiter-create-createJob-deleteRecruiter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE RECRUITER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonResponse = pm.response.json();",
+							"",
+							"pm.test(\"Successful POST request: Recruiter created\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"pm.test(\"Body has user_id: \" + jsonResponse.user_id, function () {",
+							"    pm.expect(pm.response.text()).to.include(\"user_id\");",
+							"});",
+							"pm.test(\"Body has token: \" + jsonResponse.token, function () {",
+							"    pm.expect(pm.response.text()).to.include(\"token\");",
+							"});",
+							"",
+							"pm.collectionVariables.set(\"oauth_token\", jsonResponse.token);",
+							"pm.collectionVariables.set(\"temp_id\", jsonResponse.user_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Franklin\",\n    \"lastName\": \"Roosevelt\",\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\",\n    \"companyName\": \"United States Government\",\n    \"logoLink\": \"htttps:///whitehouse.gov\",\n    \"companyDescription\":\"The office of the president of the United States\",\n    \"companyWebsite\": \"https:/whitehouse.gov/fdr.png\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC RECRUITER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" found\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string: fdr@usa.gov\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"fdr@usa.gov\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE JOB LISTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: Job created successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"location\": {\n            \"city\": \"Seattle\",\n            \"state\": \"Washington\"\n        },\n        \"position\": \"Mechanical Engineer\",\n        \"type\": [\n            \"Part Time\",\n            \"Contract\"\n        ],\n        \"description\": \"Mechanical engineering description\",\n        \"requirements\": \"Degree\",\n        \"benefits\": \"No\",\n        \"businessEmail\": \"mechJob@email.com\",\n        \"salary\": 73000\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/jobpostings/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE RECRUITER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" deleted successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC RECRUITER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400: Recruiter \" + pm.collectionVariables.get(\"temp_id\") + \" not found\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Body matches string: Bad Request\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Bad Request\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/recruiters/{{temp_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recruiters",
+						"{{temp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET JOB LISTINGS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body does not matches string: mechJob@email.com\", function () {",
+							"    pm.expect(pm.response.text()).to.not.include(\"mechJob@email.com\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZDU4NWI2OTQ4MTYxY2JiNWM2YTQ4Iiwicm9sZSI6ImpvYnNlZWtlciIsImlhdCI6MTYzNjY1MzE0N30.aJiw7icaock4WAJWgOeBRBQTlzRXLKgbBQ-_Ivf0sUg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/jobpostings",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"jobpostings"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE4ZDU4NWI2OTQ4MTYxY2JiNWM2YTQ4Iiwicm9sZSI6ImpvYnNlZWtlciIsImlhdCI6MTYzNjY1MzE0N30.aJiw7icaock4WAJWgOeBRBQTlzRXLKgbBQ-_Ivf0sUg",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "oauth_token",
+			"value": ""
+		},
+		{
+			"key": "temp_id",
+			"value": ""
+		}
+	]
+}

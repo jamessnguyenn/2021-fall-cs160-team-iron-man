@@ -22,10 +22,14 @@ public class Main {
 
         System.out.println("\nEZ Apply Frontend Test Results");
         System.out.println("------------------------------");
+
         invalidRecruiterTest(driver, "test@yahoo.com", "password");
         invalidJobseekerTest(driver, "test@yahoo.com", "password");
-        recruiterLoginTest(driver, "recruiter@email.com", "password");
-        jobseekerLoginTest(driver, "seeker@email.com", "password");
+        recruiterFrontendTest(driver, "recruiter@email.com", "password");
+        jobseekerFrontendTest(driver, "seeker@email.com", "password");
+        jobseekerLogoutTest(driver, "seeker@email.com", "password");
+        recruiterLogoutTest(driver,"recruiter@email.com", "password");
+
         driver.quit();
     }
 
@@ -99,7 +103,7 @@ public class Main {
         return 0;
     }
 
-    private static int recruiterLoginTest(WebDriver driver, String username, String password) {
+    private static int recruiterFrontendTest(WebDriver driver, String username, String password) {
         driver.get("http://localhost:3000/");
         WebElement element;
         try {
@@ -117,31 +121,31 @@ public class Main {
                 while (System.currentTimeMillis() < end) {
                 }
                 element = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/h3")); //Check for dashboard element, if not found login failed
-            } catch(Exception e) {
-                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Login Test -- Login failed");
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Frontend Test -- Login failed");
             }
 
             //Click job filter
             try {
                 element = driver.findElement(By.xpath("//*[@id=\"618d577d6948161cbb5c6a44\"]"));   //Find job filter
                 element.click();                                                                    //Click job filter
-            } catch(Exception e) {
-                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Login Test -- click filter failed");
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Frontend Test -- click filter failed");
             }
 
             //Click learn more
             try {
                 element = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div[2]/div/div/a"));  //Find "learn more"
                 element.click();                                                                            //Click "learn more"
-            } catch(Exception e) {
-                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Login Test -- click \"Learn more\" failed");
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Frontend Test -- click \"Learn more\" failed");
             }
 
             //Check for email of applicant
             try {
                 element = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/div"));  //Find email of applicant
-            } catch(Exception e) {
-                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Login Test -- could not find applicant email");
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Frontend Test -- could not find applicant email");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -151,11 +155,61 @@ public class Main {
         long end = System.currentTimeMillis() + 1000;       //Wait 1 second before closing
         while (System.currentTimeMillis() < end) {
         }
-        System.out.println("PASS for (" + username + ", " + password + "): Recruiter Login/dashboard/filter/\"learn more\" Test");
+        System.out.println("PASS for (" + username + ", " + password + "): Recruiter Frontend Test (login/filter/talent \"Learn more\")");
         return 0;
     }
 
-    private static int jobseekerLoginTest(WebDriver driver, String username, String password) {
+    private static int jobseekerFrontendTest(WebDriver driver, String username, String password) {
+        driver.get("http://localhost:3000/");
+        WebElement element;
+
+        try {
+            //Login jobseeker
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/div[1]/button"));
+                element.click();
+                element = driver.findElement(By.xpath("//*[@id=\"email\"]"));       //Find user field
+                element.sendKeys(username);
+                element = driver.findElement(By.xpath("//*[@id=\"password\"]"));    //Find password field
+                element.sendKeys(password);
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/form/div[3]/button"));     //Find submit button
+                element.click();                                                                                                //Click submit
+                long end = System.currentTimeMillis() + 1000;       //Wait 1 second for page to fully load
+                while (System.currentTimeMillis() < end) {
+                }
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[3]/div/div/img")); //Check for dashboard element, if not found login failed
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Frontend Test -- Login failed");
+            }
+
+            //Click the Learn more
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[2]/div/a"));
+                element.click();
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Frontend Test -- click \"Learn more\" failed");
+            }
+
+            //Check learn more job title
+            try {
+                element = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/h2"));
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Frontend Test -- Unable to find job title in \"Learn more\"");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return -1;
+        }
+
+        long end = System.currentTimeMillis() + 1000;       //Wait 1 second before closing
+        while (System.currentTimeMillis() < end) {
+        }
+        System.out.println("PASS for (" + username + ", " + password + "): Jobseeker Frontend Test (Login/dashboard/Job \"learn more\")");
+        return 0;
+    }
+
+    private static int jobseekerLogoutTest(WebDriver driver, String username, String password) {
         driver.get("http://localhost:3000/");
         WebElement element;
 
@@ -178,23 +232,33 @@ public class Main {
                 throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Login Test -- Login failed");
             }
 
-            //Click the Learn more
+            //Click name for dropdown menu
             try {
-                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[2]/div/a"));
+                element = driver.findElement(By.xpath("/html/body/div/nav/div/div/div/button/div"));
                 element.click();
-            }catch(Exception e){
-                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Login Test -- click \"Learn more\" failed");
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Logout Test -- Name button click failed");
             }
 
-            //Check learn more job title
+            //Click logout button
             try {
-                element = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/h2"));
-            }catch(Exception e){
-                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Login Test -- Unable to find job title in \"Learn more\"");
+                element = driver.findElement(By.xpath("/html/body/div/nav/div/div/div/div/a[2]"));
+                element.click();
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Logout Test -- Logout button click failed");
             }
 
-        }catch(Exception e)
-        {
+            //Return to landing page
+            try {
+                long end = System.currentTimeMillis() + 1000;       //Wait 1 second for page to fully load
+                while (System.currentTimeMillis() < end) {
+                }
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[1]/h1"));
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Jobseeker Logout Test -- Did not return to landing page");
+            }
+
+        } catch (Exception e) {
             System.out.println(e);
             return -1;
         }
@@ -202,7 +266,68 @@ public class Main {
         long end = System.currentTimeMillis() + 1000;       //Wait 1 second before closing
         while (System.currentTimeMillis() < end) {
         }
-        System.out.println("PASS for (" + username + ", " + password + "): Jobseeker Login/dashboard/\"learn more\" Test");
+        System.out.println("PASS for (" + username + ", " + password + "): Jobseeker Logout Test (login/name dropdown menu/logout button)");
+        return 0;
+    }
+
+    private static int recruiterLogoutTest(WebDriver driver, String username, String password) {
+        driver.get("http://localhost:3000/");
+        WebElement element;
+
+        try {
+            //Login recruiter
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/div[2]/button"));
+                element.click();
+                element = driver.findElement(By.xpath("//*[@id=\"email\"]"));       //Find user field
+                element.sendKeys(username);
+                element = driver.findElement(By.xpath("//*[@id=\"password\"]"));    //Find password field
+                element.sendKeys(password);
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[2]/div/form/div[3]/button"));     //Find submit button
+                element.click();                                                                                                //Click submit
+                long end = System.currentTimeMillis() + 1000;       //Wait 1 second for page to fully load
+                while (System.currentTimeMillis() < end) {
+                }
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/h3")); //Check for dashboard element, if not found login failed
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Login Test -- Login failed");
+            }
+
+            //Click name for dropdown menu
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/nav/div/div/div/button/div"));
+                element.click();
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Logout Test -- Name button click failed");
+            }
+
+            //Click logout button
+            try {
+                element = driver.findElement(By.xpath("/html/body/div/div/nav/div/div/div/div/a[2]"));
+                element.click();
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Logout Test -- Logout button click failed");
+            }
+
+            //Return to landing page
+            try {
+                long end = System.currentTimeMillis() + 1000;       //Wait 1 second for page to fully load
+                while (System.currentTimeMillis() < end) {
+                }
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/div[1]/h1"));
+            } catch (Exception e) {
+                throw new Exception("FAIL for (" + username + ", " + password + "): Recruiter Logout Test -- Did not return to landing page");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return -1;
+        }
+
+        long end = System.currentTimeMillis() + 1000;       //Wait 1 second before closing
+        while (System.currentTimeMillis() < end) {
+        }
+        System.out.println("PASS for (" + username + ", " + password + "): Recruiter Logout Test (login/name dropdown menu/logout button)");
         return 0;
     }
 }

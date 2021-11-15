@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { Card, Modal } from "react-bootstrap";
-import "./JobSeekerDashboard.css";
+
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 export default function JobPostCard({
@@ -17,7 +17,6 @@ export default function JobPostCard({
   benefits,
   businessEmail,
   salary,
-  changePost
 }) {
   const [lgShow, setLgShow] = useState(false);
 
@@ -28,28 +27,12 @@ export default function JobPostCard({
   const handleClose = () => setLgShow(false);
 
   return (
-    <Card className="mt-3 job-card" style={{ height: "625px" }}>
-      <Card.Body className="mt-3">
-        <Row>
-          <div className="d-flex justify-content-end">
-            <Button
-              variant="success"
-              size="sm"
-              style={{
-                width: "50px",
-                borderRadius: "15px",
-                boxShadow: "0px 4px 2px lightgray",
-              }}
-            >
-              Save
-            </Button>
-          </div>
-        </Row>
+    <Row className="mx-auto mt-5">
         <Row className="mb-3 ms-4">
-          <Col className="mb-3" xs={12} sm={3} md={2} lg={1}>
+          <div className="col-1">
             <img alt="" className="logo" src={companyLogo} />
-          </Col>
-          <Col xs={12} sm={9} md={10} lg={11} className="company-info">
+          </div>
+          <div className="col-8" style={{marginLeft: "30px"}}>
             <Row>
               <Card.Title className="job-title">{jobTitle}</Card.Title>
             </Row>
@@ -65,23 +48,21 @@ export default function JobPostCard({
                 md="auto"
                 style={{ color: "#777", fontSize: "15px" }}
               >
-                {timePeriod}
+                2 days ago
               </Col>
             </Row>
-          </Col>
+          </div>
         </Row>
         <Row className="mt-4 mb-4 ms-5">
           <Card.Text>
-            {requirement.map((req) => (
-              <li>{req}</li>
-            ))}
+
           </Card.Text>
         </Row>
         <Row className="mb-5 ms-4 mx-4">
           <Card.Text>{description}</Card.Text>
         </Row>
         <Row className="pt-md-5">
-          <Col className="dismiss" onClick={() => changePost()}>
+          <Col className="dismiss">
             <Row>
               <div className="d-flex justify-content-center">
                 <img
@@ -115,13 +96,9 @@ export default function JobPostCard({
                     <div className="mb-4" style={{fontSize: "14px", color: '#777'}}>{timePeriod}</div>
                     <p><strong>Job Type: </strong><div className="ms-5">{requirement[0]}</div> </p>
                     <p><strong>Job Description: </strong><div className="ms-5">{description}</div></p>
-                    <p><strong>Full Requirements: </strong><div className="ms-5">{fullRequirements.map((req) => (
-                        <li>{req}</li>
-                      ))}</div>
+                    <p><strong>Requirements: </strong><div className="ms-5"></div>
                     </p>
-                    <p><div><strong>Benefits: </strong><div className="ms-5">{benefits.map((b) => (
-                        <li>{b}</li>
-                      ))}</div>
+                    <p><div><strong>Benefits: </strong><div className="ms-5"></div>
                     </div></p>
                     <div><strong>Salary: </strong><div className="ms-5">{salary}</div></div>
                     
@@ -135,7 +112,7 @@ export default function JobPostCard({
               </Modal>
             </Row>
           </Col>
-          <Col className="apply" onClick={() => changePost()}>
+          <Col className="apply">
             <Row>
               <div className="d-flex justify-content-center">
                 <img
@@ -153,7 +130,6 @@ export default function JobPostCard({
             </Card.Text>
           </Col>
         </Row>
-      </Card.Body>
-    </Card>
+        </Row>
   );
 }

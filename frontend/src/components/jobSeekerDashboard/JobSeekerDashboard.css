@@ -1,57 +1,67 @@
-.dismiss:hover {
-  cursor: pointer;
-}
 
-.apply:hover {
-  cursor: pointer;
-}
-
-.dismiss-img {
-  height: 48px;
-  width: 48px;
-  margin-left: 5px;
-}
-
-.apply-img {
-  margin-left: 10px;
-}
-
-.learn-more:hover {
-  cursor: pointer;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .job-title {
   font-family: "Roboto", "sans-serif";
   font-weight: bold;
-  font-size: 35px;
+  font-size: 48px;
 }
 
 .logo {
-  width: 90px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
- /* screen that are 767px or less */
-@media (max-width: 767px) {
-  .job-card {
-    border: none;
-  }
+.jobseeker-ds-background{
+  height: calc(100vh - 56px);
+  background-image: url('../../images/jobseeker-dashboard-bg.svg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
- /* screen that are 991px or more */
-@media screen and (min-width: 991px){
-  .company-info{
-    padding-left: 32px;
-  }
-}
-
-/* screen that are 1200px or more */
-@media screen and (min-width: 1200px){
-  .company-info{
-    padding-left: 20px;
-  }
+.jobseeker-card-background{
+  height: calc(100vh - 56px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0725) 0%, rgba(196, 196, 196, 0) 100%);
+  background-size: 100%;
 }
 
+.dismiss-btn{
+  width: 65px;
+  height: 65px;
+  background-color: #4D8DFF;
+  border-radius: 19px;
+  background-image: url('../../images/dismissLogo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
 
+.dismiss-btn:hover{
+  cursor: pointer;
+  background-color: #5b95fa;
+}
 
+.apply-btn{
+  width: 65px;
+  height: 65px;
+  background-color: #740A76;
+  border-radius: 19px;
+  background-image: url('../../images/applyLogo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 55%;
+}
 
+.apply-btn:hover{
+  background-color: #79177b;
+  cursor: pointer;
+}
 
+.learn-more-text{
+  color: rgba(0, 0, 0, 0.57);
+}
+
+.learn-more-text:hover{
+  cursor: pointer;
+  color: #5365FD;
+}

@@ -250,14 +250,14 @@ export default function RecruiterAddJob(){
                     <One/>&nbsp;&nbsp;&nbsp;GENERAL INFORMATION
                 </div>
                 <div className="mt-3 form-link" onClick={executeReqScroll} >
-                    <Two/>&nbsp;&nbsp;&nbsp;REQUIREMENTS & BENEFITS
+                    <Two/>&nbsp;&nbsp;&nbsp;DESCRIPTION & REQUIREMENTS
                 </div>
                 <div className="mt-3 form-link" onClick={executePayScroll} >
-                    <Three/>&nbsp;&nbsp;&nbsp;SALARY & JOB TYPE
+                    <Three/>&nbsp;&nbsp;&nbsp;BENEFITS & SALARY
                 </div>
                 <div style={{fontWeight: "bold", marginTop: "60px"}}>TIPS</div>
                 <div className="mt-3">
-                     <Pencil style={{color: " #4682B4"}}/>&nbsp;&nbsp;&nbsp;Be sure to be detailed as possible. The more details the better!
+                     <Pencil style={{color: " #4682B4"}}/>&nbsp;&nbsp;&nbsp;Be sure to be as detailed as possible. The more details the better!
                 </div>    
                 <div className="mt-3">
                      <LightBulb style={{color: " #4682B4"}}/>&nbsp;&nbsp;&nbsp;The Job Description will be the first thing a jobseeker sees.

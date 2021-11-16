@@ -45,7 +45,8 @@ function StepTwoRecruiterSignUp({setValue, company, description, descriptionCoun
                             <Form.Group className="mb-4 mt-4" controlId="formGridLogo">
                                 <Form.Label>Link to Company Logo</Form.Label>
                                 <Form.Text>&nbsp; &nbsp;(Must have same width and height)</Form.Text>
-                                <Form.Control required  type="url" id="logoLink" pattern="(https?:\/\/.*\.(?:png|jpg))" value={logoLink} onChange={e => setValue(e)} />
+                                {/**REGEX taken from https://stackoverflow.com/questions/4098415/use-regex-to-get-image-url-in-html-js*/}
+                                <Form.Control required  type="url" id="logoLink" pattern="(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg))" value={logoLink} onChange={e => setValue(e)} />
                                 <Form.Text style={{fontSize: "10px"}}>Invalid Images will be use our default logo</Form.Text>
                                 <Form.Control.Feedback type="invalid">
                                         Please enter a valid link to your company logo.

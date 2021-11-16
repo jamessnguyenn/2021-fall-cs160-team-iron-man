@@ -24,7 +24,7 @@ public class Main {
         System.out.println("\nEZ Apply Frontend Test Results");
         System.out.println("------------------------------");
 
-        //Recruiter test
+        //Recruiter tests
         invalidRecruiterTest(driver, "test@yahoo.com", "password");
         invalidRecruiterTest(driver, "recruiter@email.com", "wrongPassword");
         recruiterFrontendTest(driver, "recruiter@email.com", "password");

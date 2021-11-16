@@ -54,7 +54,7 @@ function StepTwoRecruiterSignUp({setValue, company, description, descriptionCoun
 
                             <Form.Group className="mb-4 mt-4" controlId="formGridWebsite">
                                 <Form.Label>Company Website</Form.Label>
-                                <Form.Control required className="mb-2" type="url" id="website" value={website} onChange={e => setValue(e)} />
+                                <Form.Control required className="mb-2" type="url" id="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" value={website} onChange={e => setValue(e)} />
                                 <Form.Control.Feedback type="invalid">
                                         Please enter a valid link to your company website.
                                 </Form.Control.Feedback>

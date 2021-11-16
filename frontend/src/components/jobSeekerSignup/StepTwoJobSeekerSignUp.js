@@ -373,9 +373,12 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                             <Form.Group className="mb-4 mt-4" controlId="formGridWebsites">
                                 <Form.Label>Websites ie. LinkedIn, Portfolio</Form.Label>
                                 <Form.Text>&nbsp;(Optional)</Form.Text>
-                                <Form.Control className="mb-2" type="url" placeholder="Website 1" id="web1" value={web1} onChange={e => setValue(e)} />
-                                <Form.Control className="mb-2" type="url" placeholder="Website 2" id="web2" value={web2} onChange={e => setValue(e)} />
-                                <Form.Control placeholder="Website 3" type="url" id="web3" value={web3} onChange={e => setValue(e)} />
+                                <Form.Control className="mb-2" type="url" placeholder="Website 1" id="web1" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                                 value={web1} onChange={e => setValue(e)} />
+                                <Form.Control className="mb-2" type="url" placeholder="Website 2" id="web2" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                                 value={web2} onChange={e => setValue(e)} />
+                                <Form.Control placeholder="Website 3" type="url" id="web3" value={web3}  pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                                 onChange={e => setValue(e)} />
                             </Form.Group>
 
                             <Form.Group className="mb-0">

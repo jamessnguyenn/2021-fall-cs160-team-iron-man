@@ -241,7 +241,7 @@ export default function JobSeekerDashboard() {
 
                       <Modal.Footer className="jobseeker-footer">
                         <div className="col"> <div className="apply-btn" onClick={() => { nextReccomendation(false) }} /></div>
-                        <div className="col d-flex justify-content-end"> <Button variant="secondary">
+                        <div className="col d-flex justify-content-end"> <Button variant="secondary" onClick={() => { setModalVisible(false) }}>
                           Close
                         </Button> </div>
                       </Modal.Footer>

@@ -219,7 +219,7 @@ public class Main {
                 long end = System.currentTimeMillis() + 1000;       //Wait 1 second for page to fully load
                 while (System.currentTimeMillis() < end) {
                 }
-                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[3]/div/div/img")); //Check for dashboard element, if not found login failed
+                element = driver.findElement(By.xpath("/html/body/div/nav/div/div/a[1]")); //Check for dashboard element, if not found login failed
                 System.out.println("\t\tDashboard element found");
             } catch (Exception e) {
                 throw new Exception("\tFAIL for (" + username + ", " + password + "): Jobseeker Frontend Test -- Login failed\n");
@@ -227,7 +227,7 @@ public class Main {
 
             //Click the Learn more
             try {
-                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[2]/div/a"));
+                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div[5]/div[2]/div/div"));
                 element.click();
                 System.out.println("\t\tClicked learn more for job listing in queue");
             } catch (Exception e) {
@@ -273,7 +273,7 @@ public class Main {
                 long end = System.currentTimeMillis() + 1000;       //Wait 1 second for page to fully load
                 while (System.currentTimeMillis() < end) {
                 }
-                element = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[5]/div[3]/div/div/img")); //Check for dashboard element, if not found login failed
+                element = driver.findElement(By.xpath("/html/body/div/nav/div/div/a[1]")); //Check for dashboard element, if not found login failed
                 System.out.println("\t\tDashboard element found");
             } catch (Exception e) {
                 throw new Exception("\tFAIL for (" + username + ", " + password + "): Jobseeker Login Test -- Login failed\n");

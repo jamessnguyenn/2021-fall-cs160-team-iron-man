@@ -79,7 +79,7 @@ export default function NavBar() {
               className="profile-name-btn"
               title={<div style={{fontSize: fontSize}}>{name}</div>}
             >
-             <Dropdown.Item>Edit Profile</Dropdown.Item> {/*todo*/}
+             <Dropdown.Item href="/jobseeker/editProfile">Edit Profile</Dropdown.Item> {/*todo*/}
              <Dropdown.Item href="/" onClick={logout}>Logout</Dropdown.Item>
             </DropdownButton>
           </Nav>

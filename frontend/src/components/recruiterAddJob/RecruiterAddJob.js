@@ -25,7 +25,7 @@ export default function RecruiterAddJob(){
     const [requirement, setRequirement] = useState('');
     const [benefit, setBenefit] = useState('');
     const [type, setType] = useState([]);
-    const [salary, setSalary] = useState(0);
+    const [salary, setSalary] = useState("");
     const [descriptionLength, setDescriptionLength] = useState(0);
     const [requirementLength, setRequirementLength] = useState(0);
     const [benefitLength, setBenefitLength] = useState(0);
@@ -178,25 +178,25 @@ export default function RecruiterAddJob(){
                             <hr/>
                             <Form.Group className="mt-3 mb-3" controlId="formGridDescription">
                                 <Form.Label>Job Description</Form.Label>
-                                <Form.Control required as="textarea" value={description} id="job-description" minlength="1" maxLength="500" onChange={e=>setValue(e)}/>
+                                <Form.Control required as="textarea" value={description} id="job-description" minLength="100" maxLength="500" onChange={e=>setValue(e)}/>
                                 <Form.Text>{descriptionLength}/500</Form.Text>
                                 <Form.Control.Feedback type="invalid">
-                                        Please enter a job description.
+                                        Please enter a job description with at least 100 characters.
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group className="mt-3 mb-3" controlId="formGridRequirements">
                                 <Form.Label>Requirements</Form.Label>
-                                <Form.Control required as="textarea" value={requirement} id="requirements" minlength="1" maxLength="500" onChange={e=>setValue(e)} />
+                                <Form.Control required as="textarea" value={requirement} id="requirements" minLength="30" maxLength="500" onChange={e=>setValue(e)} />
                                 <Form.Text>{requirementLength}/500</Form.Text>
                                 <Form.Control.Feedback type="invalid">
-                                        Please enter requirements for the job.
+                                        Please enter requirements for the job with at least 30 characters.
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <div ref={payRef} style={{fontWeight: "bold", marginTop: "40px"}}>WHAT CAN YOU PROVIDE?</div>
                             <hr/>
                             <Form.Group className="mt-3 mb-3" controlId="formGridBenefits">
                                 <Form.Label>Benefits</Form.Label>
-                                <Form.Control required as="textarea"  value={benefit} id="benefits" minlength="1" maxLength="400"  onChange={e=>setValue(e)}/>
+                                <Form.Control required as="textarea"  value={benefit} id="benefits" minLength="1" maxLength="400"  onChange={e=>setValue(e)}/>
                                 <Form.Text>{benefitLength}/400</Form.Text>
                                 <Form.Control.Feedback type="invalid">
                                         Please enter the benefits for the job.

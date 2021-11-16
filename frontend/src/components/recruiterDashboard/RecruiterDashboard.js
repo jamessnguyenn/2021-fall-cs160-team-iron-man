@@ -18,10 +18,11 @@ export default function RecruiterDashboard() {
   const[selected, setSelected] = useState([]);
   const[response, setResponse] = useState([]);
   const history = useHistory();
+  const[applicantsList, setApplicantList] = useState([])
  
  
   useEffect(()=>{
-    axios.get("http://localhost:5000/jobpostings?postedBy="+localStorage.getItem('user_id')+"&populate", {
+    axios.get("http://localhost:5000/jobpostings?postedBy="+localStorage.getItem('user_id')+"&populateApplicants", {
       headers:{
         'Authorization': 'Bearer '+ localStorage.getItem('token')
       }
@@ -41,7 +42,19 @@ export default function RecruiterDashboard() {
 
   useEffect(()=>{
     if(jobPostings.length > 0){
-      let len = jobPostings.reduce((sum, jobPosting)=>{ return sum+ jobPosting.applicants.length}, 0)
+      let ids = []
+      let len = 0
+      setApplicantList(jobPostings.reduce((array, jobPosting)=>{ 
+        let applications = jobPosting.applicants 
+        for(let i =0; i<applications.length; i++){
+          if(!(ids.indexOf(applications[i]._id)>-1)){
+            array.push(applications[i])
+            ids.push(applications[i]._id)
+            len +=1
+          }
+        }
+        return array
+      }, []))
       setApplicants(len> 0)
     }else{
       setApplicants(false)
@@ -114,11 +127,11 @@ if(!localStorage.getItem('user_id') || !localStorage.getItem('token')){
               {loading && !applicants? 
               <div className="d-flex justify-content-center pb-2">
                 <img src={recruiterDashboard} alt="recruiterDashboard" style={{height: "40vh", marginTop: "30px"}}/>
-              </div>: jobPostings.map(jobPosting=>
-                jobPosting.applicants.map(applicant=>
-                  <ApplicantCard street={applicant.address.street} apt={applicant.address.apt} zip={applicant.address.zip} city={applicant.address.city} state={applicant.address.state} firstName={applicant.firstName} lastName={applicant.lastName} education={applicant.education} experiences={applicant.experiences} email={applicant.email} websites={applicant.websites}/>
-                )
-              )}
+              </div>: applicantsList.map(applicant=>
+                  <ApplicantCard street={applicant.address.street} apt={applicant.address.apt} zipcode={applicant.address.zipcode}
+                   city={applicant.address.city} state={applicant.address.state} firstName={applicant.firstName} lastName={applicant.lastName}
+                    education={applicant.education} experiences={applicant.experiences} email={applicant.email} websites={applicant.websites}/>
+                )}
           </Row>
           {loading && !applicants && <Row>
             <h5 className="d-flex justify-content-center pb-2">No Applicants Currently</h5>

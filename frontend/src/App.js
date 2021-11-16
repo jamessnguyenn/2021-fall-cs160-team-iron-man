@@ -11,6 +11,9 @@ import RecruiterSignUpPage from './components/recruiterSignUp/RecruiterSignUp'
 import RecruiterLoginPage from './components/recruiterLogin/RecruiterLogin'
 import RecruiterDashboardPage from './components/recruiterDashboard/RecruiterDashboard'
 import RecruiterAddJob from './components/recruiterAddJob/RecruiterAddJob'
+import RecruiterUnderConstruction from './components/recruiterUnderConstruction/recruiterUnderConstruction'
+import JobSeekerUnderConstruction from './components/jobseekerUnderConstruction/jobseekerUnderConstruction'
+import NotFound from './components/notFound/notFound'
 
 function App() {
   return (
@@ -34,6 +37,12 @@ function App() {
         <Route exact path="/jobSeeker/dashboard">
           <JobSeekerDashboardPage />
         </Route>
+        <Route exact path="/jobseeker/editProfile">
+          <JobSeekerUnderConstruction/>
+        </Route>
+        <Route exact path="/jobSeeker/applied">
+          <JobSeekerUnderConstruction/>
+        </Route>
         <Route exact path="/recruiter/signup">
           <RecruiterSignUpPage />
         </Route>
@@ -46,6 +55,10 @@ function App() {
         <Route exact path='/recruiter/addjob'>
           <RecruiterAddJob />
         </Route>
+        <Route exact path='/recruiter/editProfile'>
+          <RecruiterUnderConstruction/>
+        </Route>
+        <NotFound/>
       </Switch>
     </Router>
   );

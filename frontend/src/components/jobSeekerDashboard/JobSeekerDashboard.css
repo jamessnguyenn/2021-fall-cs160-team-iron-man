@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .job-title {
   font-family: "Roboto", "sans-serif";
   font-weight: bold;
@@ -9,6 +10,7 @@
 .logo {
   width: 100px;
   height: 100px;
+  padding: 0px;
 }
 
 .jobseeker-ds-background{
@@ -50,6 +52,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 55%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .apply-btn:hover{
@@ -64,4 +67,51 @@
 .learn-more-text:hover{
   cursor: pointer;
   color: #5365FD;
+}
+
+.alternate-image{
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(344deg, rgba(83,101,253,1) 0%, rgba(70,180,158,1) 100%);
+  line-height: 100px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 75px;
+}
+
+.company-description{
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  line-clamp: 2; 
+  overflow-wrap: break-word;
+  -webkit-box-orient: vertical;
+}
+
+.heading-text{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.refresh-button{
+  height: 57px;
+  width: 224px;
+  left: 469px;
+  top: 484px;
+  border-radius: 9px;
+  background: #4682B4;
+  border-color: transparent;
+}
+.refresh-button:hover {
+  border-color: transparent;
+  background: #4682B4;
+}
+.refresh-button:active:focus, .refresh-button:focus{
+  box-shadow:#4683b469 0px 0px 0px 3.23261px;
+  border-color: transparent;
+  background: #4682B4;
 }

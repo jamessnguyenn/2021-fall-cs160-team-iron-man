@@ -150,6 +150,7 @@ export default function RecruiterAddJob(){
                             </Form.Group>
                             <Form.Group className="mt-3 mb-3" controlId="formGridBusinessEmail">
                                     <Form.Label>Business Email</Form.Label>
+                                    {/*Regex taken from https://stackoverflow.com/questions/42366649/angular2-email-validation*/}
                                     <Form.Control required type="email" value={email} pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" id="email" onChange={e=>setValue(e)}/>
                                     <Form.Control.Feedback type="invalid">
                                         Please enter a valid email.

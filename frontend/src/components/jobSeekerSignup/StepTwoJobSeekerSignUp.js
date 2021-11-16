@@ -370,6 +370,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                             </div>
                             }
                             
+                            {/* REGEX taken from https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url */}
                             <Form.Group className="mb-4 mt-4" controlId="formGridWebsites">
                                 <Form.Label>Websites ie. LinkedIn, Portfolio</Form.Label>
                                 <Form.Text>&nbsp;(Optional)</Form.Text>

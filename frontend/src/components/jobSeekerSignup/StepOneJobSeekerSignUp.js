@@ -55,6 +55,7 @@ export default function StepOneJobSeekerSignUp({secondStep, setValue, firstName,
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email</Form.Label>
+                                {/*Regex taken from https://stackoverflow.com/questions/42366649/angular2-email-validation*/}
                                 <Form.Control required type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Enter email" isInvalid={existEmail} size="sm" id="email" value={email} 
                                 onChange={e => setValue(e)} 
                                 className="signup-input-field"/>

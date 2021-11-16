@@ -96,21 +96,25 @@ export default function JobSeekerDashboard() {
         })
     }
     if (recommended.length === 1) {
-      refresh()
+      refresh(dismissed)
     } else {
       setRecommended(recommended.slice(1))
     }
 
   }
 
-  const refresh = () => {
+  const refresh = (dismissed) => {
     axios.get("http://localhost:5000/jobpostings?populateRecruiter&applicant=" + localStorage.getItem('user_id'), {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
     })
       .then(res => {
-        setRecommended(res.data)
+        if(dismissed && res.data && res.data.length === 1){
+          setRecommended([])
+        }else{
+          setRecommended(res.data)
+        }
        
       })
       .catch(err => {

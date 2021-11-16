@@ -67,13 +67,13 @@ router.route('/').get((req, res) => {
 
 //Getting recruiters by object id
 router.route('/:id').get(authenticateToken, (req, res) => {
+    if(req.user.user_id !== req.params.id || req.user.role !== "recruiter") {
+        return res.status(403).json({error: "Forbidden"});
+    }
     Recruiter.findById(req.params.id, '-hashedPassword')
     .then(recruiter => {
         if(!recruiter) {
             return res.status(400).json({error: "Bad Request"});
-        }
-        if(req.user.user_id !== req.params.id) {
-            return res.status(403).json({error: "Forbidden"});
         }
         res.status(200).json(recruiter)
     })

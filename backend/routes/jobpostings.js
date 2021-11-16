@@ -24,7 +24,7 @@ router.route('/').post(authenticateToken, (req, res)=>{
 })
 
 router.route('/').get(authenticateToken, (req, res)=>{
-  const{city, state, type, position, postedBy, applicant, random, populate, applied} = req.query;
+  const{city, state, type, position, postedBy, applicant, random, populateApplicants, applied, populateRecruiter} = req.query;
   let query = {}
   if(city){
     query['location.city'] = {$regex: city}
@@ -54,12 +54,19 @@ router.route('/').get(authenticateToken, (req, res)=>{
     
   }
   let findResult = JobPosting.find(query);
-  if(populate !== undefined){
+  if(populateApplicants !== undefined){
     if(req.user.role !== "recruiter"){
         return res.status(403).json({error: "Unauthorized to perform this type of query"});
     }
-    findResult = findResult.populate('applicants', '-hashedPassword').populate('postedBy', "-hashedPassword");
+    findResult = findResult.populate('applicants', '-hashedPassword')
     }
+
+    if(populateRecruiter !== undefined){
+        if(req.user.role !== "jobseeker"){
+            return res.status(403).json({error: "Unauthorized to perform this type of query"});
+        }
+        findResult = findResult.populate('postedBy', "-hashedPassword");
+        }
 
     findResult.then(result=>{
         if(random !== undefined){

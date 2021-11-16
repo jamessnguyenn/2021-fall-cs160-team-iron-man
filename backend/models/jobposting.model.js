@@ -14,7 +14,7 @@ const jobpostingSchema = new mongoose.Schema({
     },
     type: {
         type: [String],
-        required: true,
+        validate: value => Array.isArray(value) && value.length >0,
         enum: ["Full Time", "Work From Home", "Part Time", "Contract", "Hourly"]
     },
     location: {

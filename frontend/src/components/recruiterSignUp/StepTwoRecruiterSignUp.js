@@ -43,8 +43,11 @@ function StepTwoRecruiterSignUp({setValue, company, description, descriptionCoun
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group className="mb-4 mt-4" controlId="formGridLogo">
-                                <Form.Label>Company Logo Link</Form.Label>
-                                <Form.Control required className="mb-2" type="url" id="logoLink" pattern="(https?:\/\/.*\.(?:png|jpg))" value={logoLink} onChange={e => setValue(e)} />
+                                <Form.Label>Link to Company Logo</Form.Label>
+                                <Form.Text>&nbsp; &nbsp;(Must have same width and height)</Form.Text>
+                                {/**REGEX taken from https://stackoverflow.com/questions/4098415/use-regex-to-get-image-url-in-html-js*/}
+                                <Form.Control required  type="url" id="logoLink" pattern="(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg))" value={logoLink} onChange={e => setValue(e)} />
+                                <Form.Text style={{fontSize: "10px"}}>Invalid Images will be use our default logo</Form.Text>
                                 <Form.Control.Feedback type="invalid">
                                         Please enter a valid link to your company logo.
                                 </Form.Control.Feedback>
@@ -52,12 +55,12 @@ function StepTwoRecruiterSignUp({setValue, company, description, descriptionCoun
 
                             <Form.Group className="mb-4 mt-4" controlId="formGridWebsite">
                                 <Form.Label>Company Website</Form.Label>
-                                <Form.Control required className="mb-2" type="url" id="website" value={website} onChange={e => setValue(e)} />
+                                {/* REGEX taken from https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url */}
+                                <Form.Control required className="mb-2" type="url" id="website" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" value={website} onChange={e => setValue(e)} />
                                 <Form.Control.Feedback type="invalid">
                                         Please enter a valid link to your company website.
                                 </Form.Control.Feedback>
                             </Form.Group>
-
                             <div className="agreement mb-4 mt-3" style={{fontSize: '12px', color: '#777'}}>
                                 By clicking Join Now, you are agreeing to our Terms, Data Policy, and Cookies Policy.
                             </div>

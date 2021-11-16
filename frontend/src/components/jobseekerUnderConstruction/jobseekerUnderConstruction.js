@@ -1,7 +1,7 @@
 import React from 'react'
-import NavBar from '../loggedOutNavBar/NavBar'
+import NavBar from '../jobSeekerNav/JobSeekerNav'
 
-export default function Contact() {
+export default function JobSeekerUnderConstruction() {
     return(
         <>
         <NavBar/>

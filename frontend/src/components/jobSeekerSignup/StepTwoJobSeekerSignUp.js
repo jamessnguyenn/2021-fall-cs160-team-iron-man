@@ -137,7 +137,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
     },[school, schoolEndDateMonth, schoolEndDateYear, degree, field])
     return ( 
         <>
-            <div className="signUpBG" >
+            <div className="signUpBG">
                 <h1 className='text-center'>
                     Personal Information
                 </h1>
@@ -195,6 +195,7 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
 
                             <Form.Group className="mb-0" controlId="formGridWork">
                                 <Form.Label>Work Experience</Form.Label>
+                                <Form.Text>&nbsp;&nbsp;(Order by most recent)</Form.Text>
                             </Form.Group>
 
                             {!addWork1 && <Form.Group className="mb-0" controlId="formGridWork">
@@ -369,18 +370,25 @@ function StepTwoJobSeekerSignUp({setValue, address, apt, city, state, zip, posit
                             </div>
                             }
                             
+                            {/* REGEX taken from https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url */}
                             <Form.Group className="mb-4 mt-4" controlId="formGridWebsites">
-                                <Form.Label>Websites <span style={{fontSize: '12px'}}><em>(eg. LinkedIn, Facebook, Personal Website)</em></span></Form.Label>
-                                <Form.Control className="mb-2" type="url" placeholder="Website 1" id="web1" value={web1} onChange={e => setValue(e)} />
-                                <Form.Control className="mb-2" type="url" placeholder="Website 2" id="web2" value={web2} onChange={e => setValue(e)} />
-                                <Form.Control placeholder="Website 3" type="url" id="web3" value={web3} onChange={e => setValue(e)} />
+                                <Form.Label>Websites ie. LinkedIn, Portfolio</Form.Label>
+                                <Form.Text>&nbsp;(Optional)</Form.Text>
+                                <Form.Control className="mb-2" type="url" placeholder="Website 1" id="web1" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                                 value={web1} onChange={e => setValue(e)} />
+                                <Form.Control className="mb-2" type="url" placeholder="Website 2" id="web2" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                                 value={web2} onChange={e => setValue(e)} />
+                                <Form.Control placeholder="Website 3" type="url" id="web3" value={web3}  pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                                 onChange={e => setValue(e)} />
                             </Form.Group>
 
                             <Form.Group className="mb-0">
-                                    <Form.Label>Most Recent Education (Optional)</Form.Label>
+                                    <Form.Label style={{fontWeight:"bold"}}>Most Recent Education</Form.Label>
+                                    <Form.Text>&nbsp;(Optional)</Form.Text>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formGridSchool">
+                                <Form.Label >School</Form.Label>
                                 <Form.Control placeholder="School" required={schoolRequired}  value={school}  id="school" onChange={e => setValue(e)} />
                             </Form.Group>
 

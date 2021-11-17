@@ -1,23 +1,53 @@
-/* About EZ Apply Allowing job seekers to apply for jobs easly while giving recruiters easier way to post and recruit new hires 
-Vision 
-Create economic opportunity for every member of the workforce 
-Who are we? 
-EZ Apply was created in Fall 2021 by 5 students in CS 160 for a class project. We wanted to make a easy way for people to apply for jobs becuase of the shortange that happened due to COVID-19 */
-
-input[type=text] {
-position: absolute;
-width: 916px;
-height: 496px;
-left: 118px;
-top: 128px;
-
-font-family: Montserrat;
-font-style: normal;
-font-weight: 600;
-font-size: 48px;
-line-height: 59px;
-text-align: center;
-
-color: #000000;
+.about-pic {
+  height: 100vh;
+  background-image: url("../../images/about.svg");
+  background-repeat: no-repeat;
 }
 
+.description {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-family: "Dosis", sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  .description {
+    height: 230px;
+    width: 700px;
+    margin-top: -32em;
+    margin-left: 10em;
+  }
+}
+
+.para {
+  font-size: 22px;
+}
+
+.heading {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 767px) {
+  .description {
+    margin-top: 15em;
+  }
+  .para {
+    font-weight: 500;
+  }
+
+  .heading {
+    font-weight: 550;
+  }
+}
+
+.guide {
+  font-family: "Dosis", sans-serif;
+}
+
+.how-to {
+  font-family: "Dosis", sans-serif;
+  font-weight: 600;
+}
+
+.card-border {
+  border-radius: 10px;
+}

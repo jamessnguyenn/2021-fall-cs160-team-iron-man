@@ -48,7 +48,7 @@ export default function About() {
                       screen. If you don't have an account, click on "Join for free today".
                     </li>
                     <li className="pb-2" style={{paddingLeft:"10px"}}>
-                      Follow the steps to create your corporate profile to be advertise with job seekers!
+                      Follow the steps to create your corporate profile which will be used to advertise to job seekers!
                     </li>
                     <li className="pb-2" style={{paddingLeft:"10px"}}>
                       Create a job posting to be queued to job seekers across the world using our algorithm.

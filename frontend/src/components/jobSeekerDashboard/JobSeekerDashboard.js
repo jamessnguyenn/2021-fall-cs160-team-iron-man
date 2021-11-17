@@ -87,6 +87,9 @@ export default function JobSeekerDashboard() {
       })
         .then((res) => {
           console.log("SUCESSFULLY APPLIED")
+          if(recommended.length === 1){
+            refresh(dismissed)
+          }
         })
         .catch((err) => {
           if (err.response && (err.response.status === 403 || err.response.status === 401)) {
@@ -95,7 +98,7 @@ export default function JobSeekerDashboard() {
           }
         })
     }
-    if (recommended.length === 1) {
+    if (recommended.length === 1 && dismissed) {
       refresh(dismissed)
     } else {
       setRecommended(recommended.slice(1))

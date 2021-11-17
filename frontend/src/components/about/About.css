@@ -1,21 +1,14 @@
 .about-pic {
-  height: 100vh;
+  height: 610px;
   background-image: url("../../images/about.svg");
   background-repeat: no-repeat;
+  background-position: 0% 20px;
 }
 
 .description {
   background-color: rgba(255, 255, 255, 0.5);
   font-family: "Dosis", sans-serif;
-}
-
-@media screen and (min-width: 768px) {
-  .description {
-    height: 230px;
-    width: 700px;
-    margin-top: -32em;
-    margin-left: 10em;
-  }
+  margin-left: 300px;
 }
 
 .para {
@@ -23,20 +16,7 @@
 }
 
 .heading {
-  font-weight: 500;
-}
-
-@media screen and (max-width: 767px) {
-  .description {
-    margin-top: 15em;
-  }
-  .para {
-    font-weight: 500;
-  }
-
-  .heading {
-    font-weight: 550;
-  }
+  font-weight: bold;
 }
 
 .guide {

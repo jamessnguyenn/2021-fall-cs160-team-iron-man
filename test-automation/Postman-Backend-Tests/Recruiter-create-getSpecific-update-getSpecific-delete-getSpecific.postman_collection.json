@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1e8c9a58-145e-4497-b99a-aefc4d37421e",
+		"_postman_id": "ffe430a8-6edb-4b2c-9e9d-c12a0ee7468b",
 		"name": "Recruiter-create-getSpecific-update-getSpecific-delete-getSpecific",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -36,7 +36,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Franklin\",\n    \"lastName\": \"Roosevelt\",\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\",\n    \"companyName\": \"United States Government\",\n    \"logoLink\": \"htttps:///whitehouse.gov\",\n    \"companyDescription\":\"The office of the president of the United States\",\n    \"companyWebsite\": \"https:/whitehouse.gov/fdr.png\"\n}",
+					"raw": "{\n    \"firstName\": \"Franklin\",\n    \"lastName\": \"Roosevelt\",\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\",\n    \"companyName\": \"United States Government\",\n    \"logoLink\": \"https://whitehouse.gov\",\n    \"companyDescription\":\"The office of the president of the United States\",\n    \"companyWebsite\": \"https://whitehouse.gov/fdr.png\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -130,7 +130,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Harry\",\n    \"lastName\": \"Truman\",\n    \"companyName\": \"Truman Administration\",\n    \"logoLink\": \"htttps:///whitehouse.gov/truman.png\",\n    \"companyDescription\":\"The office of Harry Truman\",\n    \"companyWebsite\": \"https:/whitehouse.gov/\"\n}",
+					"raw": "{\n    \"firstName\": \"Harry\",\n    \"lastName\": \"Truman\",\n    \"companyName\": \"Truman Administration\",\n    \"logoLink\": \"https://whitehouse.gov/truman.png\",\n    \"companyDescription\":\"The office of Harry Truman\",\n    \"companyWebsite\": \"https://whitehouse.gov/\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

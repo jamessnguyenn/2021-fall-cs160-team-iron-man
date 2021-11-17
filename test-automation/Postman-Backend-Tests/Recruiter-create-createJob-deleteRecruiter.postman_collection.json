@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6d7a896a-676f-42ec-9ae0-3eaa661d1e86",
+		"_postman_id": "1bc6dc9d-f3e2-498d-9148-c0b45cdbdf44",
 		"name": "Recruiter-create-createJob-deleteRecruiter",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -36,7 +36,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Franklin\",\n    \"lastName\": \"Roosevelt\",\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\",\n    \"companyName\": \"United States Government\",\n    \"logoLink\": \"htttps:///whitehouse.gov\",\n    \"companyDescription\":\"The office of the president of the United States\",\n    \"companyWebsite\": \"https:/whitehouse.gov/fdr.png\"\n}",
+					"raw": "{\n    \"firstName\": \"Franklin\",\n    \"lastName\": \"Roosevelt\",\n    \"email\": \"fdr@usa.gov\",\n    \"password\": \"password\",\n    \"companyName\": \"United States Government\",\n    \"logoLink\": \"https://whitehouse.gov\",\n    \"companyDescription\":\"The office of the president of the United States\",\n    \"companyWebsite\": \"https://whitehouse.gov/fdr.png\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

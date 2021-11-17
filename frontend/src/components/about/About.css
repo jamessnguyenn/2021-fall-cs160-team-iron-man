@@ -1,0 +1,53 @@
+.about-pic {
+  height: 100vh;
+  background-image: url("../../images/about.svg");
+  background-repeat: no-repeat;
+}
+
+.description {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-family: "Dosis", sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  .description {
+    height: 230px;
+    width: 700px;
+    margin-top: -32em;
+    margin-left: 10em;
+  }
+}
+
+.para {
+  font-size: 22px;
+}
+
+.heading {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 767px) {
+  .description {
+    margin-top: 15em;
+  }
+  .para {
+    font-weight: 500;
+  }
+
+  .heading {
+    font-weight: 550;
+  }
+}
+
+.guide {
+  font-family: "Dosis", sans-serif;
+}
+
+.how-to {
+  font-family: "Dosis", sans-serif;
+  font-weight: 600;
+}
+
+.card-border {
+  border-radius: 10px;
+}

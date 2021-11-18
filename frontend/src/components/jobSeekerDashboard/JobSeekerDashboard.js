@@ -76,6 +76,9 @@ export default function JobSeekerDashboard() {
   const nextReccomendation = (dismissed) => {
     setModalVisible(false)
     if (!dismissed && recommended.length > 0) {
+      if(recommended.length === 1){
+        setLoaded(false)
+      }
       const id = recommended[0]._id
       const request = {
         user_id: localStorage.getItem('user_id')
@@ -117,6 +120,9 @@ export default function JobSeekerDashboard() {
           setRecommended([])
         }else{
           setRecommended(res.data)
+          if(!dismissed){
+            setLoaded(true)
+          }
         }
        
       })

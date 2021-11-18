@@ -36,8 +36,8 @@ export default function ApplicantPage({street, apt, zipcode, city, state, firstN
                     {experiences.length >0 && (<div><div className="mb-2 heading-text">Experiences</div>
                        <div>{experiences[0].position} @ {experiences[0].company}</div>
                        <div className="mb-3">{experiences[0].startDate} - {experiences[0].endDate}</div>
-                       {experiences.length === 2 && <div> <div>{experiences[0].position} @ {experiences[0].company}</div>
-                       <div className="mb-3">{experiences[0].startDate} - {experiences[0].endDate}</div> </div>}
+                       {experiences.length === 2 && <div> <div>{experiences[1].position} @ {experiences[1].company}</div>
+                       <div className="mb-3">{experiences[1].startDate} - {experiences[1].endDate}</div> </div>}
                     </div>)}
                     {education? 
                     <div className="mb-3">

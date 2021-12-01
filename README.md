@@ -221,14 +221,16 @@ Now you're all set to creating new features.
 
 # Code Reviews
 
-You may be requested to review someones request. Go to the pull request that you were asked to review. You can go **Files changed** and review the users code by adding comments.
+You may be requested to review someones request. Go to the pull request that you were asked to review. You can go to the **Files changed** tab and review the users code by adding comments.
 
-For our team here are a best pratices we look for in code reviews:
+For our team here are a few best pratices we look for in code reviews:
 - Branch that is merging is buildable. Development Branch should always be working.
 - Readiblity and Understandable. Code should contain good variable names, clear & concise comments, and code should be cleanly formatted.
 - Code being merged should actually meet the task/feature it was set out to do.
 
-Once you a done reviewing the code, under **Files changed**, press **Review Changes** and choose an option. Remember, once you approve the branch, the PR owner will be able to merge the branch. 
+Once you a done reviewing the code, under **Files changed**, press **Review Changes** and choose an option. 
+
+**Remember, once you approve the branch, the PR owner will be able to merge the branch.** 
 
 # Contribute Now
 

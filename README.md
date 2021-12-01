@@ -198,7 +198,7 @@ git checkout master
 git branch --show-current
 ```
 ## Merging the Branch
-Before you can merge the branch, you will need to create a pull request. But before then, you will need to merge any changes from the master branch that may have occured while you were working on the task.
+Before you can merge the branch, you will need to create a pull request. But before then, you will need to merge any changes from the master branch that may have occured while you were working on the task/feature.
 
 Enter the following to merge those changes locally to your branch:
 ```
@@ -213,7 +213,7 @@ Now that your branch is ready, navigate to the [repository](https://github.com/j
 
 Go to your branch and under **Contribute** press **Open pull request**. This will create a request which will needs to be approved by a developer before it can be merged into the main branch.
 
-You will need to request a review by any of the developers which will then either approve the pull request or request you to fix some issues.  If your code needs fixed, you can directly commit and push to the branch and it will show up in the pull request.
+You will need to request a review from any of the developers which will then either approve the pull request or request you to fix some issues.  If your code needs to be fixed, you can directly commit and push to the branch and it will show up in the pull request.
 
 Once your pull request is ready to be merged, you can scroll to the bottom of the PR and press **Merge pull request**.
 
@@ -228,7 +228,7 @@ For our team here are a few best pratices we look for in code reviews:
 - Readiblity and Understandable. Code should contain good variable names, clear & concise comments, and code should be cleanly formatted.
 - Code being merged should actually meet the task/feature it was set out to do.
 
-Once you a done reviewing the code, under **Files changed**, press **Review Changes** and choose an option. 
+Once you are done reviewing the code, under **Files changed**, press **Review Changes** and choose an option. 
 
 **Remember, once you approve the branch, the PR owner will be able to merge the branch.** 
 

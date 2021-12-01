@@ -16,7 +16,7 @@ This document contains several information about the project, setting up develop
 - [Set Up & Run Developer Environment](#set-up--run-developer-environment)
 - [Set Up & Run Test Environment](#set-up--run-test-environment)
 - [Docker](#docker)
-- [Creating & Merging Branches](#creating--mergin-branches)
+- [Creating & Merging Branches](#creating--merging-branches)
 - [Code Reviews](#code-reviews)
 
 ## How to Use
@@ -59,7 +59,7 @@ git clone https://github.com/jamessnguyenn/2021-fall-cs160-team-iron-man.git
 
 The repository should be cloned onto your local desktop and you should be ready to setup and run the application.
 
-# Set Up & Run Developer Environemnt
+# Set Up & Run Developer Environment
 
 ## Frontend
 
@@ -104,7 +104,7 @@ When you create new changes to the backend code, the backend will automatically 
 
 To stop the development environemnt, press <kbd>Ctrl-C</kbd> or <kbd>⌘C</kbd> in the terminal running the development environment.
 
-# Set Up & Run Test Environement
+# Set Up & Run Test Environment
 
 For information about how our test scripts work, click [here](https://github.com/jamessnguyenn/2021-fall-cs160-team-iron-man/tree/master/test-automation#team-iron-man---test-automation).
 

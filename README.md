@@ -9,7 +9,15 @@ This project was developed by Basmah Altimimi, Bijayata Gurung, Christopher Tran
 
 ## Contents
 
-This document contains several information about the project, setting up developer/test environement, and how a new internal member can get started and contribute to the vision. <br>
+This document contains several information about the project, setting up developer/test environement, and how a new internal member can get started and contribute to the vision. Click on any of the following links to jump to a specific section:
+
+- [Project Directory](#project-directory)
+- [Getting Started](#getting-started)
+- [Set Up & Run Developer Environment](#set-up--run-developer-environment)
+- [Set Up & Run Test Environment](#set-up--run-test-environment)
+- [Docker](#docker)
+- [Creating & Merging Branches](#creating--mergin-branches)
+- [Code Reviews](#code-reviews)
 
 ## How to Use
 If you would like to learn how to the app, you can view the User Guide [here](https://docs.google.com/document/d/1pbvR7PQ5qWxPG6Tp5O8iflqnk7TtAvFhV7A_3stWE2c/edit?usp=sharing).
@@ -216,6 +224,9 @@ For our team here are a best pratices we look for in code reviews:
 - Readiblity and Understandable. Code should contain good variable names, clear & concise comments, and code should be cleanly formatted.
 - Code being merged should actually meet the task/feature it was set out to do.
 
-Once you a done reviewing the code, under **Files changed**, press **Review Changes** and choose an option. Remember, once you approve the branch, the PR owner will be able to merge the branch.
+Once you a done reviewing the code, under **Files changed**, press **Review Changes** and choose an option. Remember, once you approve the branch, the PR owner will be able to merge the branch. 
+
+
+
 
 

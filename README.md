@@ -1,8 +1,8 @@
-# EZ Apply
+# EZ Apply :briefcase:
 EZ Apply is a web-based MERN stack application which allows job seekers to quickly apply with a simple click and for recruiters to find the best talent possible.
 
-## Developers
-This project was developed by Basmah Altimimi, Bijayata Gurung, Christopher Tran, James Nguyen, and Smriti Gurung.
+## Developers :man_technologist:
+This project was developed by [Basmah Altimimi](https://github.com/basmahaltimimi), [Bijayata Gurung](https://github.com/gurungbjta), [Christopher Tran](https://github.com/Christophervtran92), [James Nguyen](https://github.com/jamessnguyenn), and [Smriti Gurung](https://github.com/smritigurung).
 
 ## Vision
 **FOR** job seekers **WHO** need a quick way to seek jobs, The EZ Apply is a Web-based service **THAT** simplifies and streamlines the application process. **UNLIKE** other job application services, **OUR PRODUCT** allows people to quickly apply for multiple jobs. 
@@ -226,7 +226,8 @@ For our team here are a best pratices we look for in code reviews:
 
 Once you a done reviewing the code, under **Files changed**, press **Review Changes** and choose an option. Remember, once you approve the branch, the PR owner will be able to merge the branch. 
 
+# Contribute Now
 
-
+Ready to start? Check our backlog for details for any new tasks or contact any of the specified developers above for more help. :facepunch:
 
 

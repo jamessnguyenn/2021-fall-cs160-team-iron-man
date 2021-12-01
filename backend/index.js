@@ -1,5 +1,4 @@
 const express = require('express');
-const database = require('../database/database')
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
@@ -9,7 +8,7 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(database.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI);
 mongoose.connection.on('connected', () => {
   console.log("Successfully connected to MongoDB EzApply Cluster");
 });

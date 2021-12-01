@@ -25,7 +25,7 @@ If you would like to learn how to the app, you can view the User Guide [here](ht
 # Project Directory
 
 Our Project consists of 5 main directories. Each directory has a specific duty as explained below : <br>
-`/fontend` :  the source code for our frontend component which is written in REACT.js <br> 
+`/frontend` :  the source code for our frontend component which is written in REACT.js <br> 
 `/backend` : the source code for the backend component which is written in Node.js/ JavaScript<br>
 `/database` : information about the database such as the database key. Although these files will not be used, they are here for your refrence<br>
 `/docker` : contains docker files which can be utilized to run your the backend and frontend in seperate containers. See the Docker section for more details<br>
@@ -45,9 +45,9 @@ The following will need to be installed for you to run the application/scripts. 
 - [Java](https://www.oracle.com/java/technologies/downloads/)
 - [JUnit](https://junit.org/junit4/)
 - [Selenium](https://www.selenium.dev/downloads/)
-- [Chome Driver](https://chromedriver.storage.googleapis.com/index.html)
+- [Chrome Driver](https://chromedriver.storage.googleapis.com/index.html)
 - [Postman](https://www.postman.com/downloads/)
-- [Google Chorome](https://www.google.com/chrome/)
+- [Google Chrome](https://www.google.com/chrome/)
 - Any Java IDE
 
 ## Cloning the Repository
@@ -116,7 +116,11 @@ To set up the test environment for the frontend, open your Java IDE, and then ch
 
 Next, ensure the **Selenium** jar file & **Chrome Driver** is in the ``src/Selenium`` folder. Also, make sure you have **JUNIT** added as a libary for your IDE.
 
-Finally, open any of the scripts, and click the **Run** button in your IDE. Your Chrome Browser should open and start executing the script.
+Make sure that the **Selenium** jar file is added to the dependencies of the project if not already.
+
+Finally, run FrontendTest.java to automatically go through all the current tests.
+
+To make additional scripts add a new method for your script in the Frontend.java file. Next, add a test method for your script in the FrontendTest.java file following the format of the other tests. Use tester to call your method from within the newly created test method.
 
 You can now add your own scripts and begin testing!
 

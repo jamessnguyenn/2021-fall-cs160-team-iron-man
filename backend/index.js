@@ -27,6 +27,6 @@ app.get('/', (req, res)=>{
     res.send('Welcome to the EZ Apply API');
 });
 
-app.listen(5000, (req, res) => {
+app.listen(process.env.PORT || 5000, (req, res) => {
     console.log(`Backend server successfully started on port: 5000`);
   })

@@ -13,7 +13,7 @@ export default function NavBar() {
     localStorage.clear()
   }
   useEffect(()=>{
-    axios.get("http://localhost:5000/jobseekers/"+localStorage.getItem('user_id'), 
+    axios.get("https://ez-apply-api.herokuapp.com/jobseekers/"+localStorage.getItem('user_id'), 
     {
       headers:{
         'Authorization': 'Bearer '+ localStorage.getItem('token')

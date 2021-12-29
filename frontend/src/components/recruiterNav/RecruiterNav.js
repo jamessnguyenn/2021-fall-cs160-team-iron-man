@@ -16,7 +16,7 @@ export default function RecruiterNavBar() {
 
   
   useEffect(()=>{
-    axios.get("http://localhost:5000/recruiters/"+localStorage.getItem('user_id'), 
+    axios.get("https://ez-apply-api.herokuapp.com/recruiters/"+localStorage.getItem('user_id'), 
     {
       headers:{
         'Authorization': 'Bearer '+ localStorage.getItem('token')

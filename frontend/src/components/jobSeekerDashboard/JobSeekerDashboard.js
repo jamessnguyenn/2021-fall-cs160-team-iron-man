@@ -32,7 +32,7 @@ export default function JobSeekerDashboard() {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/jobpostings?populateRecruiter&random&applicant=" + localStorage.getItem('user_id'), {
+    axios.get("https://ez-apply-api.herokuapp.com/jobpostings?populateRecruiter&random&applicant=" + localStorage.getItem('user_id'), {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
@@ -83,7 +83,7 @@ export default function JobSeekerDashboard() {
       const request = {
         user_id: localStorage.getItem('user_id')
       }
-      axios.post(`http://localhost:5000/jobpostings/` + id + `/applicants`, request, {
+      axios.post(`https://ez-apply-api.herokuapp.com/jobpostings/` + id + `/applicants`, request, {
         headers: {
           'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
@@ -110,7 +110,7 @@ export default function JobSeekerDashboard() {
   }
 
   const refresh = (dismissed) => {
-    axios.get("http://localhost:5000/jobpostings?populateRecruiter&applicant=" + localStorage.getItem('user_id'), {
+    axios.get("https://ez-apply-api.herokuapp.com/jobpostings?populateRecruiter&applicant=" + localStorage.getItem('user_id'), {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }

@@ -113,7 +113,7 @@ export default function RecruiterAddJob(){
                 businessEmail: email,
                 salary: parseFloat(salary)
             }
-            axios.post('http://localhost:5000/jobpostings',request, {
+            axios.post('https://ez-apply-api.herokuapp.com/jobpostings',request, {
                 headers:{
                   'Authorization': 'Bearer '+ localStorage.getItem('token')
                 }})

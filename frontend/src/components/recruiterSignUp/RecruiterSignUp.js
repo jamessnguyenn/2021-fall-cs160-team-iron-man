@@ -69,7 +69,7 @@ function RecruiterSignUp(){
             logoLink: logoLink,
             companyWebsite: website
         }
-        axios.post("http://localhost:5000/recruiters", recruiter)
+        axios.post("https://ez-apply-api.herokuapp.com/recruiters", recruiter)
         .then(res=>{
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user_id', res.data.user_id)

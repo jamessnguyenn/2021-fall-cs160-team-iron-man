@@ -26,7 +26,7 @@ export default function RecruiterLogin() {
         email: email,
         password: password
       }
-      axios.post("http://localhost:5000/recruiters/auth/", jobSeeker)
+      axios.post("https://ez-apply-api.herokuapp.com/recruiters/auth/", jobSeeker)
       .then(res=>{
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('user_id', res.data.user_id)

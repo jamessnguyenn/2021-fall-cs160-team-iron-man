@@ -22,7 +22,7 @@ export default function RecruiterDashboard() {
  
  
   useEffect(()=>{
-    axios.get("http://localhost:5000/jobpostings?postedBy="+localStorage.getItem('user_id')+"&populateApplicants", {
+    axios.get("https://ez-apply-api.herokuapp.com/jobpostings?postedBy="+localStorage.getItem('user_id')+"&populateApplicants", {
       headers:{
         'Authorization': 'Bearer '+ localStorage.getItem('token')
       }

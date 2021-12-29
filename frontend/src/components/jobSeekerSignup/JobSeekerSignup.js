@@ -108,7 +108,7 @@ function JobSeekerSignUp(){
             }
         }
 
-        axios.post("http://localhost:5000/jobSeekers", jobSeeker)
+        axios.post("https://ez-apply-api.herokuapp.com/jobSeekers", jobSeeker)
         .then(res=>{
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user_id', res.data.user_id)
